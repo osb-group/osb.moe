@@ -18,7 +18,7 @@ static/admin
 # Pycharm
 .idea/
 *.xml
-.icls
+*.icls
 
 # Squishy squishy
 hentai/
