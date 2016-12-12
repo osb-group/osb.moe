@@ -8,7 +8,17 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 {% block title %}Storyboards{% endblock %}
 
 {% block content %}
-    <h1 class="display-1django'">Pure Wizardry</h1>
+    <h1 class="display-1">Pure Wizardry</h1>
+    <h2 class="special-banner-sub-2">Search</h2>
+    <div class="form-group">
+        <form class="form-inline" action="/showcase/search" method="get">
+            <label for="storyboard_search">Keywords</label>
+            <input id="storyboard_search" type="text" name="s" value="">
+            <label class="form-check-label"><input class="form-check-input" type="checkbox" name="f" placeholder="off"> Featured only?</label>
+            <label class="form-check-label"><input class="form-check-input" type="checkbox" name="c" placeholder="off"> Classic only?</label>
+            <input type="submit" value="Search!">
+        </form>
+    </div>
     <h1 class="special-banner-2 rounded">Storyboards</h1>
     {% if storyboard_list %}
         <div class="card-deck-wrapper">
