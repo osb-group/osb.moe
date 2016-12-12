@@ -1,0 +1,34 @@
+{%  extends "base.html" %}
+
+{% comment %}
+Don't forget about how base.html is composed to work with this.
+For each component of the storyboard_list, we want to generate a Bootstrap card, I think.
+{% endcomment %}
+
+{% block title %}Storyboards{% endblock %}
+
+{% block content %}
+    <h1 class="display-1django'">Pure Wizardry</h1>
+    <h1 class="special-banner-2 rounded">Storyboards</h1>
+    {% if storyboard_list %}
+        <div class="card-deck-wrapper">
+            <div class="card-deck">
+                {% for s in storyboard_list %}
+                    <div class="card">
+                    <img class="rounded card-img mx-auto" src="/media/{{ s.preview }}" alt="{{ s.song }}">
+                        <div class="card-block card-inverse card-danger">
+                            <h4 class="card-header"><a href="/showcase/sb/{{ s.pk }}">{{ s }}</a> {% if s.featured %} 🌟 {% endif %}</h4>
+                        </div>
+                        <div class="card-block">
+                            <p class="card-text"><i>Storyboarded by <a href="/showcase/author/{{ s.storyboarder.pk }}">{{ s.storyboarder }}</a>.</i> Developed in {{ s.medium }}.</p>
+                            {% if s.video %}<a href="{{ s.video }}" class="btn btn-info">Video</a>{% endif %}
+                            <a href="{{ s.download }}" class="btn btn-primary">Download!</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p>:(</p>
+{% endif %}
+{% endblock %}

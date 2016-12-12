@@ -1,0 +1,102 @@
+// Color Variables
+$colors-spot: (#f6a, #86e, #88b300, #fc2);
+$colors-back: (#344146, #43353D);
+
+// Fonts
+$main-font: 'Exo 2', sans-serif;
+$main-font-color: #555;
+$main-font-size: 12pt;
+$invert-font: 'Exo 2', sans-serif;
+$invert-font-color: #FFF;
+$invert-font-size: 12pt;
+
+// For navbar stuff
+$navbar-button-width: 180px;
+
+// Mixins
+@mixin hover-transform($color) {
+    $animation: min-width 600ms cubic-bezier(0.175,0.885,0.32,1.275), background 600ms ease-out;
+	-o-transition: $animation;
+	-webkit-transition: $animation;
+	-moz-transition: $animation;
+	transition: $animation;
+	&:hover {
+		min-width: $navbar-button-width * 1.05;
+		background: darken($color, 10%);
+	}
+}
+
+@mixin generate-navbar-button($color) {
+  background: $color;
+  @include hover-transform($color);
+}
+
+// Main elements
+
+// Headers
+@for $i from 1 through 4 {
+  .special-banner-#{$i} {
+    background: nth($colors-spot,$i);
+    color: #FFF;
+    padding: 10px;
+    text-shadow: 0 1px 3px rgba(0,0,0,.75);
+  }
+
+  .special-banner-sub-#{$i} {
+    background: darken(nth($colors-spot,$i),10%);
+    color: #EEE;
+    padding: 5px;
+    text-shadow: 0 1px 3px rgba(0,0,0,.75);
+  }
+}
+
+// Specific navbar elements
+// osu-cookie and mascot are currently unused
+#osu-cookie {
+  background: nth($colors-spot,1);
+  stroke: #FFF;
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+  min-width: 400px;
+}
+
+.mascot {
+  position: absolute;
+  background: url("/static/base/hifumi.png") no-repeat;
+  height: $navbar-button-width;
+  background-size: contain;
+}
+
+@for $i from 1 through 4 {
+  #navbar-special-#{$i} {
+    @include generate-navbar-button(nth($colors-spot,$i));
+    margin: 0px;
+    min-width: 120px;
+    text-align: center;
+  }
+}
+
+// General Bootstrappy overrides
+.container {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+
+.navbar-list {
+  float: right;
+}
+.nav-link {
+    color: #FFF !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,.75);
+}
+
+.navbar {
+  font: $main-font;
+  margin: 20px 20px 0px 20px;
+}
+
+body {
+  font-family: $main-font;
+  color: $main-font-color;
+  background: nth($colors-back,1);
+}

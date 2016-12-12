@@ -1,0 +1,24 @@
+# Python/Django related things
+env/
+media/
+static/admin
+*.sock
+*.pyc
+*.json
+
+# File-housekeeping
+.bash_history
+.bash_logout
+.bashrc
+.profile
+.rnd
+.selected_editor
+.sudo_as_admin_successful
+
+# Pycharm
+.idea/
+*.xml
+.icls
+
+# Squishy squishy
+hentai/

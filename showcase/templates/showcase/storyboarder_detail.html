@@ -1,0 +1,21 @@
+{%  extends "base.html" %}
+
+{% comment %}
+Don't forget about how base.html is composed to work with this.
+For each component of the storyboard_list, we want to generate a Bootstrap card, I think.
+{% endcomment %}
+
+{% block title %}Storyboarder - {{ storyboarder.username }}{% endblock %}
+
+{% block content %}
+    <div class="card text-xs-center">
+        <div class="card-header">
+        {{ storyboarder.username }}
+        </div>
+        <div class="card-block">
+        <img class="card-img" src="/media/{{ storyboarder.avatar }}" />
+        <p class="card-text">{{ storyboarder.description }}</p>
+        <a href="{{ storyboarder.profile }}" class="btn btn-primary">Profile</a>
+        </div>
+    </div>
+{% endblock %}

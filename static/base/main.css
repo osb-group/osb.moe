@@ -1,0 +1,134 @@
+.special-banner-1 {
+  background: #f6a;
+  color: #FFF;
+  padding: 10px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+
+.special-banner-sub-1 {
+  background: #ff338e;
+  color: #EEE;
+  padding: 5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+
+.special-banner-2 {
+  background: #86e;
+  color: #FFF;
+  padding: 10px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+
+.special-banner-sub-2 {
+  background: #6438e9;
+  color: #EEE;
+  padding: 5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+
+.special-banner-3 {
+  background: #88b300;
+  color: #FFF;
+  padding: 10px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+
+.special-banner-sub-3 {
+  background: #618000;
+  color: #EEE;
+  padding: 5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+
+.special-banner-4 {
+  background: #fc2;
+  color: #FFF;
+  padding: 10px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+
+.special-banner-sub-4 {
+  background: #eeb700;
+  color: #EEE;
+  padding: 5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+
+#osu-cookie {
+  background: #f6a;
+  stroke: #FFF;
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+  min-width: 400px; }
+
+.mascot {
+  position: absolute;
+  background: url("/static/base/hifumi.png") no-repeat;
+  height: 180px;
+  background-size: contain; }
+
+#navbar-special-1 {
+  background: #f6a;
+  -o-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  -webkit-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  -moz-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  margin: 0px;
+  min-width: 120px;
+  text-align: center; }
+  #navbar-special-1:hover {
+    min-width: 189px;
+    background: #ff338e; }
+
+#navbar-special-2 {
+  background: #86e;
+  -o-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  -webkit-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  -moz-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  margin: 0px;
+  min-width: 120px;
+  text-align: center; }
+  #navbar-special-2:hover {
+    min-width: 189px;
+    background: #6438e9; }
+
+#navbar-special-3 {
+  background: #88b300;
+  -o-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  -webkit-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  -moz-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  margin: 0px;
+  min-width: 120px;
+  text-align: center; }
+  #navbar-special-3:hover {
+    min-width: 189px;
+    background: #618000; }
+
+#navbar-special-4 {
+  background: #fc2;
+  -o-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  -webkit-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  -moz-transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  transition: min-width 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), background 600ms ease-out;
+  margin: 0px;
+  min-width: 120px;
+  text-align: center; }
+  #navbar-special-4:hover {
+    min-width: 189px;
+    background: #eeb700; }
+
+.container {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25); }
+
+.navbar-list {
+  float: right; }
+
+.nav-link {
+  color: #FFF !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
+
+.navbar {
+  font: "Exo 2", sans-serif;
+  margin: 20px 20px 0px 20px; }
+
+body {
+  font-family: "Exo 2", sans-serif;
+  color: #555;
+  background: #344146; }
+
+/*# sourceMappingURL=main.css.map */
