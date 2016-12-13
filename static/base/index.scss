@@ -1,0 +1,23 @@
+.opening-banner {
+  background: url(/static/base/code_bg.png) 95%/100% ;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 200px;
+}
+
+.opening-header {
+  color: #fff;
+  margin: 10px;
+  text-shadow: 0 1px 3px rgba(0,0,0,.75);
+  position: absolute;
+  top: 200px;
+  font-size: 3rem;
+  z-index: 1;
+}
+
+.hifumi {
+  background: url(/static/base/hifumi_render.png) 120% -90px/600px no-repeat;
+  min-width: 540px;
+  min-height: 100%;
+  position: relative;
+}

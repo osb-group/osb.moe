@@ -111,6 +111,9 @@
     min-width: 189px;
     background: #eeb700; }
 
+.top-header {
+  border-radius: 0 0 .25rem .25rem; }
+
 .container {
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25); }
@@ -124,7 +127,8 @@
 
 .navbar {
   font: "Exo 2", sans-serif;
-  margin: 20px 20px 0px 20px; }
+  margin: 20px 20px 0px 20px;
+  border-bottom: medium solid #556a72; }
 
 body {
   font-family: "Exo 2", sans-serif;
