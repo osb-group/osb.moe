@@ -24,8 +24,32 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         <div class="card-deck-wrapper">
             <div class="card-deck">
                 {% for s in storyboard_list %}
-                    <div class="card">
-                    <img class="rounded card-img mx-auto" src="/media/{{ s.preview }}" alt="{{ s.song }}">
+                    {% if forloop.counter0|divisibleby:"2" %} <div class="row">{% endif %}
+                    <div class="card col-xs-12 col-sm-6">
+                        <h4 class="card-header rounded special-banner-2"><a href="/showcase/sb/{{ s.pk }}" style="color: white">{{ s }}</a> </h4>
+                        <div class="media">
+                            <a class="media-left" href="#">
+                                <img class="media-object" src="/media/{{ s.preview }}" alt="{{ s.song }}">
+                            </a>
+                            <div class="media-body">
+                                <p class="card-text media-heading">Storyboarded by <a href="/showcase/author/{{ s.storyboarder.pk }}">{{ s.storyboarder }}</a>.</p>
+                                {% if s.video %}<a href="{{ s.video }}" class="btn btn-info">Video</a>{% endif %}
+                                <a href="{{ s.download }}" class="btn btn-primary">Download!</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if not forloop.counter0|divisibleby:"2" %}</div>{% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p>:(</p>
+{% endif %}
+{% endblock %}
+
+{% comment %}
+                    <div class="card col-xs-12 col-sm-6">
+                        <img class="rounded card-img mx-auto" src="/media/{{ s.preview }}" alt="{{ s.song }}">
                         <div class="card-block card-inverse card-danger">
                             <h4 class="card-header"><a href="/showcase/sb/{{ s.pk }}">{{ s }}</a> {% if s.featured %} 🌟 {% endif %}</h4>
                         </div>
@@ -35,10 +59,4 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
                             <a href="{{ s.download }}" class="btn btn-primary">Download!</a>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-        </div>
-    {% else %}
-        <p>:(</p>
-{% endif %}
-{% endblock %}
+{% endcomment %}
