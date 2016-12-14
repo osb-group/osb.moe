@@ -1,0 +1,85 @@
+// Variables
+$source-index: "/static/base/hifumi_render.png";
+$source-sb: "/static/base/hifumi_stylish.png";
+$source-learn: "/static/base/aoba_render.png";
+$source-community: "/static/base/hifumi_shy.png";
+
+
+// These aren't big deals, they're formatting for all banner divs
+.opening-banner {
+  background: url(/static/base/bg_01.png) 95%/100% no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: 200px;
+}
+
+.opening-banner-sb {
+  @extend .opening-banner;
+  background: url(/static/base/bg_02.png)
+}
+
+.opening-banner-learn {
+  @extend .opening-banner;
+  background: url(/static/base/bg_03.png)
+}
+
+.opening-banner-community {
+  @extend .opening-banner;
+  background: url(/static/base/bg_04.png)
+}
+
+.opening-header {
+  color: #fff;
+  margin: 10px;
+  text-shadow: 0 1px 3px rgba(0,0,0,.75);
+  position: absolute;
+  top: 200px;
+  font-size: 3rem;
+  z-index: 1;
+}
+
+// Mixins
+@mixin make-floating-bae($suffix, $start-y, $end-y) {
+  @keyframes floating-bae-#{$suffix} {
+    from { background-position-y: $start-y; }
+    to { background-position-y: $end-y; }
+  }
+}
+
+// Be sure to declare a bae after this
+@mixin float($suffix) {
+  animation: floating-bae-#{$suffix} 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) 500ms infinite alternate;
+}
+
+// Declare here
+@include make-floating-bae('index', -90px, -115px);
+@include make-floating-bae('sb', -90x, -115px);
+@include make-floating-bae('learn', -20x, -40px);
+@include make-floating-bae('community', -100x, -70px);
+
+// For the main pages
+.bae-index {
+  background: url($source-index) 120% -90px/600px no-repeat;
+  min-width: 540px;
+  min-height: 100%;
+  position: relative;
+  @include float('index');
+}
+
+.bae-sb {
+  @extend .bae-index;
+  background: url($source-sb) 120% -90px/600px no-repeat;
+  @include float('sb');
+}
+
+.bae-learn {
+  @extend .bae-index;
+  background: url($source-learn) 130% -20px/630px no-repeat;
+  @include float('learn');
+}
+
+.bae-community {
+  @extend .bae-index;
+  background: url($source-community) 100% -100px/380px no-repeat;
+  @include float('community');
+}
