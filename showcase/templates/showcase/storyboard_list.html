@@ -7,6 +7,8 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 
 {% block title %}Storyboards{% endblock %}
 
+{% block head %}<link rel="stylesheet" href="/static/base/sb.css" />{% endblock %}
+
 {% block content %}
     <div class="opening-banner-sb"><h1 class="display opening-header">Storyboard Showcase</h1><div class="bae-sb"></div></div>
     <h2 class="special-banner-sub-2 top-header">Search</h2>
@@ -21,20 +23,25 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     </div>
     <h1 class="special-banner-2 rounded">Storyboards</h1>
     {% if storyboard_list %}
-        <div class="card-deck-wrapper">
+        <div class="card-group">
             <div class="card-deck">
                 {% for s in storyboard_list %}
                     {% if forloop.counter0|divisibleby:"2" %} <div class="row">{% endif %}
-                    <div class="card col-xs-12 col-sm-6">
-                        <h4 class="card-header rounded special-banner-2"><a href="/showcase/sb/{{ s.pk }}" style="color: white">{{ s }}</a> </h4>
+                    <div class="card col-xs-12 col-sm-6 sb-card">
+                        <div class="bg-inverse sb-card-header bottom-header">
+                            <h4 class="card-title"><a href="/showcase/sb/{{ s.pk }}">{{ s.song }}</a></h4>
+                            <h6 class="card-subtitle">{{ s.artist }}</h6>
+                        </div>
                         <div class="media">
-                            <a class="media-left" href="#">
+                            <a class="media-left" href="/showcase/sb/{{ s.pk }}">
                                 <img class="media-object" src="/media/{{ s.preview }}" alt="{{ s.song }}">
                             </a>
                             <div class="media-body">
                                 <p class="card-text media-heading">Storyboarded by <a href="/showcase/author/{{ s.storyboarder.pk }}">{{ s.storyboarder }}</a>.</p>
-                                {% if s.video %}<a href="{{ s.video }}" class="btn btn-info">Video</a>{% endif %}
-                                <a href="{{ s.download }}" class="btn btn-primary">Download!</a>
+                                <div class="sb-card-icons">
+                                    {% if s.video %}<a href="{{ s.video }}"><i class="fa fa-video-camera fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
+                                    <a href="{{ s.download }}"><i class="fa fa-download fa-fw fa-lg" aria-hidden="true"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
