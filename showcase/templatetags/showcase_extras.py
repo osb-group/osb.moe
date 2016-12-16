@@ -20,3 +20,8 @@ def display_medium_icon(m):
         'other': 'Other'
     }
     return medium[m]
+
+
+@register.inclusion_tag('storyboard_card.html')
+def show_sb_card(storyboard):
+    return {'s': storyboard}

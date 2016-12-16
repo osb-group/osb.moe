@@ -29,27 +29,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
             <div class="card-deck">
                 {% for s in storyboard_list %}
                     {% if forloop.counter0|divisibleby:"2" %} <div class="row">{% endif %}
-                    <div class="sb-card card col-xs-12 col-sm-6">
-                        <div class="bg-inverse sb-card-header bottom-header" style="background-image: url('/media/{{ s.preview }}');">
-                            <a class="sb-card-thumb" href="/showcase/sb/{{ s.pk }}">
-                                <h4 class="card-title sb-card-title">{{ s.song }}</h4>
-                                <h6 class="card-subtitle sb-card-title">{{ s.artist }}</h6>
-                            </a>
-                        </div>
-                        <div class="media {% if s.featured %} sb-card-featured {% endif %}">
-                            <a class="media-left" href="/showcase/sb/{{ s.pk }}">
-                                <img class="media-object sb-card-image" src="/media/{{ s.preview }}" alt="{{ s.song }}">
-                            </a>
-                            <div class="media-body">
-                                <p class="card-text media-heading">Storyboarded by <a href="/showcase/author/{{ s.storyboarder.pk }}">{{ s.storyboarder }}</a>.</p>
-                                <div class="sb-card-icons">
-                                    <span class="tag tag-pill tag-default"><i class="{% display_medium_icon s.medium %}" aria-hidden="true"> </i> {{ s.medium }}</span>
-                                    {% if s.video %}<a href="{{ s.video }}"><i class="fa fa-video-camera fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
-                                    <a href="{{ s.download }}"><i class="fa fa-download fa-fw fa-lg" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% show_sb_card s %}
                     {% if not forloop.counter0|divisibleby:"2" %}</div>{% endif %}
                 {% endfor %}
             </div>
@@ -58,17 +38,3 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         <p>:(</p>
 {% endif %}
 {% endblock %}
-
-{% comment %}
-                    <div class="card col-xs-12 col-sm-6">
-                        <img class="rounded card-img mx-auto" src="/media/{{ s.preview }}" alt="{{ s.song }}">
-                        <div class="card-block card-inverse card-danger">
-                            <h4 class="card-header"><a href="/showcase/sb/{{ s.pk }}">{{ s }}</a> {% if s.featured %} 🌟 {% endif %}</h4>
-                        </div>
-                        <div class="card-block">
-                            <p class="card-text"><i>Storyboarded by <a href="/showcase/author/{{ s.storyboarder.pk }}">{{ s.storyboarder }}</a>.</i> Developed in {{ s.medium }}.</p>
-                            {% if s.video %}<a href="{{ s.video }}" class="btn btn-info">Video</a>{% endif %}
-                            <a href="{{ s.download }}" class="btn btn-primary">Download!</a>
-                        </div>
-                    </div>
-{% endcomment %}
