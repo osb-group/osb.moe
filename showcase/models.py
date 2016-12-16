@@ -7,7 +7,21 @@ from django.db.models import Q
 # TODO: Add tags in storyboard object, consider using a package
 # TODO: Consider outsourcing the preview image from the beatmap thumbnails as a choice.
 
+
 class Storyboard(models.Model):
+    # Constants
+    MEDIUMS = (
+        ('design', 'Design Editor'),
+        ('osb', 'Scripting'),
+        ('sgl', 'osu!SGL'),
+        ('c', 'C'),
+        ('cplusplus','C++'),
+        ('csharp','C#'),
+        ('java','Java'),
+        ('python','Python'),
+        ('storybrew','Storybrew'),
+        ('other','Other')
+    )
     # Sortables
     song = models.CharField(max_length=200)
     artist = models.CharField(max_length=200)
@@ -15,7 +29,7 @@ class Storyboard(models.Model):
     mapper = models.CharField(max_length=64)
     date_added = models.DateTimeField()
     date_created = models.DateTimeField()
-    medium = models.CharField(max_length=64)
+    medium = models.CharField(max_length=64,choices=MEDIUMS,default='other')
     featured = models.BooleanField()
     classic = models.BooleanField()
     # Non-sortables
