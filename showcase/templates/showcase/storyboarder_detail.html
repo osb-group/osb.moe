@@ -1,4 +1,5 @@
 {%  extends "base.html" %}
+{% load showcase_extras %}
 
 {% comment %}
 Don't forget about how base.html is composed to work with this.
@@ -7,7 +8,11 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 
 {% block title %}Storyboarder - {{ storyboarder.username }}{% endblock %}
 
+{% block head %}<link rel="stylesheet" href="/static/base/sb.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.3.0/font-mfizz.css" />{% endblock %}
+
 {% block content %}
+    <h1 class="special-banner-2">{{ storyboarder.username }}</h1>
     <div class="card text-xs-center">
         <div class="card-header">
         {{ storyboarder.username }}
@@ -15,7 +20,24 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         <div class="card-block">
         <img class="card-img" src="/media/{{ storyboarder.avatar }}" />
         <p class="card-text">{{ storyboarder.description }}</p>
+        <div class="row">
+            {% for m in mediums %}
+                <i class="{% display_medium_icon m %}" aria-hidden="true"></i>
+            {% endfor %}
+        </div>
         <a href="{{ storyboarder.profile }}" class="btn btn-primary">Profile</a>
         </div>
     </div>
+
+    <h2 class="special-banner-sub-2">Storyboards by {{ storyboarder.username }}</h2>
+    <div class="card-group">
+        <div class="card-deck">
+            {% for s in storyboards %}
+                {% if forloop.counter0|divisibleby:"2" %} <div class="row">{% endif %}
+            {% show_sb_card s %}
+            {% if not forloop.counter0|divisibleby:"2" %}</div>{% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}

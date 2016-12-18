@@ -4,6 +4,8 @@ from django import template
 
 register = template.Library()
 
+# Utility-based template tags
+
 
 @register.simple_tag
 def display_medium_icon(m):
@@ -20,6 +22,10 @@ def display_medium_icon(m):
         'other': 'Other'
     }
     return medium[m]
+
+# Filter tags
+
+# Template-rendering tags
 
 
 @register.inclusion_tag('storyboard_card.html')
