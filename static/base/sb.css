@@ -25,7 +25,7 @@
   z-index: 2; }
 
 .sb-card-image {
-  height: 120px; }
+  max-height: 120px; }
 
 .sb-card-footer {
   background-color: #CCC;

@@ -45,6 +45,7 @@ class Storyboarder(models.Model):
     username = models.CharField(max_length=64)
     avatar = models.ImageField(blank=True)
     profile = models.URLField(blank=True)
+    title = models.CharField(max_length=64,blank=True,default='Storyboarder')
     description = models.TextField(blank=True)
 
     def __str__(self):

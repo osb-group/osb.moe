@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load showcase_extras %}
 
 {% comment %}
 The community page is going to just contain the Discord server invitation, maybe.
@@ -25,4 +26,16 @@ In fact, maybe it can be changed to Resources and Links or something.
         <p>I heard they're looking for people at this place called 4chan. I know the 4-H club is pretty excellent, so I think this place sounds pretty good too. Why don't you check it out sometime?</p>
     <h1 class="special-banner-4 rounded">Serious Information</h1>
         <p>Just kidding. We never have serious information here.</p>
+    <h1 class="special-banner-4 rounded">Special Credits</h1>
+        <p>Our community is brought to you by amazing osu! players, mappers, and, most importantly among our site, storyboarders. Without these guys, we wouldn't have such wondrous visual works on osu!.</p>
+        <div class="card-group mx-auto">
+            <div class="card-deck">
+                {% get_storyboarders as sbers_list %}
+                {% for s in sbers_list %}{% if forloop.counter0|divisibleby:"4" %} <div class="row">{% endif %}
+                    {% show_sber_card s %}
+                    {% if forloop.counter|divisibleby:"4" %}</div>{% endif %}
+                    {% if forloop.last %}{% if not forloop.counter|divisibleby:"4" %}</div>{% endif %}{% endif %}
+                {% endfor %}
+            </div>
+        </div>
 {% endblock %}

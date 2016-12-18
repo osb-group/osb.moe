@@ -18,7 +18,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         {{ storyboarder.username }}
         </div>
         <div class="card-block">
-        <img class="card-img" src="/media/{{ storyboarder.avatar }}" />
+        <img class="card-img" src="/media/{{ storyboarder.avatar }}" alt="{{ s.username }}'s pretty face!" />
         <p class="card-text">{{ storyboarder.description }}</p>
         <div class="row">
             {% for m in mediums %}
