@@ -1,4 +1,5 @@
-{%  extends "base.html" %}
+{% extends "base.html" %}
+{% load showcase_extras %}
 
 {% comment %}
 Don't forget about how base.html is composed to work with this.
@@ -8,13 +9,34 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 {% block title %}Storyboard{% endblock %}
 
 {% block content %}
-    <div class="card card-inverse card-info">
-        <h1 class="card-header">{{ storyboard }}</h1>
-        <img class="rounded float-xs-left" src="/media/{{ storyboard.preview }}" />
-        <h2>Storyboarded by <a href="/showcase/author/{{ storyboard.storyboarder.pk }}">{{ storyboard.storyboarder }}</a></h2>
-        <p class="lead">Developed in {{ storyboard.medium }}.</p>
-        <p>{{ storyboard.description }}</p>
-        {% if storyboard.video %}<a href="{{ storyboard.video }}" class="btn btn-info">Video</a>{% endif %}
-        <a href="{{ storyboard.download }}" class="btn btn-primary">Download!</a>
+    <h1 class="special-banner-2">{{ storyboard }}</h1>
+
+    <h2 class="special-banner-sub-2">Overview</h2>
+
+    <div class="container-fluid">
+        <div class="card sb-card col-xs-12 col-sm-4">
+            <div class="media">
+                <img class="media-left rounded float-xs-left" src="/media/{{ storyboard.preview }}" />
+                <div class="media-body">
+                    <p>Storyboarder: <a href="/showcase/author/{{ storyboard.storyboarder.pk }}">{{ storyboard.storyboarder }}</a>
+                    <br>Mapper: {{ storyboard.mapper }}</p>
+                    <p>Developed in {{ storyboard.medium }}.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-8">
+            <p>{{ storyboard.description }}</p>
+            {% if storyboard.video %}<a href="{{ storyboard.video }}" class="btn btn-info">Video</a>{% endif %}
+            <a href="{{ storyboard.download }}" class="btn btn-primary">Download!</a>
+        </div>
+    </div>
+
+    <h2 class="special-banner-sub-2">{{ storyboard.storyboarder }}'s Comments</h2>
+    <div class="media">
+        <img class="media-left float-xs-left" src="/media/{{ storyboard.storyboarder.avatar }}" style="max-height:128px;"/>
+        <div class="media-body">
+            <p>Nico nico nii~</p>
+        </div>
     </div>
 {% endblock %}

@@ -12,7 +12,8 @@
             <img class="media-object sb-card-image" src="/media/{{ s.preview }}" alt="{{ s.song }}">
         </a>
         <div class="media-body">
-            <p class="card-text media-heading">Storyboarded by <a href="/showcase/author/{{ s.storyboarder.pk }}">{{ s.storyboarder }}</a>.</p>
+            <p class="card-text media-heading">Storyboarded by <a href="/showcase/author/{{ s.storyboarder.pk }}">{{ s.storyboarder }}</a>
+                <br>Mapped by {{ s.mapper }}</p>
             <div class="sb-card-icons">
                 <span class="tag tag-pill tag-default"><i class="{% display_medium_icon s.medium %}" aria-hidden="true"></i> {{ s.medium }}</span>
                 {% if s.video %}<a href="{{ s.video }}"><i class="fa fa-video-camera fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
