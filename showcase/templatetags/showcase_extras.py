@@ -14,7 +14,7 @@ def display_medium_icon(m):
     medium = {
         'design':  'icon-osu-cookie',
         'osb':  'fa fa-file-text-o',
-        'sgl':  'fa-file-code-o',
+        'sgl':  'fa fa-file-code-o',
         'c':  'icon-c',
         'cplusplus': 'icon-cplusplus',
         'csharp': 'icon-csharp',
