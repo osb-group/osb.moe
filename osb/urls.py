@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^showcase/', include('showcase.urls')),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^$', HomePageView.as_view(), name='index'),
+    url(r'^photologue/', include('photologue.urls', namespace='photologue')),
 ]

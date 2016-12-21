@@ -32,11 +32,13 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         </div>
     </div>
 
+    {% if storyboard.comments %}
     <h2 class="special-banner-sub-2">{{ storyboard.storyboarder }}'s Comments</h2>
     <div class="media">
         <img class="media-left float-xs-left" src="{{ storyboard.storyboarder.avatar.url }}" style="max-height:128px;"/>
         <div class="media-body">
-            <p>Nico nico nii~</p>
+            <p>{{ s.comments }}</p>
         </div>
     </div>
+    {% endif %}
 {% endblock %}

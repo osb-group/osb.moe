@@ -3,6 +3,7 @@ import operator
 
 from django.db import models
 from django.db.models import Q
+from photologue.models import Gallery
 
 # TODO: Add tags in storyboard object, consider using a package
 # TODO: Consider outsourcing the preview image from the beatmap thumbnails as a choice.
@@ -34,7 +35,8 @@ class Storyboard(models.Model):
     featured = models.BooleanField()
     classic = models.BooleanField()
     # Non-sortables
-    #screenshots =
+    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, blank=True, null=True)
+    comments = models.TextField(blank=True)
     description = models.TextField(blank=True)
     video = models.URLField(blank=True)
 
@@ -50,7 +52,3 @@ class Storyboarder(models.Model):
 
     def __str__(self):
         return self.username
-
-#class Screenshot(models.Model):
-    #screenshot = models.ImageField(upload_to='/s')
-    #caption = models.CharField(max_field=200)
