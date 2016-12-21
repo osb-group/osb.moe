@@ -25,6 +25,7 @@ class Storyboard(models.Model):
     # Sortables
     song = models.CharField(max_length=200)
     artist = models.CharField(max_length=200)
+    set_id = models.BigIntegerField(blank=True,default=1)
     storyboarder =  models.ForeignKey('Storyboarder', on_delete=models.CASCADE)
     mapper = models.CharField(max_length=64)
     date_added = models.DateTimeField()
@@ -33,20 +34,23 @@ class Storyboard(models.Model):
     featured = models.BooleanField()
     classic = models.BooleanField()
     # Non-sortables
-    preview = models.ImageField(blank=True)
+    #screenshots =
     description = models.TextField(blank=True)
     video = models.URLField(blank=True)
-    download = models.URLField(blank=True)
 
     def __str__(self):
         return "%s - %s" % (self.artist, self.song)
 
 class Storyboarder(models.Model):
     username = models.CharField(max_length=64)
-    avatar = models.ImageField(blank=True)
+    avatar = models.ImageField(blank=True, upload_to='a')
     profile = models.URLField(blank=True)
     title = models.CharField(max_length=64,blank=True,default='Storyboarder')
     description = models.TextField(blank=True)
 
     def __str__(self):
         return self.username
+
+#class Screenshot(models.Model):
+    #screenshot = models.ImageField(upload_to='/s')
+    #caption = models.CharField(max_field=200)

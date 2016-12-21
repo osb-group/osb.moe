@@ -16,7 +16,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     <div class="container-fluid">
         <div class="card sb-card col-xs-12 col-sm-4">
             <div class="media">
-                <img class="media-left rounded float-xs-left" src="/media/{{ storyboard.preview }}" />
+                <img class="media-left rounded float-xs-left" src="//b.ppy.sh/thumb/{{ storyboard.set_id }}l.jpg" alt="{{ s.song }}"/>
                 <div class="media-body">
                     <p>Storyboarder: <a href="/showcase/author/{{ storyboard.storyboarder.pk }}">{{ storyboard.storyboarder }}</a>
                     <br>Mapper: {{ storyboard.mapper }}</p>
@@ -28,13 +28,13 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         <div class="col-xs-12 col-sm-8">
             <p>{{ storyboard.description }}</p>
             {% if storyboard.video %}<a href="{{ storyboard.video }}" class="btn btn-info">Video</a>{% endif %}
-            <a href="{{ storyboard.download }}" class="btn btn-primary">Download!</a>
+            {% if storyboard.set_id %}<a href="//osu.ppy.sh/s/{{ storyboard.set_id }}" class="btn btn-primary">Download!</a>{% endif %}
         </div>
     </div>
 
     <h2 class="special-banner-sub-2">{{ storyboard.storyboarder }}'s Comments</h2>
     <div class="media">
-        <img class="media-left float-xs-left" src="/media/{{ storyboard.storyboarder.avatar }}" style="max-height:128px;"/>
+        <img class="media-left float-xs-left" src="{{ storyboard.storyboarder.avatar.url }}" style="max-height:128px;"/>
         <div class="media-body">
             <p>Nico nico nii~</p>
         </div>

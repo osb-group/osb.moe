@@ -1,7 +1,7 @@
 {% load showcase_extras %}
 
 <div class="sb-card card col-xs-12 col-sm-6">
-    <div class="bg-inverse sb-card-header bottom-header" style="background-image: url('/media/{{ s.preview }}');">
+    <div class="bg-inverse sb-card-header bottom-header" style="background-image: url('//assets.ppy.sh//beatmaps/{{ s.set_id }}/covers/card.jpg');">
         <a class="sb-card-thumb" href="/showcase/sb/{{ s.pk }}">
             <h4 class="card-title sb-card-title">{{ s.song }}</h4>
             <h6 class="card-subtitle sb-card-title">{{ s.artist }}</h6>
@@ -9,7 +9,7 @@
     </div>
     <div class="media {% if s.featured %} sb-card-featured {% endif %}">
         <a class="media-left" href="/showcase/sb/{{ s.pk }}">
-            <img class="media-object sb-card-image" src="/media/{{ s.preview }}" alt="{{ s.song }}">
+            <img class="media-object sb-card-image" src="//b.ppy.sh/thumb/{{ s.set_id }}l.jpg" alt="{{ s.song }}">
         </a>
         <div class="media-body">
             <p class="card-text media-heading">Storyboarded by <a href="/showcase/author/{{ s.storyboarder.pk }}">{{ s.storyboarder }}</a>
@@ -17,7 +17,7 @@
             <div class="sb-card-icons">
                 <span class="tag tag-pill tag-default"><i class="{% display_medium_icon s.medium %}" aria-hidden="true"></i> {{ s.medium }}</span>
                 {% if s.video %}<a href="{{ s.video }}"><i class="fa fa-video-camera fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
-                <a href="{{ s.download }}"><i class="fa fa-download fa-fw fa-lg" aria-hidden="true"></i></a>
+                {% if s.set_id %}<a href="//osu.ppy.sh/s/{{ s.set_id }}"><i class="fa fa-download fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
             </div>
         </div>
     </div>

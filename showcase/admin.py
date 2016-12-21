@@ -5,7 +5,7 @@ from .models import Storyboarder
 
 
 class StoryboardAdmin(admin.ModelAdmin):
-    list_display = ('song', 'artist', 'storyboarder', 'date_added', 'date_created', 'medium', 'featured', 'classic')
+    list_display = ('song', 'artist', 'set_id', 'storyboarder', 'date_added', 'date_created', 'medium', 'featured', 'classic')
     list_filter = ['date_added', 'date_created']
     search_fields = ['song', 'artist']
 
