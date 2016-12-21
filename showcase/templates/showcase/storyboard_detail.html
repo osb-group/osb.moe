@@ -8,10 +8,18 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 
 {% block title %}Storyboard{% endblock %}
 
-{% block content %}
-    <h1 class="special-banner-2">{{ storyboard }}</h1>
 
-    <h2 class="special-banner-sub-2">Overview</h2>
+{% block head %}
+    {% if storyboard.gallery %}
+        <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.min.js"></script>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="special-banner-2 top-header">{{ storyboard }}</h1>
+
+    <h2 class="special-banner-sub-2 rounded">Overview</h2>
 
     <div class="container-fluid">
         <div class="card sb-card col-xs-12 col-sm-4">
@@ -32,13 +40,35 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         </div>
     </div>
 
+    {% if storyboard.gallery %}
+    <div class="container-fluid">
+        <h2 class="special-banner-sub-2 rounded">Screenshots</h2>
+            <div class="row col-lg-12">
+                {% for photo in storyboard.gallery.public %}
+                    <a class="col-sm-4" href="{{ photo.get_sb_screenshot_url }}" data-toggle="lightbox" data-gallery="screenshots">
+                        <img class="img-fluid" src="{{ photo.get_thumbnail_url }}" class="thumbnail" alt="{{ photo.title }}">
+                    </a>
+                {% endfor %}
+            </div>
+    </div>
+    {% endif %}
+
     {% if storyboard.comments %}
-    <h2 class="special-banner-sub-2">{{ storyboard.storyboarder }}'s Comments</h2>
+    <h2 class="special-banner-sub-2 rounded">{{ storyboard.storyboarder }}'s Comments</h2>
     <div class="media">
         <img class="media-left float-xs-left" src="{{ storyboard.storyboarder.avatar.url }}" style="max-height:128px;"/>
         <div class="media-body">
-            <p>{{ s.comments }}</p>
+            <p>{{ storyboard.comments }}</p>
         </div>
     </div>
+    {% endif %}
+
+    {% if storyboard.gallery %}
+        <script>
+            $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+        </script>
     {% endif %}
 {% endblock %}

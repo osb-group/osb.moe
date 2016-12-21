@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'showcase.apps.ShowcaseConfig',
-    'photologue',
     'sortedm2m',
+    'photologue',
 ]
 
 MIDDLEWARE = [

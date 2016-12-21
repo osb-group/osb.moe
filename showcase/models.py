@@ -5,9 +5,6 @@ from django.db import models
 from django.db.models import Q
 from photologue.models import Gallery
 
-# TODO: Add tags in storyboard object, consider using a package
-# TODO: Consider outsourcing the preview image from the beatmap thumbnails as a choice.
-
 
 class Storyboard(models.Model):
     # Constants
