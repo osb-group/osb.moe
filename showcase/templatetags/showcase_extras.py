@@ -3,6 +3,7 @@
 from django import template
 from ..models import Storyboard
 from ..models import Storyboarder
+import random
 
 register = template.Library()
 
@@ -48,3 +49,24 @@ def show_sb_card(storyboard):
 @register.inclusion_tag('storyboarder_card.html')
 def show_sber_card(sb):
     return {'s': sb}
+
+@register.inclusion_tag('storyboard_carousel.html')
+def show_screenshot_carousel():
+    sb_list = set()
+    featured_sb_list = Storyboard.objects.filter(featured=True)
+    nonfeatured_sb_list = Storyboard.objects.filter(featured=False)
+
+    while len(sb_list) < 3:
+        if random.randint(1, 100) > 30:
+            sb_list.add(random.choice(featured_sb_list))
+        else:
+            sb_list.add(random.choice(nonfeatured_sb_list))
+
+    carousel_gallery = []
+    for sb in list(sb_list):
+        if sb.gallery.public():
+            carousel_gallery.append(random.choice(sb.gallery.public()))
+
+    sb_carousel = zip(list(sb_list), carousel_gallery)
+
+    return {'storyboards': sb_carousel}

@@ -11,10 +11,10 @@ Anything that a derivative page needs (like the showcase) will be loaded as a pl
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="icon" type="image/x-icon" href="/static/base/favicon.ico" />
-    <link rel="stylesheet" href="/static/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="/static/base/main.css" />
-    <link rel="stylesheet" href="/static/base/banner.css" />
+    <link rel="icon" type="image/x-icon" href="/static/base/favicon.ico">
+    <link rel="stylesheet" href="/static/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/base/main.css">
+    <link rel="stylesheet" href="/static/base/banner.css">
     <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/f344ebe01e.js"></script>
@@ -43,12 +43,21 @@ Anything that a derivative page needs (like the showcase) will be loaded as a pl
       </ul>
     </nav>
 
+    {% block header %}{% endblock %}
+
     {# MAIN CONTENT #}
     <div class="container">
         {% block content %}{% endblock %}
     </div>
 
     {# FOOTER #}
+    <footer class="footer">
+        <div class="row">
+        <div class="osu-cookie d-block mx-auto"></div>
+        <p class="small">Powered with <span title="Hifumi's Love!">❤</span></p>
+        </div>
+    </footer>
+
     {# This extra bootstrap stuff looks ugly! Yuck! #}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="/static/bootstrap/bootstrap.min.js"></script>

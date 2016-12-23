@@ -11,32 +11,32 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 
 {% block head %}
     {% if storyboard.gallery %}
-        <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.min.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.min.js"></script>
+        <link rel="stylesheet" href="/static/base/sb.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.css">
     {% endif %}
 {% endblock %}
 
 {% block content %}
-    <div class="opening-banner" style="background-image: url(//assets.ppy.sh//beatmaps/{{ storyboard.set_id }}/covers/cover.jpg);"></div>
+    <header class="opening-banner" style="background-image: url(//assets.ppy.sh//beatmaps/{{ storyboard.set_id }}/covers/cover.jpg);"></header>
     <h1 class="special-banner-2 top-header">{{ storyboard }}</h1>
 
     <h2 class="special-banner-sub-2 rounded">Overview</h2>
 
     <div class="container-fluid">
-        <div class="card sb-card col-xs-12 col-sm-4">
-            <div class="media">
-                <div class="media-left media-middle">
-                    <img class="media-object rounded" src="//b.ppy.sh/thumb/{{ storyboard.set_id }}l.jpg" alt="{{ s.song }}"/>
+        <div class="card sb-card col-sm-12 col-md-4">
+                <img class="rounded mx-auto d-block" src="//b.ppy.sh/thumb/{{ storyboard.set_id }}l.jpg" alt="{{ s.song }}"/>
+                <div class="card-block">
+                    <dl class="row">
+                        <dt class="col-sm-6 col-md-3">Storyboarder:</dt>
+                        <dd class="col-sm-6 col-md-12"><a href="/showcase/author/{{ storyboard.storyboarder.pk }}">{{ storyboard.storyboarder }}</a></dd>
+                        <dt class="col-sm-6 col-md-3">Mapper:</dt>
+                        <dd class="col-sm-6 col-md-12">{{ storyboard.mapper }}</dd>
+                        <dt class="col-sm-6 col-md-9">Developed in {{ storyboard.medium }}.</dt>
+                    </dl>
                 </div>
-                <div class="media-body">
-                    <p>Storyboarder:<br><a href="/showcase/author/{{ storyboard.storyboarder.pk }}">{{ storyboard.storyboarder }}</a>
-                    <br>Mapper:<br>{{ storyboard.mapper }}</p>
-                    <p>Developed in {{ storyboard.medium }}.</p>
-                </div>
-            </div>
         </div>
 
-        <div class="col-xs-12 col-sm-8">
+        <div class="col-xs-12 col-md-8">
             <p>{{ storyboard.description }}</p>
             {% if storyboard.video %}<a href="{{ storyboard.video }}" class="btn btn-info">Video</a>{% endif %}
             {% if storyboard.set_id %}<a href="//osu.ppy.sh/s/{{ storyboard.set_id }}" class="btn btn-primary">Download!</a>{% endif %}
@@ -48,7 +48,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         <p>
             <div class="row">
                 {% for photo in storyboard.gallery.public %}
-                    <a class="col-sm-4" href="{{ photo.get_sb_screenshot_url }}" data-toggle="lightbox" data-gallery="screenshots">
+                    <a class="col-sm-4 screenshot" href="{{ photo.get_sb_screenshot_url }}" data-toggle="lightbox" data-gallery="screenshots">
                         <img class="img-fluid rounded mx-auto d-block" src="{{ photo.get_thumbnail_url }}" class="thumbnail" alt="{{ photo.title }}">
                     </a>
                 {% endfor %}
@@ -67,11 +67,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     {% endif %}
 
     {% if storyboard.gallery %}
-        <script>
-            $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-                event.preventDefault();
-                $(this).ekkoLightbox();
-            });
-        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.js"></script>
+        <script src="/static/showcase/add-lightbox.js"></script>
     {% endif %}
 {% endblock %}

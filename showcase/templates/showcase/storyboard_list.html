@@ -8,11 +8,11 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 
 {% block title %}Storyboards{% endblock %}
 
-{% block head %}<link rel="stylesheet" href="/static/base/sb.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.3.0/font-mfizz.css" />{% endblock %}
+{% block head %}<link rel="stylesheet" href="/static/base/sb.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.3.0/font-mfizz.css">{% endblock %}
 
 {% block content %}
-    <div class="opening-banner-sb"><h1 class="display opening-header">Storyboard Showcase</h1><div class="bae-sb"></div></div>
+    <header class="opening-banner-sb"><h1 class="display opening-header">Storyboard Showcase</h1><div class="bae-sb"></div></header>
     <h2 class="special-banner-sub-2 top-header">Search</h2>
     <div class="form-group">
         <form class="form-inline" action="/showcase/search" method="get">

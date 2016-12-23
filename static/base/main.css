@@ -46,12 +46,14 @@
   padding: 5px;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
 
-#osu-cookie {
-  background: #f6a;
-  stroke: #FFF;
-  -webkit-clip-path: circle(50% at 50% 50%);
-  clip-path: circle(50% at 50% 50%);
-  min-width: 400px; }
+.osu-cookie {
+  background: url(/static/base/osu-logo.png) no-repeat;
+  background-size: contain;
+  content: ' ';
+  opacity: 0.3;
+  margin: 1%;
+  max-width: 100px;
+  height: 100px; }
 
 .mascot {
   position: absolute;
@@ -111,7 +113,7 @@
     min-width: 189px;
     background: #eeb700; }
 
-.top-header {
+.top-header, .container {
   border-radius: 0 0 .25rem .25rem; }
 
 .bottom-header {
@@ -119,7 +121,7 @@
 
 .container {
   background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25); }
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
 
 .navbar-list {
   float: right; }
@@ -137,5 +139,9 @@ body {
   font-family: "Exo 2", sans-serif;
   color: #555;
   background: #344146; }
+
+.footer {
+  text-align: center;
+  color: #FFF; }
 
 /*# sourceMappingURL=main.css.map */

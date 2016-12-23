@@ -52,12 +52,14 @@ $navbar-button-width: 180px;
 
 // Specific navbar elements
 // osu-cookie and mascot are currently unused
-#osu-cookie {
-  background: nth($colors-spot,1);
-  stroke: #FFF;
-  -webkit-clip-path: circle(50% at 50% 50%);
-  clip-path: circle(50% at 50% 50%);
-  min-width: 400px;
+.osu-cookie {
+  background: url(/static/base/osu-logo.png) no-repeat;
+  background-size: contain;
+  content: ' ';
+  opacity: 0.3;
+  margin: 1%;
+  max-width: 100px;
+  height: 100px;
 }
 
 .mascot {
@@ -86,8 +88,9 @@ $navbar-button-width: 180px;
 }
 
 .container {
+  @extend .top-header;
   background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 1px 3px rgba(0,0,0,.25);
+  box-shadow: 0 1px 3px rgba(0,0,0,.50);
 }
 
 .navbar-list {
@@ -108,4 +111,10 @@ body {
   font-family: $main-font;
   color: $main-font-color;
   background: nth($colors-back,1);
+}
+
+// Footer stuff
+.footer {
+  text-align: center;
+  color: $invert-font-color;
 }

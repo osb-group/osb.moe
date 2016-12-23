@@ -10,7 +10,7 @@ In fact, maybe it can be changed to Resources and Links or something.
 {% block title %}Storyboarding Community!{% endblock %}
 
 {% block content %}
-    <div class="opening-banner-community"><h1 class="display opening-header">Storyboarders Unite!</h1><div class="bae-community"></div></div>
+    <header class="opening-banner-community"><h1 class="display opening-header">Storyboarders Unite!</h1><div class="bae-community"></div></header>
     <h1 class="special-banner-4 top-header">Discord</h1>
         <div class="media">
             <div class="media-left"><img src="/static/base/discord.gif" alt="Discord Screenshot" height="400px" /></div>
@@ -24,10 +24,8 @@ In fact, maybe it can be changed to Resources and Links or something.
         <div class="card-group mx-auto">
             <div class="card-deck">
                 {% get_storyboarders as sbers_list %}
-                {% for s in sbers_list %}{% if forloop.counter0|divisibleby:"4" %} <div class="row">{% endif %}
+                {% for s in sbers_list %}
                     {% show_sber_card s %}
-                    {% if forloop.counter|divisibleby:"4" %}</div>{% endif %}
-                    {% if forloop.last %}{% if not forloop.counter|divisibleby:"4" %}</div>{% endif %}{% endif %}
                 {% endfor %}
             </div>
         </div>
