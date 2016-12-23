@@ -12,32 +12,32 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.3.0/font-mfizz.css" />{% endblock %}
 
 {% block content %}
-    <h1 class="special-banner-2">{{ storyboarder.username }}</h1>
+    <h1 class="special-banner-2 top-header">{{ storyboarder.username }}</h1>
     <div class="card text-xs-center">
         <div class="card-header">
         {{ storyboarder.username }}
         </div>
         <div class="card-block">
-        <img class="card-img" src="/media/{{ storyboarder.avatar }}" alt="{{ s.username }}'s pretty face!" />
-        <p class="card-text">{{ storyboarder.description }}</p>
-        <div class="row">
-            {% for m in mediums %}
-                <i class="{% display_medium_icon m %}" aria-hidden="true"></i>
-            {% endfor %}
-        </div>
-        <a href="{{ storyboarder.profile }}" class="btn btn-primary">Profile</a>
+            <img class="card-img" src="/media/{{ storyboarder.avatar }}" alt="{{ s.username }}'s pretty face!" />
+            <p class="card-text">{{ storyboarder.description }}</p>
+            <div class="row">
+                {% for m in mediums %}
+                    <i class="{% display_medium_icon m %}" aria-hidden="true"></i>
+                {% endfor %}
+            </div>
+            <a href="{{ storyboarder.profile }}" class="btn btn-primary">Profile</a>
         </div>
     </div>
 
-    <h2 class="special-banner-sub-2">Storyboards by {{ storyboarder.username }}</h2>
+    <h2 class="special-banner-sub-2 rounded">Storyboards by {{ storyboarder.username }}</h2>
     <div class="card-group">
+    <p>
         <div class="card-deck">
             {% for s in storyboards %}
-                {% if forloop.counter0|divisibleby:"2" %} <div class="row">{% endif %}
             {% show_sb_card s %}
-            {% if not forloop.counter0|divisibleby:"2" %}</div>{% endif %}
             {% endfor %}
         </div>
+    </p>
     </div>
 
 {% endblock %}
