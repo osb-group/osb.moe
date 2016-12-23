@@ -1,5 +1,5 @@
 .opening-banner, .opening-banner-sb, .opening-banner-learn, .opening-banner-community {
-  background: url(/static/base/bg_01.png) 95%/100% no-repeat;
+  background: #000 url(/static/base/bg_01.png) 95%/100% no-repeat;
   background-size: cover;
   overflow: hidden;
   height: 200px; }

@@ -28,9 +28,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         <div class="card-group">
             <div class="card-deck">
                 {% for s in storyboard_list %}
-                    {% if forloop.counter0|divisibleby:"2" %} <div class="row">{% endif %}
                     {% show_sb_card s %}
-                    {% if not forloop.counter0|divisibleby:"2" %}</div>{% endif %}
                 {% endfor %}
             </div>
         </div>

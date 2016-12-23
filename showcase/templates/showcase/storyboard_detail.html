@@ -17,6 +17,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 {% endblock %}
 
 {% block content %}
+    <div class="opening-banner" style="background-image: url(//assets.ppy.sh//beatmaps/{{ storyboard.set_id }}/covers/cover.jpg);"></div>
     <h1 class="special-banner-2 top-header">{{ storyboard }}</h1>
 
     <h2 class="special-banner-sub-2 rounded">Overview</h2>
@@ -24,10 +25,12 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     <div class="container-fluid">
         <div class="card sb-card col-xs-12 col-sm-4">
             <div class="media">
-                <img class="media-left rounded float-xs-left" src="//b.ppy.sh/thumb/{{ storyboard.set_id }}l.jpg" alt="{{ s.song }}"/>
+                <div class="media-left media-middle">
+                    <img class="media-object rounded" src="//b.ppy.sh/thumb/{{ storyboard.set_id }}l.jpg" alt="{{ s.song }}"/>
+                </div>
                 <div class="media-body">
-                    <p>Storyboarder: <a href="/showcase/author/{{ storyboard.storyboarder.pk }}">{{ storyboard.storyboarder }}</a>
-                    <br>Mapper: {{ storyboard.mapper }}</p>
+                    <p>Storyboarder:<br><a href="/showcase/author/{{ storyboard.storyboarder.pk }}">{{ storyboard.storyboarder }}</a>
+                    <br>Mapper:<br>{{ storyboard.mapper }}</p>
                     <p>Developed in {{ storyboard.medium }}.</p>
                 </div>
             </div>
@@ -41,16 +44,16 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     </div>
 
     {% if storyboard.gallery %}
-    <div class="container-fluid">
         <h2 class="special-banner-sub-2 rounded">Screenshots</h2>
-            <div class="row col-lg-12">
+        <p>
+            <div class="row">
                 {% for photo in storyboard.gallery.public %}
                     <a class="col-sm-4" href="{{ photo.get_sb_screenshot_url }}" data-toggle="lightbox" data-gallery="screenshots">
-                        <img class="img-fluid" src="{{ photo.get_thumbnail_url }}" class="thumbnail" alt="{{ photo.title }}">
+                        <img class="img-fluid rounded mx-auto d-block" src="{{ photo.get_thumbnail_url }}" class="thumbnail" alt="{{ photo.title }}">
                     </a>
                 {% endfor %}
             </div>
-    </div>
+        </p>
     {% endif %}
 
     {% if storyboard.comments %}
