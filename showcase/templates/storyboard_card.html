@@ -12,7 +12,11 @@
             <img class="media-object sb-card-image" src="//b.ppy.sh/thumb/{{ s.set_id }}l.jpg" alt="{{ s.song }}">
         </a>
         <div class="media-body">
-            <p class="card-text media-heading">Storyboarded by <a href="/showcase/author/{{ s.storyboarder.pk }}">{{ s.storyboarder }}</a>
+            <p class="card-text media-heading">Storyboarded by
+                {% for sber in s.storyboarder.all %}
+                    {% if not forloop.first %}, {% endif %}
+                    <a href="/showcase/author/{{ sber.pk }}">{{ sber }}</a>
+                {% endfor %}
                 <br>Mapped by {{ s.mapper }}</p>
             <div class="sb-card-icons">
                 <span class="tag tag-pill tag-default"><i class="{% display_medium_icon s.medium %}" aria-hidden="true"></i> {{ s.medium }}</span>

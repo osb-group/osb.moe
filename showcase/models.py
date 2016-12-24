@@ -24,7 +24,7 @@ class Storyboard(models.Model):
     song = models.CharField(max_length=200)
     artist = models.CharField(max_length=200)
     set_id = models.BigIntegerField(blank=True,default=1)
-    storyboarder =  models.ForeignKey('Storyboarder', on_delete=models.CASCADE)
+    storyboarder = models.ManyToManyField('Storyboarder')
     mapper = models.CharField(max_length=64)
     date_added = models.DateTimeField()
     date_created = models.DateTimeField()

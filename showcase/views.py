@@ -54,7 +54,7 @@ def search_request(request):
             if storyboard_list:
                 storyboard_list = storyboard_list.filter(Q(song__icontains=s) | Q(artist__icontains=s)
                                                          | Q(mapper__icontains=s) | Q(medium__icontains=s)
-                                                         | Q(storyboarder__username__icontains=s))
+                                                         )
         if featured_flag:
             storyboard_list = storyboard_list.filter(Q(featured=True))
         if classic_flag:

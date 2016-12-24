@@ -16,7 +16,12 @@
                 </div>
                 <div class="carousel-caption">
                     <h3>{{ s }}</h3>
-                    <p>Storyboarded by <a href="/showcase/author/{{ s.storyboarder.pk }}">{{ s.storyboarder }}</a>.</p>
+                    <p>Storyboarded by
+                        {% for sber in s.storyboarder.all %}
+                            {% if not forloop.first %}, {% endif %}
+                            <a href="/showcase/author/{{ sber.pk }}">{{ sber }}</a>
+                        {% endfor %}
+                        .</p>
                     <p><a href="/showcase/sb/{{ s.pk }}" class="btn btg-lg btn-secondary">Learn more</a></p>
                 </div>
             </div>

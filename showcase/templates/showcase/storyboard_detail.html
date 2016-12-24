@@ -28,7 +28,9 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
                 <div class="card-block">
                     <dl class="row">
                         <dt class="col-sm-6 col-md-3">Storyboarder:</dt>
-                        <dd class="col-sm-6 col-md-12"><a href="/showcase/author/{{ storyboard.storyboarder.pk }}">{{ storyboard.storyboarder }}</a></dd>
+                        {% for sber in storyboard.storyboarder.all %}
+                        <dd class="col-sm-6 col-md-12"><a href="/showcase/author/{{ sber.pk }}">{{ sber }}</a></dd>
+                        {% endfor %}
                         <dt class="col-sm-6 col-md-3">Mapper:</dt>
                         <dd class="col-sm-6 col-md-12">{{ storyboard.mapper }}</dd>
                         <dt class="col-sm-6 col-md-9">Developed in {{ storyboard.medium }}.</dt>
@@ -57,9 +59,9 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     {% endif %}
 
     {% if storyboard.comments %}
-    <h2 class="special-banner-sub-2 rounded">{{ storyboard.storyboarder }}'s Comments</h2>
+    <h2 class="special-banner-sub-2 rounded">{% if storyboard.storyboarder.count > 1 %}Authors'{% else %}{{ storyboard.storyboarder.first }}'s{% endif %} Comments</h2>
     <div class="media">
-        <img class="media-left float-xs-left" src="{{ storyboard.storyboarder.avatar.url }}" style="max-height:128px;"/>
+        {% if storyboard.storyboarder.count == 1 %}<img class="media-left float-xs-left" src="{{ storyboard.storyboarder.first.avatar.url }}" style="max-height:128px;"/>{% endif %}
         <div class="media-body">
             <p>{{ storyboard.comments }}</p>
         </div>

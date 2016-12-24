@@ -64,8 +64,10 @@ def show_screenshot_carousel():
 
     carousel_gallery = []
     for sb in list(sb_list):
-        if sb.gallery.public():
+        if sb.gallery and sb.gallery.public():
             carousel_gallery.append(random.choice(sb.gallery.public()))
+        else:
+            sb_list.remove(sb)
 
     sb_carousel = zip(list(sb_list), carousel_gallery)
 
