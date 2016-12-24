@@ -23,7 +23,7 @@ class Storyboard(models.Model):
     # Sortables
     song = models.CharField(max_length=200)
     artist = models.CharField(max_length=200)
-    set_id = models.BigIntegerField(blank=True,default=1)
+    set_id = models.BigIntegerField(blank=True)
     storyboarder = models.ManyToManyField('Storyboarder')
     mapper = models.CharField(max_length=64)
     date_added = models.DateTimeField()
@@ -41,10 +41,19 @@ class Storyboard(models.Model):
         return "%s - %s" % (self.artist, self.song)
 
 class Storyboarder(models.Model):
+    # Constants
+    ROLES = (
+        ('owner', 'Server Owner'),
+        ('mentor', 'Mentor'),
+        ('storyboarder', 'Storyboarder'),
+        ('apprentice', 'Apprentice'),
+        ('other', 'Other'),
+    )
     username = models.CharField(max_length=64)
     avatar = models.ImageField(blank=True, upload_to='a')
     profile = models.URLField(blank=True)
     title = models.CharField(max_length=64,blank=True,default='Storyboarder')
+    role = models.CharField(max_length=64,choices=ROLES,default='other')
     description = models.TextField(blank=True)
 
     def __str__(self):

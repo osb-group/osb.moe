@@ -33,7 +33,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
                         {% endfor %}
                         <dt class="col-sm-6 col-md-3">Mapper:</dt>
                         <dd class="col-sm-6 col-md-12">{{ storyboard.mapper }}</dd>
-                        <dt class="col-sm-6 col-md-9">Developed in {{ storyboard.medium }}.</dt>
+                        <dt class="col-sm-6 col-md-9">Developed in {{ storyboard.get_medium_display }}.</dt>
                     </dl>
                 </div>
         </div>

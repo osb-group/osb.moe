@@ -19,7 +19,7 @@
                 {% endfor %}
                 <br>Mapped by {{ s.mapper }}</p>
             <div class="sb-card-icons">
-                <span class="tag tag-pill tag-default"><i class="{% display_medium_icon s.medium %}" aria-hidden="true"></i> {{ s.medium }}</span>
+                <span class="tag tag-pill tag-default"><i class="{% display_medium_icon s.medium %}" aria-hidden="true"></i> {{ s.get_medium_display }}</span>
                 {% if s.video %}<a href="{{ s.video }}"><i class="fa fa-video-camera fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
                 {% if s.set_id %}<a href="//osu.ppy.sh/s/{{ s.set_id }}"><i class="fa fa-download fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
             </div>
