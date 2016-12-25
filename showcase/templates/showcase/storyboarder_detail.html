@@ -6,7 +6,7 @@ Don't forget about how base.html is composed to work with this.
 For each component of the storyboard_list, we want to generate a Bootstrap card, I think.
 {% endcomment %}
 
-{% block title %}Storyboarder - {{ storyboarder.username }}{% endblock %}
+{% block title %}{{ storyboarder.username }}{% endblock %}
 
 {% block head %}<link rel="stylesheet" href="/static/base/sb.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.3.0/font-mfizz.css" />{% endblock %}

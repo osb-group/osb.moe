@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load showcase_extras %}
+
+{% comment %}
+Because you reached a page with problems.
+{% endcomment %}
+
+{% block title %}DAREKA TASUKETE{% endblock %}
+
+{% block content %}
+
+    <header class="opening-banner-community"><h1 class="display opening-header">500 Internal Server Error!</h1><div class="bae-showcase"></div></header>
+
+    <h1 class="special-banner-1 top-header">Bollocks!</h1>
+    <img class="d-block mx-auto" src="/static/base/hifumi_scramble.gif" alt="A flustered Hifumi!">
+    <p>Oh dear. Something broke, and you've reached this page as you've hit some internal error or bug that just frolicked itself upon here. A bit awkward either way. You should contact Starrodkirby86 with what you were doing to get here so we could get that fixed up and doodly. But have a random storyboard button. The girls LOVE random storyboard buttons.</p>
+    <p><a class="btn btg-lg btn-secondary" href="/showcase/sb/{% get_random_storyboard as sb %}{{ sb.pk }}">I Love Random Storyboards!</a></p>
+
+{% endblock %}
