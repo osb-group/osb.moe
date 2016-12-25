@@ -60,3 +60,13 @@
 .screenshot {
   padding: 1%;
 }
+
+// And this is for the pills
+.icon-osu-cookie {
+  background: url(/static/base/osu-logo.png) no-repeat;
+  background-size: contain;
+  content: ' ';
+  min-width: 12px;
+  max-width: 12px;
+  height: 12px;
+}

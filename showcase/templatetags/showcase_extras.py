@@ -13,7 +13,7 @@ register = template.Library()
 @register.simple_tag
 def display_medium_icon(m):
     medium = {
-        'design':  'icon-osu-cookie',
+        'design':  'fa icon-osu-cookie',
         'osb':  'fa fa-file-text-o',
         'sgl':  'fa fa-file-code-o',
         'c':  'icon-c',
@@ -22,7 +22,7 @@ def display_medium_icon(m):
         'java': 'icon-java',
         'python': 'icon-python',
         'storybrew': 'fa fa-coffee',
-        'other': 'Other'
+        'other': 'fa fa-question-circle'
     }
     return medium[m]
 
