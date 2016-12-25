@@ -62,16 +62,15 @@ def show_screenshot_carousel():
 
     while len(sb_list) < 5:
         if random.randint(1, 100) > 40:
-            sb_list.add(random.choice(featured_sb_list))
+            random_sb = random.choice(featured_sb_list)
         else:
-            sb_list.add(random.choice(nonfeatured_sb_list))
+            random_sb = random.choice(nonfeatured_sb_list)
+        if random_sb.gallery and random_sb.gallery.public():
+            sb_list.add(random_sb)
 
     carousel_gallery = []
     for sb in list(sb_list):
-        if sb.gallery and sb.gallery.public():
-            carousel_gallery.append(random.choice(sb.gallery.public()))
-        else:
-            sb_list.remove(sb)
+        carousel_gallery.append(random.choice(sb.gallery.public()))
 
     sb_carousel = zip(list(sb_list), carousel_gallery)
 
