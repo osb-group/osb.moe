@@ -36,6 +36,10 @@ def get_storyboards():
 def get_storyboarders():
     return Storyboarder.objects.order_by('username')
 
+@register.simple_tag
+def get_random_storyboard():
+    return random.choice(Storyboard.objects.all())
+
 # Filter tags
 
 # Template-rendering tags
@@ -56,8 +60,8 @@ def show_screenshot_carousel():
     featured_sb_list = Storyboard.objects.filter(featured=True)
     nonfeatured_sb_list = Storyboard.objects.filter(featured=False)
 
-    while len(sb_list) < 3:
-        if random.randint(1, 100) > 30:
+    while len(sb_list) < 5:
+        if random.randint(1, 100) > 40:
             sb_list.add(random.choice(featured_sb_list))
         else:
             sb_list.add(random.choice(nonfeatured_sb_list))

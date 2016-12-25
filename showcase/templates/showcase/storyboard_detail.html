@@ -40,8 +40,12 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 
         <div class="col-xs-12 col-md-8">
             <p>{{ storyboard.description }}</p>
+            <p>
             {% if storyboard.video %}<a href="{{ storyboard.video }}" class="btn btn-info">Video</a>{% endif %}
             {% if storyboard.set_id %}<a href="//osu.ppy.sh/s/{{ storyboard.set_id }}" class="btn btn-primary">Download!</a>{% endif %}
+            <a class = "btn btg-lg btn-secondary" href="/showcase/sb/{% get_random_storyboard as sb %}{{ sb.pk }}">Show Me Another!</a>
+            </p>
+
         </div>
     </div>
 
