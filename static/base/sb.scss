@@ -1,5 +1,11 @@
 // For storyboard cards
 
+@mixin ellipsis-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .sb-card {
   padding-left: 0px;
   padding-right: 0px;
@@ -27,6 +33,7 @@
 }
 
 .sb-card-title {
+  @include ellipsis-overflow();
   position: relative;
   color: #fff;
   text-shadow: 0 1px 3px rgba(0,0,0,.75);

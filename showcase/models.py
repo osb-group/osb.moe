@@ -7,7 +7,7 @@ from photologue.models import Gallery
 
 
 class Storyboard(models.Model):
-    # Constants
+    # region Constants
     MEDIUMS = (
         ('design', 'Design Editor'),
         ('osb', 'Scripting'),
@@ -20,7 +20,9 @@ class Storyboard(models.Model):
         ('storybrew','Storybrew'),
         ('other','Other')
     )
-    # Sortables
+    # endregion
+
+    # region Sortables
     song = models.CharField(max_length=200)
     artist = models.CharField(max_length=200)
     set_id = models.BigIntegerField(blank=True)
@@ -31,17 +33,47 @@ class Storyboard(models.Model):
     medium = models.CharField(max_length=64,choices=MEDIUMS,default='other')
     featured = models.BooleanField()
     classic = models.BooleanField()
-    # Non-sortables
+    # endregion
+
+    # region Non-sortables
     gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, blank=True, null=True)
-    comments = models.TextField(blank=True)
+    comments = models.TextField(blank=True, verbose_name="author's comments")
     description = models.TextField(blank=True)
-    video = models.URLField(blank=True)
+    video = models.CharField(blank=True, max_length=16, verbose_name='youTube Video ID')
+    # endregion
 
     def __str__(self):
         return "%s - %s" % (self.artist, self.song)
 
+    # region Display URLs
+    def get_detail_url(self):
+        return "/showcase/sb/{0!s}".format(self.pk)
+
+    def get_storyboarder_url(self):
+        return ["/showcase/author/{0!s}".format(a.pk) for a in self.storyboarder.all()]
+
+    def get_mapset_url(self):
+        return "https://osu.ppy.sh/s/{0!s}".format(self.set_id)
+
+    def get_mapset_download_url(self):
+        return "https://osu.ppy.sh/d/{0!s}".format(self.set_id)
+
+    def get_mapset_thumbnail_url(self):
+        return "//b.ppy.sh/thumb/{0!s}l.jpg".format(self.set_id)
+
+    def get_mapset_cover_url(self):
+        return "//assets.ppy.sh//beatmaps/{{0!s}}/covers/card.jpg".format(self.set_id)
+
+    def get_video_url(self, embed=False):
+        return ("https://youtu.be/" if not embed else "https://www.youtube.com/embed/") + self.video
+
+    def get_embed_video_url(self):
+        return self.get_video_url(embed=True)
+    # endregion
+
+
 class Storyboarder(models.Model):
-    # Constants
+    # region Constants
     ROLES = (
         ('owner', 'Server Owner'),
         ('mentor', 'Mentor'),
@@ -49,6 +81,8 @@ class Storyboarder(models.Model):
         ('apprentice', 'Apprentice'),
         ('other', 'Other'),
     )
+    # endregion
+
     username = models.CharField(max_length=64)
     avatar = models.ImageField(blank=True, upload_to='a')
     profile = models.URLField(blank=True)

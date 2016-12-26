@@ -9,8 +9,34 @@
 
 {% block content %}
     <header class="opening-banner"><h1 class="display opening-header">Osu! Storyboarder Banquet</h1><div class="bae-index"></div></header>
+
     {% show_screenshot_carousel %}
-    <h1 class="special-banner-1 top-header">Overview</h1>
+
+    <h1 class="col-xs-12 special-banner-1 top-header">Overview</h1>
+
+    <div class="col-xs-12 col-sm-6">
+        <p>Welcome to our lovely banquet! Care to dine in and whet your insatiable appetite for visual wizardry on osu!? You can get started by checking out <a href="/showcase">storyboard showcase</a>, or gander at some up on the carousel above or on the YouTube player here. If you're here to learn how to storyboard and program, look no further than our <a href="/learn">learning resources</a>! And if you want to be a part of the storyboarding commmunity, <a href="/community">click here to learn more</a>.</p>
+        <p>{% get_storyboards as sb_list %}{% get_storyboarders as sbers %}{% get_medium_frequency as mediums %}
+            <ul>
+                <li>We have a grand total of <strong>{{ sb_list.count }}</strong> storyboards in our showcase!</li>
+                <li>We also have <strong>{{ sbers.count }}</strong> storyboarders creating these masterpieces.</li>
+                <li>The <strong>5</strong> most popular mediums used to create storyboards are:
+                    <ul>
+                        {% for m in mediums|slice:":6" %}
+                        {% if m.0 != "Other" %}<li>{{ m.0 }} - <strong>{{ m.1 }}</strong> Storyboards</li>{% endif %}
+                        {% empty %}
+                        <li>Actually, we're lazy bastards.</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </p>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <p>{% get_random_storyboard_with_video as sb %}<iframe src="{{ sb.get_embed_video_url }}" style="min-width: 100%; min-height: 400px;"></iframe></p>
+    </div>
+
+    <div class="col-xs-12">
     <h3 class="special-banner-sub-1 rounded">Updates</h3>
     <p>Bam! I think we have a site going now. BetaStar and I have been working pretty tirelessly getting storyboards, screenshots, and contents populated on this website. We definitely did our darnedest to bring you a really cool webfront to not only check out amazing storyboard visual arts in osu!, but also to perhaps learn how to storyboard and get better at programming.</p>
     <p>You can check specific updates by visiting <a href="https://github.com/osb-group/osb.moe/" target="_blank">the GitHub repo</a>, if you'd like. Otherwise, just make yourself at home and enjoy yourself. Or Hifumi. Or whatever, really.</p>
@@ -18,4 +44,5 @@
     <p>We now have a dedicated roadmap page! <a href="https://osb.moe/roadmap/">Here you go.</a></p>
     <h3 class="special-banner-sub-1 rounded">What Do?</h3>
     <p>If you want to help, just contact Starrodkirby86. :)</p>
+    </div>
 {% endblock %}

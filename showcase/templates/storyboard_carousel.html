@@ -17,12 +17,8 @@
                 <div class="carousel-caption">
                     <h3>{{ s }}</h3>
                     <p>Storyboarded by
-                        {% for sber in s.storyboarder.all %}
-                            {% if not forloop.first %}, {% endif %}
-                            <a href="/showcase/author/{{ sber.pk }}">{{ sber }}</a>
-                        {% endfor %}
-                        .</p>
-                    <p><a href="/showcase/sb/{{ s.pk }}" class="btn btg-lg btn-secondary">Learn more</a></p>
+                        {% for sber in s.storyboarder.all %}{% if not forloop.first %}, {% endif %}<a href="/showcase/author/{{ sber.pk }}">{{ sber }}</a>{% endfor %}.</p>
+                    <p><a href="/showcase/sb/{{ s.pk }}" class="btn btg-lg btn-secondary">Go to this map!</a></p>
                 </div>
             </div>
         {% endfor %}

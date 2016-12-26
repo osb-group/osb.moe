@@ -40,6 +40,21 @@ def get_storyboarders():
 def get_random_storyboard():
     return random.choice(Storyboard.objects.all())
 
+@register.simple_tag
+def get_random_storyboard_with_video():
+    return random.choice(Storyboard.objects.exclude(video__exact=''))
+
+@register.simple_tag
+def get_medium_frequency():
+    medium_tally = {}
+    for sb in Storyboard.objects.all():
+        key = sb.get_medium_display()
+        if key in medium_tally:
+            medium_tally[key] += 1
+        else:
+            medium_tally[key] = 1
+    return sorted(medium_tally.items(), reverse=True, key=lambda x: x[1])
+
 # Filter tags
 
 # Template-rendering tags
