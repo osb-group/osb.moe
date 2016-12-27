@@ -9,7 +9,8 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 {% block title %}Storyboards{% endblock %}
 
 {% block head %}<link rel="stylesheet" href="/static/base/sb.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.3.0/font-mfizz.css">{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.3.0/font-mfizz.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.css">{% endblock %}
 
 {% block content %}
     <header class="opening-banner-sb"><h1 class="display opening-header">Storyboard Showcase</h1><div class="bae-sb"></div></header>
@@ -32,7 +33,9 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
                 {% endfor %}
             </div>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.js"></script>
+        <script src="/static/showcase/add-lightbox.js"></script>
     {% else %}
         <p>:(</p>
-{% endif %}
+    {% endif %}
 {% endblock %}

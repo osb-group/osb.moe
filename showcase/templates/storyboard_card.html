@@ -20,7 +20,7 @@
                 <br>Mapped by {{ s.mapper }}</p>
             <div class="sb-card-icons">
                 <span class="tag tag-pill tag-default"><i class="{% display_medium_icon s.medium %}" aria-hidden="true"></i> {{ s.get_medium_display }}</span>
-                {% if s.video %}<a href="{{ s.get_video_url }}"><i class="fa fa-video-camera fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
+                {% if s.video %}<a href="{{ s.get_video_url }}" data-toggle="lightbox"><i class="fa fa-video-camera fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
                 {% if s.set_id %}<a href="{{ s.get_mapset_url }}"><i class="fa fa-info-circle fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
                 {% if s.set_id %}<a href="{{ s.get_mapset_download_url }}"><i class="fa fa-download fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
             </div>
