@@ -61,8 +61,11 @@ class Storyboard(models.Model):
     def get_mapset_thumbnail_url(self):
         return "//b.ppy.sh/thumb/{0!s}l.jpg".format(self.set_id)
 
+    def get_mapset_card_url(self):
+        return "//assets.ppy.sh//beatmaps/{0!s}/covers/card.jpg".format(self.set_id)
+
     def get_mapset_cover_url(self):
-        return "//assets.ppy.sh//beatmaps/{{0!s}}/covers/card.jpg".format(self.set_id)
+        return "//assets.ppy.sh//beatmaps/{0!s}/covers/cover.jpg".format(self.set_id)
 
     def get_video_url(self, embed=False):
         return ("https://youtu.be/" if not embed else "https://www.youtube.com/embed/") + self.video

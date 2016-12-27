@@ -1,15 +1,15 @@
 {% load showcase_extras %}
 
 <div class="sb-card card col-xs-12 col-sm-6">
-    <div class="bg-inverse sb-card-header bottom-header" style="background-image: url('//assets.ppy.sh//beatmaps/{{ s.set_id }}/covers/card.jpg');">
+    <div class="bg-inverse sb-card-header bottom-header" style="background-image: url('{{ s.get_mapset_card_url }}');">
         <a class="sb-card-thumb" href="/showcase/sb/{{ s.pk }}">
             <h4 class="card-title sb-card-title">{{ s.song }}</h4>
             <h6 class="card-subtitle sb-card-title">{{ s.artist }}</h6>
         </a>
     </div>
     <div class="media {% if s.featured %} sb-card-featured {% endif %}">
-        <a class="media-left media-middle" href="/showcase/sb/{{ s.pk }}">
-            <img class="media-object sb-card-image" src="//b.ppy.sh/thumb/{{ s.set_id }}l.jpg" alt="{{ s.song }}">
+        <a class="media-left media-middle" href="{{ s.get_detail_url }}">
+            <img class="media-object sb-card-image" src="{{ s.get_mapset_thumbnail_url }}" alt="{{ s.song }}">
         </a>
         <div class="media-body">
             <p class="card-text media-heading">Storyboarded by
@@ -20,8 +20,9 @@
                 <br>Mapped by {{ s.mapper }}</p>
             <div class="sb-card-icons">
                 <span class="tag tag-pill tag-default"><i class="{% display_medium_icon s.medium %}" aria-hidden="true"></i> {{ s.get_medium_display }}</span>
-                {% if s.video %}<a href="{{ s.video }}"><i class="fa fa-video-camera fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
-                {% if s.set_id %}<a href="//osu.ppy.sh/s/{{ s.set_id }}"><i class="fa fa-download fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
+                {% if s.video %}<a href="{{ s.get_video_url }}"><i class="fa fa-video-camera fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
+                {% if s.set_id %}<a href="{{ s.get_mapset_url }}"><i class="fa fa-info-circle fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
+                {% if s.set_id %}<a href="{{ s.get_mapset_download_url }}"><i class="fa fa-download fa-fw fa-lg" aria-hidden="true"></i></a>{% endif %}
             </div>
         </div>
     </div>

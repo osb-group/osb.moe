@@ -15,10 +15,10 @@
                     <img class="d-block mx-auto" src="{{ p.get_sb_screenshot_url }}" alt="{{ s }}" style="min-width: 100%;">
                 </div>
                 <div class="carousel-caption">
-                    <h3>{{ s }}</h3>
+                    <h3><a href="{{ s.get_detail_url }}" style="color:#fff;">{{ s }}</a></h3>
                     <p>Storyboarded by
                         {% for sber in s.storyboarder.all %}{% if not forloop.first %}, {% endif %}<a href="/showcase/author/{{ sber.pk }}">{{ sber }}</a>{% endfor %}.</p>
-                    <p><a href="/showcase/sb/{{ s.pk }}" class="btn btg-lg btn-secondary">Go to this map!</a></p>
+                    <p><a href="{{ s.get_detail_url }}" class="btn btg-lg btn-primary">Go to this map!</a></p>
                 </div>
             </div>
         {% endfor %}

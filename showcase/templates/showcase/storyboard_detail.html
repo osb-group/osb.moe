@@ -17,14 +17,14 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 {% endblock %}
 
 {% block content %}
-    <header class="opening-banner" style="background-image: url(//assets.ppy.sh//beatmaps/{{ storyboard.set_id }}/covers/cover.jpg);"></header>
+    <header class="opening-banner" style="background-image: url({{ storyboard.get_mapset_cover_url }});"></header>
     <h1 class="special-banner-2 top-header">{{ storyboard }}</h1>
 
     <h2 class="special-banner-sub-2 rounded">Overview</h2>
 
     <div class="container-fluid">
         <div class="card sb-card col-sm-12 col-md-4">
-                <img class="rounded mx-auto d-block" src="//b.ppy.sh/thumb/{{ storyboard.set_id }}l.jpg" alt="{{ s.song }}"/>
+                <img class="rounded mx-auto d-block" src="{{ storyboard.get_mapset_thumbnail_url }}" alt="{{ s.song }}"/>
                 <div class="card-block">
                     <dl class="row">
                         <dt class="col-sm-6 col-md-3">Storyboarder:</dt>
@@ -41,9 +41,9 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         <div class="col-xs-12 col-md-8">
             <p>{{ storyboard.description }}</p>
             <p>
-            {% if storyboard.video %}<a href="{{ storyboard.video }}" class="btn btn-info">Video</a>{% endif %}
-            {% if storyboard.set_id %}<a href="//osu.ppy.sh/s/{{ storyboard.set_id }}" class="btn btn-primary">Go to Beatmap!</a>{% endif %}
-            {% if storyboard.set_id %}<a href="//osu.ppy.sh/d/{{ storyboard.set_id }}" class="btn btn-success">Download!</a>{% endif %}
+            {% if storyboard.video %}<a href="{{ storyboard.get_video_url }}" class="btn btn-info">Video</a>{% endif %}
+            {% if storyboard.set_id %}<a href="{{ storyboard.get_mapset_url }}" class="btn btn-primary">Go to Beatmap!</a>{% endif %}
+            {% if storyboard.set_id %}<a href="{{ storyboard.get_mapset_download_url }}" class="btn btn-success">Download!</a>{% endif %}
             <a class = "btn btg-lg btn-secondary" href="/showcase/sb/{% get_random_storyboard as sb %}{{ sb.pk }}">Show Me Another!</a>
             </p>
 
