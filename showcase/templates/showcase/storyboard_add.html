@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load showcase_extras %}
+
+{% comment %}
+    I'll figure out what sort of permissions to deal with later.
+{% endcomment %}
+
+{% block title %}New Storyboard{% endblock %}
+
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    <header class="opening-banner"></header>
+    <h1 class="special-banner-2 top-header col-xs-12">Add a New Storyboard</h1>
+
+    {% if user.is_authenticated %}
+        {% if user.is_staff %}
+        <div class="alert alert-warning col-xs-12" role="alert">
+            <strong>ちょっと待って！</strong> As a staff member, it's WAY easier to edit on Twintails instead!
+        </div>
+        {% endif %}
+        <form method="POST" class="storyboard-form col-xs-12">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-secondary">Submit!</button>
+        </form>
+    {% else %}
+        <div class="alert alert-danger col-xs-12" role="alert">
+            <strong>No can do!</strong> You aren't logged in! Log in first, you silly goose.
+        </div>
+    {% endif %}
+
+{% endblock %}

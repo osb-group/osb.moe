@@ -25,6 +25,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
                     <i class="{% display_medium_icon m %}" aria-hidden="true"></i>
                 {% endfor %}
             </div>
+            {% if user.storyboarder.pk is storyboarder.pk or user.is_staff %}<a href="edit" class="btn btn-warning">Edit Info</a>{% endif %}
             <a href="{{ storyboarder.profile }}" class="btn btn-primary">Profile</a>
         </div>
     </div>

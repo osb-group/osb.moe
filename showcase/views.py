@@ -1,8 +1,10 @@
 from .models import Storyboard
 from .models import Storyboarder
 from .forms import StoryboardForm
+from .forms import StoryboarderForm
+from .forms import NewStoryboardForm
 from django.shortcuts import get_object_or_404, render, redirect
-from django.urls import reverse
+from django.utils import timezone
 from django.db.models import Q
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -13,7 +15,7 @@ class StoryboardListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(StoryboardListView, self).get_context_data(**kwargs)
-        context['storyboard_list'] = Storyboard.objects.order_by('-date_created')
+        context['storyboard_list'] = Storyboard.objects.exclude(approved__exact=False).order_by('-date_created')
         return context
 
 
@@ -34,7 +36,7 @@ class StoryboarderDetailView(DetailView):
 
 
 def filter_by_author(request):
-    return Storyboard.objects.filter(storyboarder=request).order_by('-date_created')
+    return Storyboard.objects.filter(storyboarder=request).exclude(approved__exact=False).order_by('-date_created')
 
 
 def mediums_by_author(request):
@@ -77,3 +79,32 @@ def edit_storyboard(request, pk):
                 'description': storyboard.description, 'video': storyboard.video}
         form = StoryboardForm(initial=data)
     return render(request, 'showcase/storyboard_edit.html', {'form': form, 'storyboard': storyboard})
+
+
+def edit_storyboarder(request, pk):
+    storyboarder = get_object_or_404(Storyboarder, pk=pk)
+    if request.method == "POST":
+        form = StoryboarderForm(request.POST, instance=storyboarder)
+        if form.is_valid():
+            storyboarder = form.save(commit=False)
+            storyboarder.save()
+            return redirect(storyboarder.get_absolute_url())
+    else:
+        data = {'username': storyboarder.username, 'profile': storyboarder.profile,
+                'description': storyboarder.description}
+        form = StoryboarderForm(initial=data)
+        return render(request, 'showcase/storyboarder_edit.html', {'form': form, 'storyboarder': storyboarder})
+
+
+def new_storyboard(request):
+    if request.method == "POST":
+        form = NewStoryboardForm(request.POST)
+        if form.is_valid():
+            storyboard = form.save(commit=False)
+            storyboard.date_added = timezone.now()
+            storyboard.save()
+            form.save_m2m()
+            return redirect('StoryboardList')
+    else:
+        form = NewStoryboardForm()
+    return render(request, 'showcase/storyboard_add.html', {'form': form})

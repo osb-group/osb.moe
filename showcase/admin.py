@@ -5,14 +5,14 @@ from .models import Storyboarder
 
 
 class StoryboardAdmin(admin.ModelAdmin):
-    list_display = ('song', 'artist', 'set_id', 'storyboarders', 'date_added', 'date_created', 'medium', 'gallery', 'featured', 'classic')
+    list_display = ('song', 'artist', 'set_id', 'storyboarders', 'date_added', 'date_created', 'medium', 'gallery', 'approved', 'featured', 'classic',)
     list_filter = ['date_added', 'date_created']
     search_fields = ['song', 'artist']
     fieldsets = [
         ('Metadata', {'fields': ['song', 'artist', 'set_id', 'mapper', 'date_added', 'date_created']}),
         ('Storyboard Stuff', {'fields': ['storyboarder', 'medium', 'gallery', 'video']}),
         ('Essay Questions', {'fields': ['comments', 'description']}),
-        ('Flags', {'classes': ['collapse'],'fields': ['featured', 'classic']}),
+        ('Flags', {'classes': ['collapse'],'fields': ['approved', 'featured', 'classic']}),
     ]
 
     def storyboarders(self, obj):

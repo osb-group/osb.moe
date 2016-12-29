@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load showcase_extras %}
+
+{% comment %}
+This is editing the form.
+{% endcomment %}
+
+{% block title %}{{ storyboarder }} (Editing){% endblock %}
+
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="special-banner-2 top-header">{{ storyboarder.username }}</h1>
+
+    {% if user.is_authenticated %}
+        {% if user.storyboarder.pk is storyboarder.pk or user.is_staff %}
+        {% if user.storyboarder.pk is not storyboarder.pk %}
+            <div class="alert alert-warning col-xs-12" role="alert">
+                <strong>ちょっと待って！</strong> Just a heads up! You have access because you're actually staff. In that case, it's probably easier to edit on Twintails instead!
+            </div>
+        {% endif %}
+        <form method="POST" class="storyboard-form col-xs-12">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-secondary">Submit!</button>
+        </form>
+        {% else %}
+            <div class="alert alert-danger col-xs-12" role="alert">
+                <strong>Oh no!</strong> You can only edit your own profile, silly goose!
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-danger col-xs-12" role="alert">
+            <strong>No can do!</strong> You aren't logged in! Log in first!
+        </div>
+    {% endif %}
+
+{% endblock %}

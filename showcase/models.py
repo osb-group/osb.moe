@@ -1,5 +1,4 @@
 from __future__ import unicode_literals
-import operator
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -29,10 +28,11 @@ class Storyboard(models.Model):
     storyboarder = models.ManyToManyField('Storyboarder')
     mapper = models.CharField(max_length=64)
     date_added = models.DateTimeField()
-    date_created = models.DateTimeField()
+    date_created = models.DateTimeField(verbose_name='date of Map Submission')
     medium = models.CharField(max_length=64,choices=MEDIUMS,default='other')
-    featured = models.BooleanField()
-    classic = models.BooleanField()
+    approved = models.BooleanField(default=False)
+    featured = models.BooleanField(default=False)
+    classic = models.BooleanField(default=False)
     # endregion
 
     # region Non-sortables
@@ -101,3 +101,6 @@ class Storyboarder(models.Model):
 
     def __str__(self):
         return self.username
+
+    def get_absolute_url(self):
+        return "/showcase/author/{0!s}".format(self.pk)
