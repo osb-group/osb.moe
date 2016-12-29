@@ -1,7 +1,8 @@
-from django.shortcuts import render
-
 from .models import Storyboard
 from .models import Storyboarder
+from .forms import StoryboardForm
+from django.shortcuts import get_object_or_404, render, redirect
+from django.urls import reverse
 from django.db.models import Q
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -60,3 +61,19 @@ def search_request(request):
         if classic_flag:
             storyboard_list = storyboard_list.filter(Q(classic=True))
         return render(request, 'showcase/storyboard_list.html', {'storyboard_list': storyboard_list})
+
+
+def edit_storyboard(request, pk):
+    storyboard = get_object_or_404(Storyboard, pk=pk)
+    if request.method == "POST":
+        form = StoryboardForm(request.POST, instance=storyboard)
+        if form.is_valid():
+            storyboard = form.save(commit=False)
+            storyboard.save()
+            return redirect(storyboard.get_absolute_url())
+    else:
+        data = {'song': storyboard.song, 'artist': storyboard.artist, 'set_id': storyboard.set_id,
+                'medium': storyboard.medium, 'comments': storyboard.comments,
+                'description': storyboard.description, 'video': storyboard.video}
+        form = StoryboardForm(initial=data)
+    return render(request, 'showcase/storyboard_edit.html', {'form': form, 'storyboard': storyboard})

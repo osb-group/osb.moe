@@ -46,8 +46,11 @@ class Storyboard(models.Model):
         return "%s - %s" % (self.artist, self.song)
 
     # region Display URLs
-    def get_detail_url(self):
+    def get_absolute_url(self):
         return "/showcase/sb/{0!s}".format(self.pk)
+
+    def get_detail_url(self):
+        return self.get_absolute_url() # remove later
 
     def get_storyboarder_url(self):
         return ["/showcase/author/{0!s}".format(a.pk) for a in self.storyboarder.all()]

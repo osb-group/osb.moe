@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load showcase_extras %}
+
+{% comment %}
+This is editing the form.
+{% endcomment %}
+
+{% block title %}{{ storyboard }} (Editing){% endblock %}
+
+
+{% block head %}
+    {% if storyboard.gallery %}
+        <link rel="stylesheet" href="/static/base/sb.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.css">
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <header class="opening-banner" style="background-image: url({{ storyboard.get_mapset_cover_url }});"></header>
+    <h1 class="special-banner-2 top-header col-xs-12">{{ storyboard }}</h1>
+
+    <h2 class="special-banner-sub-2 rounded col-xs-12">Editing</h2>
+
+    {% if user.is_authenticated %}
+        {% if user.storyboarder in storyboard.storyboarder.all or user.is_staff %}
+        {% if user.storyboarder not in storyboard.storyboarder.all %}
+            <div class="alert alert-warning col-xs-12" role="alert">
+                <strong>ちょっと待って！</strong> Just a heads up! You have access because you're actually staff. In that case, it's probably easier to edit on Twintails instead!
+            </div>
+        {% endif %}
+        <form method="POST" class="storyboard-form col-xs-12">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-secondary">Submit!</button>
+        </form>
+        {% else %}
+            <div class="alert alert-danger col-xs-12" role="alert">
+                <strong>Oh no!</strong> You can't edit this storyboard's information because you aren't a storyboarder for this! If you'd like to contribute regardless, just send a message to Starrodkirby86 or BetaStar!
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-danger col-xs-12" role="alert">
+            <strong>No can do!</strong> You aren't logged in! Log in first, you silly goose.
+        </div>
+    {% endif %}
+
+{% endblock %}

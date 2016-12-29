@@ -33,7 +33,7 @@ except IOError:
 SECRET_KEY = str(OUTSIDE_INFO['secret_key'])
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = OUTSIDE_INFO['allowed_hosts']
 
