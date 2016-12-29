@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 import operator
 
 from django.db import models
-from django.db.models import Q
+from django.contrib.auth.models import User
 from photologue.models import Gallery
 
 
@@ -86,12 +86,15 @@ class Storyboarder(models.Model):
     )
     # endregion
 
-    username = models.CharField(max_length=64)
+    # region Regular Information
+    username = models.CharField(max_length=64, verbose_name='username on osu!')
     avatar = models.ImageField(blank=True, upload_to='a')
-    profile = models.URLField(blank=True)
+    profile = models.URLField(blank=True, verbose_name='Profile URL')
     title = models.CharField(max_length=64,blank=True,default='Storyboarder')
-    role = models.CharField(max_length=64,choices=ROLES,default='other')
+    role = models.CharField(max_length=64,choices=ROLES,default='other', verbose_name='server Role')
     description = models.TextField(blank=True)
+    # endregion
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.username
