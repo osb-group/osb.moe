@@ -2,20 +2,20 @@
 
 <div class="sb-card card col-xs-12 col-sm-6">
     <div class="bg-inverse sb-card-header bottom-header" style="background-image: url('{{ s.get_mapset_card_url }}');">
-        <a class="sb-card-thumb" href="/showcase/sb/{{ s.pk }}">
+        <a class="sb-card-thumb" href="{{ s.get_absolute_url }}">
             <h4 class="card-title sb-card-title">{{ s.song }}</h4>
             <h6 class="card-subtitle sb-card-title">{{ s.artist }}</h6>
         </a>
     </div>
     <div class="media {% if s.featured %} sb-card-featured {% endif %}">
-        <a class="media-left media-middle" href="{{ s.get_detail_url }}">
+        <a class="media-left media-middle" href="{{ s.get_absolute_url }}">
             <img class="media-object sb-card-image" src="{{ s.get_mapset_thumbnail_url }}" alt="{{ s.song }}">
         </a>
         <div class="media-body">
             <p class="card-text media-heading">Storyboarded by
                 {% for sber in s.storyboarder.all %}
                     {% if not forloop.first %}, {% endif %}
-                    <a href="/showcase/author/{{ sber.pk }}">{{ sber }}</a>
+                    <a href="{{ sber.get_absolute_url }}">{{ sber }}</a>
                 {% endfor %}
                 <br>Mapped by {{ s.mapper }}</p>
             <div class="sb-card-icons">

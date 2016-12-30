@@ -22,6 +22,10 @@ class StoryboardListView(ListView):
 class StoryboardDetailView(DetailView):
     model = Storyboard
 
+    def get_object(self):
+        storyboard = super(StoryboardDetailView, self).get_object()
+        return storyboard if storyboard.approved else get_object_or_404(Storyboard, pk=-1)
+
 
 class StoryboarderDetailView(DetailView):
     model = Storyboarder

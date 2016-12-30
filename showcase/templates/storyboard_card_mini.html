@@ -1,0 +1,10 @@
+{% load showcase_extras %}
+
+<div class="sb-card card col-xs-12">
+    <div class="bg-inverse sb-card-header bottom-header rounded" style="background-image: url('{{ s.get_mapset_card_url }}');">
+        <a class="sb-card-thumb" href="{{ s.get_absolute_url }}">
+            <h4 class="card-title sb-card-title">{{ s.artist }} - {{ s.song }}</h4>
+            <h6 class="card-subtitle sb-card-title">Storyboarded by {% for sber in s.storyboarder.all %}{% if not forloop.first %},{% endif %}{{ sber }}{% endfor %}</h6>
+        </a>
+    </div>
+</div>

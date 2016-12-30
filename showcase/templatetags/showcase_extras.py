@@ -28,21 +28,30 @@ def display_medium_icon(m):
 
 # List tags
 
+
 @register.simple_tag
 def get_storyboards():
     return Storyboard.objects.order_by('-date_created')
+
 
 @register.simple_tag
 def get_storyboarders():
     return Storyboarder.objects.order_by('username')
 
+
+@register.simple_tag
+def get_most_recent_storyboards():
+    return Storyboard.objects.exclude(approved__exact=False).order_by('-date_added')
+
 @register.simple_tag
 def get_random_storyboard():
     return random.choice(Storyboard.objects.all())
 
+
 @register.simple_tag
 def get_random_storyboard_with_video():
     return random.choice(Storyboard.objects.exclude(video__exact=''))
+
 
 @register.simple_tag
 def get_medium_frequency():
@@ -65,9 +74,15 @@ def show_sb_card(storyboard):
     return {'s': storyboard}
 
 
+@register.inclusion_tag('storyboard_card_mini.html')
+def show_sb_card_mini(storyboard):
+    return {'s': storyboard}
+
+
 @register.inclusion_tag('storyboarder_card.html')
 def show_sber_card(sb):
     return {'s': sb}
+
 
 @register.inclusion_tag('storyboard_carousel.html')
 def show_screenshot_carousel():
