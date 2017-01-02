@@ -100,6 +100,15 @@ DATABASES = {
         }
 }
 
+# Email Logging
+ADMINS = [(a['user'], a['email']) for a in OUTSIDE_INFO['error_report_emails']]
+SERVER_EMAIL = OUTSIDE_INFO['email']['user']
+EMAIL_HOST = OUTSIDE_INFO['email']['host']
+EMAIL_HOST_PASSWORD = OUTSIDE_INFO['email']['password']
+EMAIL_HOST_USER = OUTSIDE_INFO['email']['user']
+EMAIL_SUBJECT_PREFIX = '[osb.moe] '
+EMAIL_USE_TLS = True
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

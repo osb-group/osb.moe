@@ -65,9 +65,13 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     {% endif %}
 
     {% if storyboard.comments %}
-    <h2 class="special-banner-sub-2 rounded">{% if storyboard.storyboarder.count > 1 %}Authors'{% else %}{{ storyboard.storyboarder.first }}'s{% endif %} Comments</h2>
+    <h2 class="special-banner-sub-2 rounded">
+        {% if storyboard.storyboarder.count > 1 %}Authors'{% else %}{{ storyboard.storyboarder.first }}'s{% endif %} Comments
+    </h2>
     <div class="media">
-        {% if storyboard.storyboarder.count == 1 %}<img class="media-left float-xs-left" src="{{ storyboard.storyboarder.first.avatar.url }}" style="max-height:128px;"/>{% endif %}
+        {% if storyboard.storyboarder.count == 1 %}
+            <img class="media-left float-xs-left" src="{{ storyboard.storyboarder.first.avatar.url }}" style="max-height:128px;"/>
+        {% endif %}
         <div class="media-body">
             <p>{{ storyboard.comments }}</p>
         </div>

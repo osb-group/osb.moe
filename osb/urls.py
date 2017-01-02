@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf.urls import include, url
 from django.contrib import admin
 from main.views import HomePageView
+from main.views import UserControlPanelView
 
 urlpatterns = [
     url(r'^twintails/', admin.site.urls),
@@ -25,4 +26,5 @@ urlpatterns = [
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^$', HomePageView.as_view(), name='index'),
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),
+    url(r'^user/$', UserControlPanelView.as_view(), name='user_panel'),
 ]

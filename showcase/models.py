@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from photologue.models import Gallery
@@ -97,7 +98,7 @@ class Storyboarder(models.Model):
     role = models.CharField(max_length=64,choices=ROLES,default='other', verbose_name='server Role')
     description = models.TextField(blank=True)
     # endregion
-    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.username

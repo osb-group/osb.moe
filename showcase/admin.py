@@ -3,6 +3,14 @@ from django.contrib import admin
 from .models import Storyboard
 from .models import Storyboarder
 
+# region Actions
+
+
+def make_approved(modeladmin, request, queryset):
+    queryset.update(approved=True)
+
+# endregion
+
 
 class StoryboardAdmin(admin.ModelAdmin):
     list_display = ('song', 'artist', 'set_id', 'storyboarders', 'date_added', 'date_created', 'medium', 'gallery', 'approved', 'featured', 'classic',)
@@ -14,6 +22,7 @@ class StoryboardAdmin(admin.ModelAdmin):
         ('Essay Questions', {'fields': ['comments', 'description']}),
         ('Flags', {'classes': ['collapse'],'fields': ['approved', 'featured', 'classic']}),
     ]
+    actions = [make_approved]
 
     def storyboarders(self, obj):
         return ", ".join([sber.username for sber in obj.storyboarder.all()])
