@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load showcase_extras %}
+{% load main_tags %}
+
+{% comment %}
+The user control panel is just an access point for a user to check or deal with various settings.
+This page is actually just a base that all user control panel content will be used with.
+{% endcomment %}
+
+{% block title %}User Control Panel{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static/base/sb.css">
+{% endblock %}
+
+{% block content %}
+    {# Opening Header #}
+    <header class="opening-banner-user"><h1 class="display opening-header">User Control Panel</h1><div class="bae-user"></div></header>
+    {% if user.is_authenticated %}
+        {# Navigation panel for when the user is logged in... #}
+        <div class="row">
+            <div class="col-xs-4">
+                <nav class="nav nav-pills nav-stacked" style="background: #43353D;">
+                    <h3 class="special-banner-sub-1 top-header">Control Panel</h3>
+                    <a class="nav-link {% active '^/user/$' %}" href="{% url 'user_panel_home' %}">Overview</a>
+                    <a class="nav-link disabled {% active 'user_panel_manage_account' %}" href="#">Account Settings</a>
+                    <a class="nav-link {% active 'user_panel_manage_storyboard' %}" href="{% url 'user_panel_manage_storyboard' %}">Storyboards</a>
+                    <a class="nav-link disabled {% active 'user_panel_manage_review' %}" href="#">Reviews & Feedback</a>
+                    <h3 class="special-banner-sub-1 rounded">Quick Links</h3>
+                    {% if storyboarder %}<a class="nav-link" href="{{ storyboarder.get_absolute_url }}">My Storyboarder Profile</a>{% endif %}
+                </nav>
+            </div>
+            {# This is where the selected settings are at. #}
+            <div class="col-xs-8">
+                {% block settings %}
+                {% endblock %}
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-danger col-xs-12" role="alert">
+            <strong>Heads up!</strong> What use is a user panel when you aren't logged in? Go log in, you silly willy!
+        </div>
+    {% endif %}
+{% endblock %}

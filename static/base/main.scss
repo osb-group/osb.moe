@@ -31,6 +31,12 @@ $navbar-button-width: 180px;
   @include hover-transform($color);
 }
 
+@mixin ellipsis-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 // Main elements
 
 // Headers

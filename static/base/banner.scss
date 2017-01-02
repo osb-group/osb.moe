@@ -3,7 +3,14 @@ $source-index: "/static/base/hifumi_render.png";
 $source-sb: "/static/base/hifumi_stylish.png";
 $source-learn: "/static/base/aoba_render.png";
 $source-community: "/static/base/hifumi_shy.png";
+$source-user: "/static/base/aoba_swimsuit.png";
 
+// Mixins
+@mixin ellipsis-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 // These aren't big deals, they're formatting for all banner divs
 .opening-banner {
@@ -28,6 +35,11 @@ $source-community: "/static/base/hifumi_shy.png";
   background: url(/static/base/bg_04.png)
 }
 
+.opening-banner-user {
+  @extend .opening-banner;
+  background: url(/static/base/bg_05.png)
+}
+
 .opening-header {
   color: #fff;
   margin: 10px;
@@ -36,6 +48,7 @@ $source-community: "/static/base/hifumi_shy.png";
   top: 200px;
   font-size: 3rem;
   z-index: 1;
+  @include ellipsis-overflow;
 }
 
 // Mixins
@@ -56,6 +69,7 @@ $source-community: "/static/base/hifumi_shy.png";
 @include make-floating-bae('sb', -90x, -115px);
 @include make-floating-bae('learn', -20x, -40px);
 @include make-floating-bae('community', -100x, -70px);
+@include make-floating-bae('user', -93px, -50px);
 
 // For the main pages
 .bae-index {
@@ -82,4 +96,10 @@ $source-community: "/static/base/hifumi_shy.png";
   @extend .bae-index;
   background: url($source-community) 100% -100px/380px no-repeat;
   @include float('community');
+}
+
+.bae-user {
+  @extend .bae-index;
+  background: url($source-user) 100% -93px/420px no-repeat;
+  @include float('user');
 }

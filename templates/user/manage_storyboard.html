@@ -1,0 +1,35 @@
+{% extends "user/control_panel_base.html" %}
+{% load showcase_extras %}
+
+{% block settings %}
+<h3 class="special-banner-sub-1 rounded">Storyboard Management</h3>
+<div id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="card">
+        <div class="card-header" role="tab" id="headerStoryboards">
+            <h5 class="mb-0">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseStoryboards" aria-expanded="false" aria-controls="storyboards">
+                    My Storyboards
+                </a>
+            </h5>
+        </div>
+
+        <div id="collapseStoryboards" class="collapse" role="tabpanel" aria-labelledby="headerStoryboards">
+            <div class="card-block">
+                {% if storyboarder %}
+                    {% for s in storyboards %}
+                        {% show_sb_card_mini s %}
+                    {% empty %}
+                        <div class="alert alert-warning col-xs-12" role="alert">
+                            <strong>Hey!</strong> We don't have any of your storyboards in our showcase. You should try fixing that up.
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="alert alert-danger col-xs-12" role="alert">
+                        <strong>Whoa there!</strong> You either aren't a storyboarder, or you haven't verified your account yet.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
