@@ -6,6 +6,9 @@ static/admin
 *.pyc
 *.json
 
+# Docs
+docs/
+
 # File-housekeeping
 .bash_history
 .bash_logout
@@ -14,11 +17,6 @@ static/admin
 .rnd
 .selected_editor
 .sudo_as_admin_successful
-
-# Pycharm
-.idea/
-*.xml
-*.icls
 
 # Squishy squishy
 hentai/

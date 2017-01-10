@@ -3,6 +3,6 @@
 {% block settings %}
     <p>
         Welcome, <strong>{{ user.username }}</strong>!
-        {% if storyboarder %}<img class="d-block mx-auto" src="{{ storyboarder.avatar.url }}" alt="Your pretty face!" height="128px" />{% endif %}
+        {% if storyboarder %}<img class="d-block mx-auto" src="{{ storyboarder.get_avatar_url }}" alt="Your pretty face!" height="128px" />{% endif %}
     </p>
 {% endblock %}

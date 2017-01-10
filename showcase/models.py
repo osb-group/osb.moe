@@ -92,8 +92,7 @@ class Storyboarder(models.Model):
 
     # region Regular Information
     username = models.CharField(max_length=64, verbose_name='username on osu!')
-    avatar = models.ImageField(blank=True, upload_to='a')
-    profile = models.URLField(blank=True, verbose_name='Profile URL')
+    profile_id = models.CharField(max_length=64,blank=True,default=0)
     title = models.CharField(max_length=64,blank=True,default='Storyboarder')
     role = models.CharField(max_length=64,choices=ROLES,default='other', verbose_name='server Role')
     description = models.TextField(blank=True)
@@ -105,3 +104,9 @@ class Storyboarder(models.Model):
 
     def get_absolute_url(self):
         return "/showcase/author/{0!s}".format(self.pk)
+
+    def get_profile_url(self):
+        return r'https://osu.ppy.sh/u/' + self.profile_id
+
+    def get_avatar_url(self):
+        return r'https://a.ppy.sh/' + self.profile_id

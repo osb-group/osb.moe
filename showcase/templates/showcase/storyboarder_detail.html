@@ -18,7 +18,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         {{ storyboarder.username }}
         </div>
         <div class="card-block">
-            <img class="card-img" src="/media/{{ storyboarder.avatar }}" alt="{{ s.username }}'s pretty face!" />
+            <img class="card-img" src="{{ storyboarder.get_avatar_url }}" alt="{{ s.username }}'s pretty face!" />
             <p class="card-text">{{ storyboarder.description }}</p>
             <div class="row">
                 {% for m in mediums %}
@@ -26,7 +26,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
                 {% endfor %}
             </div>
             {% if user.storyboarder.pk is storyboarder.pk or user.is_staff %}<a href="edit" class="btn btn-warning">Edit Info</a>{% endif %}
-            <a href="{{ storyboarder.profile }}" class="btn btn-primary">Profile</a>
+            <a href="{{ storyboarder.get_profile_url }}" class="btn btn-primary">Profile</a>
         </div>
     </div>
 

@@ -70,7 +70,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     </h2>
     <div class="media">
         {% if storyboard.storyboarder.count == 1 %}
-            <img class="media-left float-xs-left" src="{{ storyboard.storyboarder.first.avatar.url }}" style="max-height:128px;"/>
+            <img class="media-left float-xs-left" src="{{ storyboard.storyboarder.first.get_avatar_url }}" style="max-height:128px;"/>
         {% endif %}
         <div class="media-body">
             <p>{{ storyboard.comments }}</p>

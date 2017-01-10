@@ -94,7 +94,7 @@ def edit_storyboarder(request, pk):
             storyboarder.save()
             return redirect(storyboarder.get_absolute_url())
     else:
-        data = {'username': storyboarder.username, 'profile': storyboarder.profile,
+        data = {'username': storyboarder.username, 'profile_id': storyboarder.profile_id,
                 'description': storyboarder.description}
         form = StoryboarderForm(initial=data)
         return render(request, 'showcase/storyboarder_edit.html', {'form': form, 'storyboarder': storyboarder})

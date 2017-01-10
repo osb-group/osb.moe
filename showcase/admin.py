@@ -5,7 +5,6 @@ from .models import Storyboarder
 
 # region Actions
 
-
 def make_approved(modeladmin, request, queryset):
     queryset.update(approved=True)
 
@@ -28,7 +27,7 @@ class StoryboardAdmin(admin.ModelAdmin):
         return ", ".join([sber.username for sber in obj.storyboarder.all()])
 
 class StoryboarderAdmin(admin.ModelAdmin):
-    list_display = ('username', 'profile', 'title', 'role')
+    list_display = ('username', 'profile_id', 'title', 'role')
     search_fields = ['username']
 
 

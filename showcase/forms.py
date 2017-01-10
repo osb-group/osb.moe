@@ -19,4 +19,4 @@ class NewStoryboardForm(forms.ModelForm):
 class StoryboarderForm(forms.ModelForm):
     class Meta:
         model = Storyboarder
-        fields = ('username', 'profile', 'description')
+        fields = ('username', 'profile_id', 'description')
