@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^twintails/', admin.site.urls),
     url(r'^showcase/', include('showcase.urls')),
     url(r'^user/', include('main.urls_user')),
+    url(r'docs/', include('learn.urls')),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^$', HomePageView.as_view(), name='index'),
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),

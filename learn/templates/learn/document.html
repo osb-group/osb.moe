@@ -1,0 +1,36 @@
+{% extends "learn/document_base.html" %}
+
+{% comment %}
+    Relies on Sphinx's WebSupport API.
+    Dictionary contents:
+        * **body**: The main body of the document as HTML
+        * **sidebar**: The sidebar of the document as HTML
+        * **relbar**: A div containing links to related documents
+        * **title**: The title of the document
+        * **css**: Links to css files used by Sphinx
+        * **script**: Javascript containing comment options
+{% endcomment %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block css %}
+    {{ css|safe }}
+{% endblock %}
+
+{% block page_title %}
+    {{ title }}
+{% endblock %}
+
+{% block navbar %}
+    {{ sidebar|safe }}
+{% endblock %}
+
+{% block document_body %}
+    {{ body|safe }}
+{% endblock %}
+
+{% block script %}
+    {{ script|safe }}
+{% endblock %}

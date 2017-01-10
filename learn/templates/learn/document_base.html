@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% comment %}
+This is the base document for a learn-document. This contains skeleton layouts that should be populated by the
+inherited document, probably document.html.
+{% endcomment %}
+
+{% block title %}{% endblock %}
+
+{% block head %}
+    {% block css %}
+    {% endblock css %}
+{% endblock %}
+
+{% block content %}
+    {# Opening Header #}
+    <header class="opening-banner-learn">
+        <h1 class="display opening-header">
+            {% block page_title %}{% endblock %}
+        </h1>
+        <div class="bae-learn">
+        </div>
+    </header>
+        <div class="row">
+            <div class="col-xs-4">
+            {# TOC ? #}
+                <nav class="nav nav-pills nav-stacked" style="background: #43353D;">
+                    {% block navbar %}
+                    {% endblock %}
+                </nav>
+            </div>
+            {# Document body #}
+            <div class="col-xs-8">
+                {% block document_body %}
+                {% endblock %}
+            </div>
+        </div>
+        {% block script %}
+        {% endblock %}
+{% endblock %}

@@ -1,6 +1,7 @@
 # Python/Django related things
 env/
 media/
+logs/
 static/admin
 *.sock
 *.pyc
@@ -17,6 +18,9 @@ docs/
 .rnd
 .selected_editor
 .sudo_as_admin_successful
+
+# Ignore projects stuff
+.idea/
 
 # Squishy squishy
 hentai/

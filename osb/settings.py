@@ -49,8 +49,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+
     'main.apps.MainConfig',
     'showcase.apps.ShowcaseConfig',
+    'learn.apps.LearnConfig',
+
     'sortedm2m',
     'photologue',
 ]
@@ -110,6 +113,23 @@ DATABASES = {
 # EMAIL_SUBJECT_PREFIX = '[osb.moe] '
 # EMAIL_USE_TLS = True
 
+# Loggers
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'debug_error_logfile': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['debug_error_logfile'],
+        },
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
