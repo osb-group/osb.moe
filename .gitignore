@@ -9,6 +9,7 @@ static/admin
 
 # Docs
 docs/
+static/_static/
 
 # File-housekeeping
 .bash_history
@@ -24,5 +25,5 @@ docs/
 
 # Squishy squishy
 hentai/
-analytics/
+static/analytics/
 static/bootstrap/

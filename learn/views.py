@@ -19,4 +19,12 @@ def get_document(request, document_path):
         logger.error("The path: '{0}' seemed to have found an error somewhere.".format(document_path))
         raise
 
+def search_request(request):
+    logger = logging.getLogger(__name__)
+    if request.method == 'GET':
+        query = request['q']
+        contents = support.get_search_results(query)
+        logger.log(contents['body'])
+        return render(request, 'learn/document.html', contents)
+
 # endregion
