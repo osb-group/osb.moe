@@ -1,0 +1,15 @@
+{% extends "sphinxdoc/documentation_base.html" %}
+{% load i18n %}
+
+{% block title %}{{ block.super }} » {% trans "Documentation Overview" %}{% endblock %}
+
+{% block document_body %}
+<div>
+    <h2 class="pagetitle">{% trans "Documentation Overview" %}</h2>
+    <ul>
+    {% for project in project_list %}
+        <li><a href="{{ project.get_absolute_url }}">{{ project.name }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock document_body %}

@@ -47,7 +47,7 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
 
 .osu-cookie {
-  background: url(/static/base/osu-logo.png) no-repeat;
+  background: url(/static/base/img/osu-logo.png) no-repeat;
   background-size: contain;
   content: ' ';
   opacity: 0.3;
@@ -57,7 +57,7 @@
 
 .mascot {
   position: absolute;
-  background: url("/static/base/hifumi.png") no-repeat;
+  background: url("/static/base/img/hifumi.png") no-repeat;
   height: 180px;
   background-size: contain; }
 

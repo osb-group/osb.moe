@@ -1,17 +1,4 @@
-// Color Variables
-$colors-spot: (#f6a, #86e, #88b300, #fc2);
-$colors-back: (#344146, #43353D);
-
-// Fonts
-$main-font: 'Exo 2', sans-serif;
-$main-font-color: #555;
-$main-font-size: 12pt;
-$invert-font: 'Exo 2', sans-serif;
-$invert-font-color: #FFF;
-$invert-font-size: 12pt;
-
-// For navbar stuff
-$navbar-button-width: 180px;
+@import '_variables.scss';
 
 // Mixins
 @mixin hover-transform($color) {
@@ -59,7 +46,7 @@ $navbar-button-width: 180px;
 // Specific navbar elements
 // osu-cookie and mascot are currently unused
 .osu-cookie {
-  background: url(/static/base/osu-logo.png) no-repeat;
+  background: url(/static/base/img/osu-logo.png) no-repeat;
   background-size: contain;
   content: ' ';
   opacity: 0.3;
@@ -70,7 +57,7 @@ $navbar-button-width: 180px;
 
 .mascot {
   position: absolute;
-  background: url("/static/base/hifumi.png") no-repeat;
+  background: url("/static/base/img/hifumi.png") no-repeat;
   height: $navbar-button-width;
   background-size: contain;
 }

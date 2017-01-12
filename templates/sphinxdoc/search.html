@@ -1,0 +1,22 @@
+{% extends 'sphinxdoc/documentation.html' %}
+{% load i18n %}
+
+{% block doc_body %}
+<h2>{% trans "Search results:" %} {{ page.object_list|length }}</h2>
+<div class="section">
+    {% if query %}
+    <ul>
+        {% for result in page.object_list %}
+            {% with result.object as doc %}
+        <li><a href="{{ doc.get_absolute_url }}">{{ doc.title|safe }}</a></li>
+            {% endwith %}
+        {% empty %}
+        <li>{% trans "No results found." %}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>{% trans "No search query entered." %}</p>
+    {% endif %}
+</div>
+{% endblock doc_body %}
+{% block doc_toc %}{% endblock %}

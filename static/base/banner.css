@@ -1,20 +1,20 @@
 .opening-banner, .opening-banner-sb, .opening-banner-learn, .opening-banner-community, .opening-banner-user {
-  background: #000 url(/static/base/bg_01.png) 95%/100% no-repeat;
+  background: #000 url(/static/base/img/bg_01.png) 95%/100% no-repeat;
   background-size: cover;
   overflow: hidden;
   height: 200px; }
 
 .opening-banner-sb {
-  background: url(/static/base/bg_02.png); }
+  background: url(/static/base/img/bg_02.png); }
 
 .opening-banner-learn {
-  background: url(/static/base/bg_03.png); }
+  background: url(/static/base/img/bg_03.png); }
 
 .opening-banner-community {
-  background: url(/static/base/bg_04.png); }
+  background: url(/static/base/img/bg_04.png); }
 
 .opening-banner-user {
-  background: url(/static/base/bg_05.png); }
+  background: url(/static/base/img/bg_05.png); }
 
 .opening-header {
   color: #fff;
@@ -54,26 +54,26 @@
   to {
     background-position-y: -50px; } }
 .bae-index, .bae-sb, .bae-learn, .bae-community, .bae-user {
-  background: url("/static/base/hifumi_render.png") 120% -90px/600px no-repeat;
+  background: url("/static/base/img/hifumi_render.png") 120% -90px/600px no-repeat;
   min-width: 540px;
   min-height: 100%;
   position: relative;
   animation: floating-bae-index 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) 500ms infinite alternate; }
 
 .bae-sb {
-  background: url("/static/base/hifumi_stylish.png") 120% -90px/600px no-repeat;
+  background: url("/static/base/img/hifumi_stylish.png") 120% -90px/600px no-repeat;
   animation: floating-bae-sb 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) 500ms infinite alternate; }
 
 .bae-learn {
-  background: url("/static/base/aoba_render.png") 130% -20px/630px no-repeat;
+  background: url("/static/base/img/aoba_render.png") 130% -20px/630px no-repeat;
   animation: floating-bae-learn 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) 500ms infinite alternate; }
 
 .bae-community {
-  background: url("/static/base/hifumi_shy.png") 100% -100px/380px no-repeat;
+  background: url("/static/base/img/hifumi_shy.png") 100% -100px/380px no-repeat;
   animation: floating-bae-community 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) 500ms infinite alternate; }
 
 .bae-user {
-  background: url("/static/base/aoba_swimsuit.png") 100% -93px/420px no-repeat;
+  background: url("/static/base/img/aoba_swimsuit.png") 100% -93px/420px no-repeat;
   animation: floating-bae-user 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) 500ms infinite alternate; }
 
 /*# sourceMappingURL=banner.css.map */

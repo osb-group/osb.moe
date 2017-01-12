@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+@import '_variables.scss';
+
+$font-header: 'Exo 2', sans-serif;
+$font-body: 'Open Sans', sans-serif;
+
+// Sidebar
+
+.sidebar {
+  h1, h2, h3 {
+    background: nth($colors-spot, 3);
+    padding: 5px;
+    border-radius: .25rem;
+    text-decoration: none;
+    color: $invert-font-color;
+    a {
+        color: inherit;
+      &:hover {
+        color: #0275d8;
+      }
+    }
+  }
+}
+
+h4 {
+  @extend h3;
+  background: darken(nth($colors-spot, 3), 10%) !important;
+}
+
+// Body
+
+.sphinx {
+  h1, h2, h3 {
+    font-family: $font-header;
+  }
+
+  p {
+    font-family: $font-body;
+  }
+
+  a {
+    &.headerlink {
+      font-size: 0.8em;
+      padding: 0 4px 0 4px;
+      text-decoration: none;
+      opacity: 0;
+      transition: opacity 1s;
+      &:hover {
+        opacity: 100;
+      }
+    }
+  }
+}
+
+// Pagination
+
+.pagination-top {
+  background: nth($colors-spot, 3);
+  border-radius: .25rem;
+  font-family: $font-body;
+  color: $invert-font-color;
+  padding: .5em;
+  font-size: 12pt;
+  a {
+    color: inherit;
+    &:hover {
+      color: #0275d8;
+    }
+  }
+}
+
+.pagination-bottom {
+  @extend .pagination-top;
+}
+
+// Misc
+
+.highlight {
+  padding: 1em;
+}

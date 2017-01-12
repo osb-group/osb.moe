@@ -54,8 +54,10 @@ INSTALLED_APPS = [
     'showcase.apps.ShowcaseConfig',
     'learn.apps.LearnConfig',
 
+    'haystack',
     'sortedm2m',
     'photologue',
+    'sphinxdoc',
 ]
 
 MIDDLEWARE = [
@@ -149,6 +151,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Docs
+SPHINXDOC_BUILD_DIR = os.path.join(BASE_DIR, 'docs/osb-learn/_build')
+
+# Searching
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'docs/whoosh_index'),
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
