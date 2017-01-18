@@ -22,18 +22,38 @@ inherited document, which is powered by sphinxdoc.
         <div class="bae-learn">
         </div>
     </header>
+
     <div class="row">
-        <div class="sidebar col-xs-4">
-            {# TOC ? #}
-            {% block sidebar %}
+        <div class="col-xs-12">
+            {% block prefix %}
             {% endblock %}
         </div>
+    </div>
+
+    <div class="row">
         {# Document body #}
-        <div class="col-xs-8">
+        <div class="col-sm-1 hidden-xs-down">
+            {% block prev %}{% endblock %}
+        </div>
+        <div class="col-xs-12 col-sm-10">
             {% block document_body %}
+            {% endblock %}
+        </div>
+        <div class="col-sm-1 hidden-xs-down">
+            {% block next %}{% endblock %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            {% block suffix %}
             {% endblock %}
         </div>
     </div>
     {% block script %}
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
     {% endblock %}
 {% endblock %}

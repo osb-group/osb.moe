@@ -41,4 +41,10 @@ h4 {
 .highlight {
   padding: 1em; }
 
+.prev-item, .next-item {
+  transform: unset;
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  .prev-item:hover, .next-item:hover {
+    transform: rotateX(720deg); }
+
 /*# sourceMappingURL=learn.css.map */

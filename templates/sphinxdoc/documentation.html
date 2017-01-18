@@ -3,75 +3,110 @@
 
 {% block title %}{{ block.super }} » {{ project.name }}{% for p in doc.parents %} » {{ p.title|striptags|safe }}{% endfor %} » {{ doc.title|striptags|safe }}{% endblock %}
 
+{% block page_title %}{{ doc.title|striptags|safe }}{% endblock %}
+
 {% block css %}
     {{ block.super }}
     <link rel="stylesheet" href="/static/docs/pygments.css">
 {% endblock %}
 
-{% block document_body %}
-<div class="pagination-top">
-    <div class="breadcrumbs">
-		» <a href="{{ project.get_absolute_url }}">
-            {% blocktrans with project_name=project.name %}{{ project_name }} documentation{% endblocktrans %}</a>
-    {% for p in doc.parents %}
-    	» <a href="{{ p.link }}">{{ p.title|safe }}</a>
-    {% endfor %}
-    	» {{ doc.title|safe }}
-	</div>
-    {% if doc.prev or doc.next %}
-    <span class="alignleft">
-        {% if doc.prev %}
-          {% trans "Prev:" %} <a href="{{ doc.prev.link }}">{{ doc.prev.title|safe }}</a>
-        {% endif %}</span>
-	<span class="alignright">
-        {% if doc.next %}
-          {% trans "Next:" %} <a href="{{ doc.next.link }}">{{ doc.next.title|safe }}</a>
-        {% endif %}</span><div class="clearboth">.</div>
+{% block prev %}
+    {% if doc.prev %}
+        <a href="{{ doc.prev.link }}">
+            <i class="fa fa-chevron-circle-left fa-3x next-item d-block mx-auto mt-3" aria-hidden="true" style="position: fixed"  data-toggle="tooltip" data-placement="right" title="{{ doc.prev.title|safe }}"></i>
+        </a>
     {% endif %}
-</div>
+{% endblock %}
+
+{% block next %}
+    {% if doc.next %}
+        <a href="{{ doc.next.link }}">
+            <i class="fa fa-chevron-circle-right fa-3x next-item d-block mx-auto mt-3" aria-hidden="true" style="position: fixed"  data-toggle="tooltip" data-placement="left" title="{{ doc.next.title|safe }}"></i>
+        </a>
+    {% endif %}
+{% endblock %}
+
+{% block prefix %}
+    <div class="pagination-top">
+        <div class="breadcrumbs">
+            » <a href="{{ project.get_absolute_url }}">
+            {% blocktrans with project_name=project.name %}{{ project_name }} documentation{% endblocktrans %}</a>
+            {% for p in doc.parents %}
+                » <a href="{{ p.link }}">{{ p.title|safe }}</a>
+            {% endfor %}
+            » {{ doc.title|safe }}
+        </div>
+        {% if doc.prev or doc.next %}
+            <span class="alignleft">
+        {% if doc.prev %}
+            {% trans "Prev:" %} <a href="{{ doc.prev.link }}">{{ doc.prev.title|safe }}</a>
+        {% endif %}</span>
+            <span class="alignright">
+        {% if doc.next %}
+            {% trans "Next:" %} <a href="{{ doc.next.link }}">{{ doc.next.title|safe }}</a>
+        {% endif %}</span><div class="clearboth">.</div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block document_body %}
 
 <div class="sphinx">
     {% block doc_body %}
+        {% block doc_toc %}
+            <div class="card">
+                <div class="card-header" role="tab" id="headerToc">
+                    <h5 class="mb-0">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseToc" aria-expanded="false" aria-controls="toc">
+                            Table of Contents
+                        </a>
+                    </h5>
+                </div>
+                <div id="collapseToc" class="collapse" role="tabpanel" aria-labelledby="headerToc">
+                    <div class="card-block">
+                        <h2>{% trans "Contents" %}</h2>
+                        {{ doc.toc|safe }}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
     {{ doc.body|safe }}    
     {% endblock %}
 </div>
 
-<div class="pagination-bottom">
-    {% if doc.prev or doc.next %}
-    <span class="alignleft">
-        {% if doc.prev %}
-          {% trans "Prev:" %} <a href="{{ doc.prev.link }}">{{ doc.prev.title|safe }}</a>
-        {% endif %}</span>
-	<span class="alignright">
-        {% if doc.next %}
-          {% trans "Next:" %} <a href="{{ doc.next.link }}">{{ doc.next.title|safe }}</a>
-        {% endif %}</span><div class="clearboth">.</div>
-    {% endif %}
-	<div class="breadcrumbs">
-        » <a href="{{ project.get_absolute_url }}">{% blocktrans with project_name=project.name %}{{ project_name }} documentation{% endblocktrans %}</a>
-    {% for p in doc.parents %}
-    	» <a href="{{ p.link }}">{{ p.title|safe }}</a>
-    {% endfor %}
-    	» {{ doc.title|safe }}
-	</div>
-	<div class="meta">
-        {% trans "Last update:" %} {{ update_date|date:"SHORT_DATETIME_FORMAT" }} (<a href="http://www.timeanddate.com/worldclock/city.html?n=37">CET</a>)
-	</div>
-</div>
 {% endblock document_body %}
 
+{% block suffix %}
+    <div class="pagination-bottom">
+        {% if doc.prev or doc.next %}
+            <span class="alignleft">
+        {% if doc.prev %}
+            {% trans "Prev:" %} <a href="{{ doc.prev.link }}">{{ doc.prev.title|safe }}</a>
+        {% endif %}</span>
+            <span class="alignright">
+        {% if doc.next %}
+            {% trans "Next:" %} <a href="{{ doc.next.link }}">{{ doc.next.title|safe }}</a>
+        {% endif %}</span><div class="clearboth">.</div>
+        {% endif %}
+        <div class="breadcrumbs">
+            » <a href="{{ project.get_absolute_url }}">{% blocktrans with project_name=project.name %}{{ project_name }} documentation{% endblocktrans %}</a>
+            {% for p in doc.parents %}
+                » <a href="{{ p.link }}">{{ p.title|safe }}</a>
+            {% endfor %}
+            » {{ doc.title|safe }}
+        </div>
+        <div class="meta">
+            {% trans "Last update:" %} {{ update_date|date:"SHORT_DATETIME_FORMAT" }} (<a href="http://www.timeanddate.com/worldclock/city.html?n=37">CET</a>)
+        </div>
+    </div>
+    <div class="box">
+        <h2>{% trans "Search" %}</h2>
+        <form method="GET" action="{{ search }}">
+            <input type="text" id="q" name="q" /><input type="submit" value="{% trans "Search" %}" />
+        </form>
+    </div>
+{% endblock %}
+
 {% block sidebar %}
-    {% block doc_toc %}
-<div class="box">
-    <h2>{% trans "Contents" %}</h2>
-    {{ doc.toc|safe }}
-</div>
-    {% endblock %}
-<div class="box">
-    <h2>{% trans "Search" %}</h2>
-	<form method="GET" action="{{ search }}">
-    <input type="text" id="q" name="q" /><input type="submit" value="{% trans "Search" %}" />
-	</form>
-</div>
     {{ block.super }}
 {% endblock sidebar %}
