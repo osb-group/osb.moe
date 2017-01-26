@@ -29,23 +29,13 @@
 {% block prefix %}
     <div class="pagination-top">
         <div class="breadcrumbs">
-            » <a href="{{ project.get_absolute_url }}">
+            <a href="{{ project.get_absolute_url }}">
             {% blocktrans with project_name=project.name %}{{ project_name }} documentation{% endblocktrans %}</a>
             {% for p in doc.parents %}
                 » <a href="{{ p.link }}">{{ p.title|safe }}</a>
             {% endfor %}
             » {{ doc.title|safe }}
         </div>
-        {% if doc.prev or doc.next %}
-            <span class="alignleft">
-        {% if doc.prev %}
-            {% trans "Prev:" %} <a href="{{ doc.prev.link }}">{{ doc.prev.title|safe }}</a>
-        {% endif %}</span>
-            <span class="alignright">
-        {% if doc.next %}
-            {% trans "Next:" %} <a href="{{ doc.next.link }}">{{ doc.next.title|safe }}</a>
-        {% endif %}</span><div class="clearboth">.</div>
-        {% endif %}
     </div>
 {% endblock %}
 
@@ -83,13 +73,14 @@
         {% if doc.prev %}
             {% trans "Prev:" %} <a href="{{ doc.prev.link }}">{{ doc.prev.title|safe }}</a>
         {% endif %}</span>
+            ||
             <span class="alignright">
         {% if doc.next %}
             {% trans "Next:" %} <a href="{{ doc.next.link }}">{{ doc.next.title|safe }}</a>
-        {% endif %}</span><div class="clearboth">.</div>
+        {% endif %}
         {% endif %}
         <div class="breadcrumbs">
-            » <a href="{{ project.get_absolute_url }}">{% blocktrans with project_name=project.name %}{{ project_name }} documentation{% endblocktrans %}</a>
+            <a href="{{ project.get_absolute_url }}">{% blocktrans with project_name=project.name %}{{ project_name }} documentation{% endblocktrans %}</a>
             {% for p in doc.parents %}
                 » <a href="{{ p.link }}">{{ p.title|safe }}</a>
             {% endfor %}

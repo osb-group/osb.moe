@@ -65,7 +65,7 @@
 @for $i from 1 through 4 {
   #navbar-special-#{$i} {
     @include generate-navbar-button(nth($colors-spot,$i));
-    margin: 0px;
+    margin: 0;
     min-width: 120px;
     text-align: center;
   }

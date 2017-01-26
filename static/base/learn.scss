@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400');
 @import '_variables.scss';
 
 $font-header: 'Exo 2', sans-serif;
@@ -22,20 +22,56 @@ $font-body: 'Open Sans', sans-serif;
   }
 }
 
-h4 {
-  @extend h3;
-  background: darken(nth($colors-spot, 3), 10%) !important;
-}
-
 // Body
 
 .sphinx {
-  h1, h2, h3 {
+  h1, h2 {
     font-family: $font-header;
+    padding: 0.2em;
+    border-radius: 0.25em;
+    background-color: darken(nth($colors-spot, 3), 10%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right center;
+    color: $invert-font-color;
+    text-shadow: 0 1px 3px rgba(0,0,0,.75);
+  }
+
+  h1 {
+    background-image: url(img/learn/h1.png);
+  }
+
+  h2 {
+    background-image: url(img/learn/h2.png);
+  }
+
+  h3 {
+    font-family: $font-header;
+    color: darken(nth($colors-spot, 3),10%);
+    margin-top: 1%;
+  }
+
+  h4 {
+    @extend h3;
+    color: darken(nth($colors-spot, 3),20%);
+  }
+
+  h5 {
+    @extend h3;
+    color: darken(nth($colors-spot, 3),30%);
   }
 
   p {
     font-family: $font-body;
+  }
+
+  .figure {
+    p {
+      &.caption {
+      color: #818a91;
+      font-size: 0.75rem;
+      }
+    }
   }
 
   a {
@@ -50,13 +86,110 @@ h4 {
       }
     }
   }
+
+  .admonition {
+    background: nth($colors-back, 2);
+    border-left: solid 15px nth($colors-back, 1);
+    border-radius: 0.25em;
+    margin: 0.25em;
+    padding: 0.25em;
+
+    p {
+      padding: 0.2em;
+    }
+
+  }
+
+  .admonition-title {
+    font-family: $font-header;
+    font-size: 18pt;
+    margin-bottom: 0.1em;
+  }
+
+  @mixin add-fa-icon-to-title($content) {
+    .admonition-title {
+      &::before {
+        content: $content;
+        font-family: FontAwesome;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  @mixin add-background-to-admonition($list) {
+    background: nth($list,1);
+    border-left: solid 15px nth($list,2);
+    color: nth($list,4);
+    .admonition-title {
+      color: nth($list,3);
+    }
+  }
+
+  .note {
+    @include add-fa-icon-to-title("\f040");
+    @include add-background-to-admonition($admonition-note);
+  }
+
+  .warning {
+    @include add-fa-icon-to-title("\f071");
+    @include add-background-to-admonition($admonition-warning);
+  }
+
+  .tip {
+    @include add-fa-icon-to-title("\f0a4");
+    @include add-background-to-admonition($admonition-tip);
+  }
+
+  .attention {
+    @include add-fa-icon-to-title("\f06a");
+    @include add-background-to-admonition($admonition-attention);
+  }
+
+  .hint {
+    @include add-fa-icon-to-title("\f06b");
+    @include add-background-to-admonition($admonition-hint);
+  }
+
+  // Tables
+  table {
+    caption {
+      padding-top: 0;
+    }
+  }
+  thead {
+      background-color: nth($colors-spot, 3);
+      border-radius: 0 0 .25rem .25rem;
+      color: white;
+      th {
+        text-align: center;
+      }
+    }
+  tbody {
+    font-family: $font-body;
+  }
+
+
+  // Code block
+  .code-block-caption {
+    background-color: nth($colors-spot, 3);
+    color: white;
+    padding: .25em .25em .25em 1em;
+    border-radius: 0 0 .25rem .25rem;
+  }
+
+  .linenos {
+    padding-right: 4px;
+  }
+
 }
 
 // Pagination
 
 .pagination-top {
-  background: nth($colors-spot, 3);
+  background: nth($colors-spot, 3) url("img/learn/breadcrumbs.png") no-repeat right center;
+  background-size: cover;
   border-radius: .25rem;
+  text-align: center;
   font-family: $font-body;
   color: $invert-font-color;
   padding: .5em;
@@ -76,7 +209,8 @@ h4 {
 // Misc
 
 .highlight {
-  padding: 1em;
+  padding: 0.5em 1em 0.5em 0.5em;
+  border-radius: .25em;
 }
 
 // Prev/Next
