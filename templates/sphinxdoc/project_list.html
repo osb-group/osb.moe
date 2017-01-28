@@ -1,15 +1,23 @@
-{% extends "sphinxdoc/documentation_base.html" %}
+{% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{{ block.super }} » {% trans "Documentation Overview" %}{% endblock %}
+{% block title %}Learn Storyboarding!{% endblock %}
 
-{% block document_body %}
-<div>
-    <h2 class="pagetitle">{% trans "Documentation Overview" %}</h2>
-    <ul>
-    {% for project in project_list %}
-        <li><a href="{{ project.get_absolute_url }}">{{ project.name }}</a></li>
-    {% endfor %}
-    </ul>
+{% block content %}
+<header class="opening-banner-learn"><h1 class="display opening-header">Learning & Resources</h1><div class="bae-learn"></div></header>
+<h1 class="col-xs-12 special-banner-3 top-header">An Ongoing Project!</h1><div class="bae-learn"></div>
+<div class="row">
+    <div class="col-xs-12">
+        <img class="d-block mx-auto" src="/static/base/img/learn_banner.png" alt="Cute girls">
+        <p>
+            Welcome! The learn page is currently undergoing some massive renovation right now. The eventual endgame is to make a comprehensive guide that is accessible to anyone interested in learning how to storyboard. The learning curve is often high for many newcomers, so it's in our hopes that these guides make that experience far more user-friendly. Feel free to view the work-in-progress guides by following the link below!
+        </p>
+        <ul>
+            {% for project in project_list %}
+                <li><a href="{{ project.get_absolute_url }}">{{ project.name }}</a></li>
+            {% endfor %}
+        </ul>
+        <p>Miss the old page? Check it out <a href="/learn_old">here.</a></p>
+    </div>
 </div>
-{% endblock document_body %}
+{% endblock %}
