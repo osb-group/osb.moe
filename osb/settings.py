@@ -52,7 +52,6 @@ INSTALLED_APPS = [
 
     'main.apps.MainConfig',
     'showcase.apps.ShowcaseConfig',
-    'learn.apps.LearnConfig',
 
     'haystack',
     'sortedm2m',

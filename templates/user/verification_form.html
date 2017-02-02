@@ -1,0 +1,38 @@
+{% extends "user/control_panel_base.html" %}
+{% load showcase_extras %}
+
+{% block settings %}
+
+    <h3 class="special-banner-sub-1 rounded">Account Settings</h3>
+    <p>In order to get more up close and personal with your storyboards and other features on osb.moe, you'll need to verify your osb.moe account with your osu! account. Simply follow this process to find out how to verify your account!</p>
+    <h3 class="special-banner-sub-1 rounded">Account Verification</h3>
+    <div class="row">
+        The process:
+        <ol>
+            <li>You'll need to first generate a <strong>verification code</strong> specific to your username. To generate the code, enter your osu! username and leave the multiplayer match ID as 0.</li>
+            <li>Create a new multiplayer match with the verification code as the room name. <strong>Important! Verification codes reset hourly! Once the next hour passes, you'll need to generate a new one.</strong></li>
+            <li>BanchoBot should give you a link to the match history in #multiplayer. Open the URL and copy the numeric ID in the URL, then paste that in the multiplayer match ID field.</li>
+        </ol>
+        {% if is_submitted %}
+            <div class="alert alert-danger col-xs-8" role="alert">
+                <strong>失敗した。。。</strong> The multiplayer match title did not match with the listed verification code. Please ensure that the selected multiplayer match is titled as <strong>{{ verification_code }}</strong>.
+            </div>
+        {% else %}
+            {% if verification_code %}
+                <div class="alert alert-info col-xs-8" role="alert">
+                    <strong>了解!</strong> Your special verification code is <strong>{{ verification_code }}</strong> ! Please title your multiplayer match as this code, then list the multiplayer match ID in the form below.
+                </div>
+            {% else %}
+                <div class="alert alert-info col-xs-8" role="alert">
+                    <strong>いらっしゃい!</strong> Follow the steps outlined above to generate a special verification code!
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="row">
+        <form method="POST" class="">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-secondary">Submit!</button>
+        </form>
+    </div>
+{% endblock %}

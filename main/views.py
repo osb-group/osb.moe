@@ -1,5 +1,6 @@
 from django.views.generic.base import TemplateView
 from showcase.views import filter_by_author
+from verification import send_validation
 
 
 class HomePageView(TemplateView):
@@ -38,3 +39,7 @@ class UserControlPanelManageStoryboardView(TemplateView):
         return context
 
 # endregion
+
+def UserAccountSettings(request):
+    # Later, add whether or not there is a user account verified, and if so, redirect to a proper edit settings
+    return send_validation(request)

@@ -43,7 +43,7 @@ def generate_key(username):
 def is_match_name_correct(match_output, username):
     try:
         match = match_output["match"]
-        return match["name"] == username
+        return match["name"] == generate_key(username)
     except:
         return False
 
@@ -76,6 +76,9 @@ def send_validation(request):
         if form.is_valid():
             match_id = form.cleaned_data['match_id']
             osu_username = form.cleaned_data['osu_username']
+            if match_id == 0:
+                # Just generating first...
+                return render(request, 'user/verification_form.html', {'form': form, 'is_submitted': False, 'verification_code':generate_key(osu_username)} )
             match_json = fetch_match(match_id)
             if is_match_name_correct(match_json, osu_username):
                 # Get the user account
@@ -83,8 +86,9 @@ def send_validation(request):
                 # Something...
                 raise NotImplementedError
             else:
-                render(request, 'user/verification_form.html') # Replace with failstate
+                # Incorrect match
+                return render(request, 'user/verification_form.html', {'form': form, 'is_submitted': True, 'verification_code':generate_key(osu_username)} )
     else:
-        # Generate the validation form
+        # This is the initial validation form.
         form = OsuUserVerificationForm()
-        render(request, 'user/verification_form.html', {'form': form})
+        return render(request, 'user/verification_form.html', {'form': form, 'is_submitted': False} )
