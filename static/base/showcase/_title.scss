@@ -1,0 +1,17 @@
+@import '__variables';
+@import '__mixins';
+
+// All general titles belong here.
+
+.showcase-title {
+  @include set-showcase-title-font();
+  background: $showcase-color-sub2;
+  border-bottom: 8px solid $showcase-color-spot1;
+  padding-left: 0.5em;
+}
+
+.showcase-subtitle {
+  @include set-showcase-title-font();
+  font-size: 12pt;
+  padding-left: 5px;
+}

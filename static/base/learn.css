@@ -1,5 +1,15 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400");
+.glossary dt {
+  border-left: solid 8px #344146;
+  background: white;
+  border-radius: 0.25em;
+  margin-top: 0.75em;
+  padding: 0.2em 0.5em; }
+.glossary dd {
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 2.0em; }
+
 .sidebar h1, .sidebar h2, .sidebar h3, .sidebar .sphinx h4, .sphinx .sidebar h4, .sidebar .sphinx h5, .sphinx .sidebar h5 {
   background: #88b300;
   padding: 5px;

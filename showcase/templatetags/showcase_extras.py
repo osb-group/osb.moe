@@ -9,7 +9,6 @@ register = template.Library()
 
 # Utility-based template tags
 
-
 @register.simple_tag
 def display_medium_icon(m):
     medium = {
@@ -25,6 +24,22 @@ def display_medium_icon(m):
         'other': 'fa fa-question-circle'
     }
     return medium[m]
+
+@register.simple_tag
+def find_average_color(image):
+    with image.get_willow_image() as willow:
+        pillow_image = willow.get_pillow_image()
+        histogram = pillow_image.histogram()
+        # split into red, green, blue
+        r = histogram[0:256]
+        g = histogram[256:256*2]
+        b = histogram[256*2: 256*3]
+    color = (
+        sum( i*w for i, w in enumerate(r) ) / sum(r),
+        sum( i*w for i, w in enumerate(g) ) / sum(g),
+        sum( i*w for i, w in enumerate(b) ) / sum(b)
+    )
+    return '#%02x%02x%02x' % color
 
 # List tags
 

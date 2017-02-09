@@ -1,5 +1,10 @@
+// TODO: Separate this stuff into modules
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400');
 @import '_variables.scss';
+
+// Learn modules
+@import 'learn/_learn_glossary';
 
 $font-header: 'Exo 2', sans-serif;
 $font-body: 'Open Sans', sans-serif;

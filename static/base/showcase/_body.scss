@@ -1,0 +1,19 @@
+@import "__mixins.scss";
+@import "__variables.scss";
+
+.showcase-body-container {
+  background: $showcase-color-sub1;
+  padding-bottom: 10px; // For the button to go all the way down
+}
+
+
+.showcase-body-text {
+  @include set-showcase-body-font();
+  @include suppress-link-formatting();
+}
+
+.showcase-body-subtitle {
+  @extend .showcase-body-text;
+  border-bottom: 2px solid $showcase-color-spot1;
+  font-style: italic;
+}

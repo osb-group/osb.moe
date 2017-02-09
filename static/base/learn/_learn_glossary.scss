@@ -1,0 +1,23 @@
+@import '../_variables';
+
+// Learn-variables
+$font-header: 'Exo 2', sans-serif;
+$font-body: 'Open Sans', sans-serif;
+
+.glossary {
+
+  // The term
+  dt {
+    border-left: solid 8px nth($colors-back, 1);
+    background: lighten(nth($colors-back,1),80%);
+    border-radius: 0.25em;
+    margin-top: 0.75em;
+    padding: 0.2em 0.5em;
+  }
+
+  // The definition
+  dd {
+    font-family: $font-body;
+    margin-bottom: 2.0em;
+  }
+}

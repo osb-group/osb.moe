@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
+.showcase-title {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: white;
+  font-size: 24pt;
+  background: #262d35;
+  border-bottom: 8px solid #3ac2ec;
+  padding-left: 0.5em; }
+
+.showcase-subtitle {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: white;
+  font-size: 24pt;
+  font-size: 12pt;
+  padding-left: 5px; }
+
+.showcase-body-container {
+  background: #465d6f;
+  padding-bottom: 10px; }
+
+.showcase-body-text, .showcase-body-subtitle {
+  font-family: "Exo 2", sans-serif;
+  color: white; }
+  .showcase-body-text a, .showcase-body-subtitle a {
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */ }
+
+.showcase-body-subtitle {
+  border-bottom: 2px solid #3ac2ec;
+  font-style: italic; }
+
+.showcase-button-set, .showcase-button-download {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: white;
+  font-size: 24pt;
+  -o-transition: border-left 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: border-left 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: border-left 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: border-left 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: #262d35;
+  border-left: 10px solid #c1c8ca;
+  padding: 2.5px 0 2.5px 10px;
+  margin-top: 10px; }
+  .showcase-button-set:hover, .showcase-button-download:hover {
+    border-left: 25px solid #c1c8ca; }
+
+.showcase-button-download {
+  -o-transition: border-left 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: border-left 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: border-left 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: border-left 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-left: 10px solid #3ac2ec; }
+  .showcase-button-download:hover {
+    border-left: 25px solid #3ac2ec; }
+
+/*# sourceMappingURL=showcase.css.map */

@@ -1,0 +1,29 @@
+@mixin set-showcase-title-font() {
+  font-family: $showcase-header-font;
+  text-transform: uppercase;
+  color: $showcase-font-color;
+  font-size: 24pt;
+}
+
+@mixin set-showcase-body-font() {
+  font-family: $showcase-body-font;
+  color: $showcase-font-color;
+}
+
+@mixin hover-transform($original-width, $color) {
+  $animation: border-left 600ms cubic-bezier(0.175,0.885,0.32,1.275);
+  -o-transition: $animation;
+  -webkit-transition: $animation;
+  -moz-transition: $animation;
+  transition: $animation;
+  &:hover {
+    border-left: ($original-width*2.5) solid $color;
+  }
+}
+
+@mixin suppress-link-formatting() {
+  a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+  }
+}

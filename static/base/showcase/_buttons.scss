@@ -1,0 +1,20 @@
+@import "__mixins.scss";
+@import "__variables.scss";
+
+// These are for the download and set links
+$border-left-size: 10px;
+
+.showcase-button-set {
+  @include set-showcase-title-font();
+  @include hover-transform($border-left-size, $showcase-color-spot2);
+  background: $showcase-color-sub2;
+  border-left: $border-left-size solid $showcase-color-spot2;
+  padding: 2.5px 0 2.5px 10px;
+  margin-top: 10px;
+}
+
+.showcase-button-download {
+  @extend .showcase-button-set;
+  @include hover-transform($border-left-size, $showcase-color-spot1);
+  border-left: $border-left-size solid $showcase-color-spot1;
+}

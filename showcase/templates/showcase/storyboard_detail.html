@@ -12,6 +12,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 {% block head %}
     {% if storyboard.gallery %}
         <link rel="stylesheet" href="/static/base/sb.css">
+        <link rel="stylesheet" href="/static/base/showcase/showcase.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.css">
     {% endif %}
 {% endblock %}
@@ -50,6 +51,61 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 
         </div>
     </div>
+
+    {# New SB Card #}
+    <h2 class="special-banner-sub-2 rounded">Testing!</h2>
+    <div class="container" style="background-image: url({{ storyboard.get_mapset_cover_url }}); background-size: cover;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-5">
+                {# This is the background. Let the other column take care of things. For now. #}
+                {# Later, add in the OSB level. #}
+            </div>
+            <div class="col-xs-12 col-sm-7" style="padding: 0;">
+                <div class="showcase-title">{{ storyboard.song }}</div>
+                <div class="showcase-body-container">
+                <div class="showcase-subtitle">{{ storyboard.artist }}</div>
+                    <div class="row">
+                        <div class="col-xs-2" style="padding: 0">
+                            <img src="{{ storyboard.storyboarder.first.get_avatar_url }}" style="max-height: 100px; padding-left:20px"/>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="showcase-body-subtitle">Storyboarded by</div>
+                            <div class="showcase-body-text">
+                                <ul class="list-unstyled">
+                                    {% for sber in storyboard.storyboarder.all %}
+                                        <li>
+                                            <a href="/showcase/author/{{ sber.pk }}">{{ sber }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="showcase-body-subtitle">Metadata</div>
+                            <div class="showcase-body-text">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        Mapped by {{ storyboard.mapper }}
+                                    </li>
+                                    <li>
+                                        Developed via {{ storyboard.get_medium_display }}
+                                    </li>
+                                    <li>
+                                        Submitted on {{ storyboard.date_created }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="showcase-subtitle">Tags</div>
+                    <div class="showcase-body-text">Coming soon! (Placeholder)</div>
+                    <a href="{{ storyboard.get_mapset_url }}"><div class="showcase-button-set">See Beatmap Set</div></a>
+                    <a href="{{ storyboard.get_mapset_download_url }}"><div class="showcase-button-download">Download This Beatmap</div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     {% if storyboard.gallery %}
         <h2 class="special-banner-sub-2 rounded">Screenshots</h2>
