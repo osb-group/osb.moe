@@ -1,0 +1,11 @@
+@import "__mixins.scss";
+@import "__variables.scss";
+
+// For the tags, we're using svg sprites
+
+.showcase-tags {
+  display: none;
+  &:target {
+    display: inline;
+  }
+}

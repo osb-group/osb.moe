@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:700");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:700");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:700");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
 .showcase-title {
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
@@ -59,5 +60,10 @@
   border-left: 10px solid #3ac2ec; }
   .showcase-button-download:hover {
     border-left: 25px solid #3ac2ec; }
+
+.showcase-tags {
+  display: none; }
+  .showcase-tags:target {
+    display: inline; }
 
 /*# sourceMappingURL=showcase.css.map */

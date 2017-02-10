@@ -31,6 +31,7 @@ class Storyboard(models.Model):
     date_added = models.DateTimeField()
     date_created = models.DateTimeField(verbose_name='date of Map Submission')
     medium = models.CharField(max_length=64,choices=MEDIUMS,default='other')
+    tags = models.ManyToManyField('Tag',blank=True)
     approved = models.BooleanField(default=False)
     featured = models.BooleanField(default=False)
     classic = models.BooleanField(default=False)
@@ -103,10 +104,21 @@ class Storyboarder(models.Model):
         return self.username
 
     def get_absolute_url(self):
-        return "/showcase/author/{0!s}".format(self.pk)
+        return r"/showcase/author/{0!s}".format(self.pk)
 
     def get_profile_url(self):
         return r'https://osu.ppy.sh/u/' + self.profile_id
 
     def get_avatar_url(self):
         return r'https://a.ppy.sh/' + self.profile_id
+
+class Tag(models.Model):
+    internal_id = models.SlugField(verbose_name="Internal ID")
+    verbose_name = models.CharField(max_length=64,verbose_name="Tag Title")
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.verbose_name
+
+    def get_icon_url(self):
+        return r"/static/showcase/showcase-icons-exportable.svg#{0}".format(self.internal_id)

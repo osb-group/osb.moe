@@ -54,7 +54,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 
     {# New SB Card #}
     <h2 class="special-banner-sub-2 rounded">Testing!</h2>
-    <div class="container" style="background-image: url({{ storyboard.get_mapset_cover_url }}); background-size: cover;">
+    <div class="container" style="background-image: url({{ storyboard.get_mapset_cover_url }}); background-size: cover; background-position: 50% 50%;">
         <div class="row">
             <div class="col-xs-12 col-sm-5">
                 {# This is the background. Let the other column take care of things. For now. #}
@@ -66,7 +66,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
                 <div class="showcase-subtitle">{{ storyboard.artist }}</div>
                     <div class="row">
                         <div class="col-xs-2" style="padding: 0">
-                            <img src="{{ storyboard.storyboarder.first.get_avatar_url }}" style="max-height: 100px; padding-left:20px"/>
+                            <img class="img-fluid" src="{{ storyboard.storyboarder.first.get_avatar_url }}" style="max-height: 100px; padding-left:20px"/>
                         </div>
                         <div class="col-xs-4">
                             <div class="showcase-body-subtitle">Storyboarded by</div>
@@ -98,7 +98,13 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
                         </div>
                     </div>
                     <div class="showcase-subtitle">Tags</div>
-                    <div class="showcase-body-text">Coming soon! (Placeholder)</div>
+                    {% if storyboard.tags.all %}
+                        {% for t in storyboard.tags.all %}
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="{{ t.verbose_name }}">
+                                <img src="{{ t.get_icon_url }}" alt="{{ t.verbose_name }}" width="48" height="48" />
+                            </a>
+                        {% endfor %}
+                    {% endif %}
                     <a href="{{ storyboard.get_mapset_url }}"><div class="showcase-button-set">See Beatmap Set</div></a>
                     <a href="{{ storyboard.get_mapset_download_url }}"><div class="showcase-button-download">Download This Beatmap</div></a>
                 </div>
@@ -138,4 +144,10 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.js"></script>
         <script src="/static/showcase/add-lightbox.js"></script>
     {% endif %}
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 {% endblock %}
