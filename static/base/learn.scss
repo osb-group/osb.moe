@@ -30,7 +30,7 @@ $font-body: 'Open Sans', sans-serif;
 // Body
 
 .sphinx {
-  h1, h2 {
+  h1, h2, h3 {
     font-family: $font-header;
     padding: 0.2em;
     border-radius: 0.25em;
@@ -48,25 +48,29 @@ $font-body: 'Open Sans', sans-serif;
 
   h2 {
     background-image: url(img/learn/h2.png);
+    margin-top: 3%;
   }
 
   h3 {
-    font-family: $font-header;
-    color: darken(nth($colors-spot, 3),10%);
-    margin-top: 1%;
+    background-image: url(img/learn/h3.png);
+    margin-top: 2%;
   }
 
   h4 {
-    @extend h3;
+    font-family: $font-header;
     color: darken(nth($colors-spot, 3),20%);
   }
 
   h5 {
-    @extend h3;
+    @extend h4;
     color: darken(nth($colors-spot, 3),30%);
   }
 
   p {
+    font-family: $font-body;
+  }
+
+  li {
     font-family: $font-body;
   }
 

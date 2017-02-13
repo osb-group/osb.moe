@@ -1,0 +1,29 @@
+.showcase-rating-box {
+  @include set-showcase-title-font();
+  font-size: 12pt;
+  text-align: center;
+  background: $showcase-color-sub1;
+  border-top: 5px solid $showcase-color-sub2;
+  border-bottom: 5px solid $showcase-color-sub2;
+  border-radius: 0.25rem;
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.showcase-rating-icon-box {
+  @include create-circle(75px);
+  display: block;
+  background: white;
+  content: ' ';
+  margin: 5px;
+}
+
+.showcase-rating-icon {
+
+  &-rotate {
+    @include rotate-element(10s);
+  }
+  &-pop {
+    @include pop-element-in();
+  }
+}

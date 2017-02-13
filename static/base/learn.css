@@ -10,18 +10,18 @@
   font-family: "Open Sans", sans-serif;
   margin-bottom: 2.0em; }
 
-.sidebar h1, .sidebar h2, .sidebar h3, .sidebar .sphinx h4, .sphinx .sidebar h4, .sidebar .sphinx h5, .sphinx .sidebar h5 {
+.sidebar h1, .sidebar h2, .sidebar h3 {
   background: #88b300;
   padding: 5px;
   border-radius: .25rem;
   text-decoration: none;
   color: #FFF; }
-  .sidebar h1 a, .sidebar h2 a, .sidebar h3 a, .sidebar .sphinx h4 a, .sphinx .sidebar h4 a, .sidebar .sphinx h5 a, .sphinx .sidebar h5 a {
+  .sidebar h1 a, .sidebar h2 a, .sidebar h3 a {
     color: inherit; }
-    .sidebar h1 a:hover, .sidebar h2 a:hover, .sidebar h3 a:hover, .sidebar .sphinx h4 a:hover, .sphinx .sidebar h4 a:hover, .sidebar .sphinx h5 a:hover, .sphinx .sidebar h5 a:hover {
+    .sidebar h1 a:hover, .sidebar h2 a:hover, .sidebar h3 a:hover {
       color: #0275d8; }
 
-.sphinx h1, .sphinx h2 {
+.sphinx h1, .sphinx h2, .sphinx h3 {
   font-family: "Exo 2", sans-serif;
   padding: 0.2em;
   border-radius: 0.25em;
@@ -34,16 +34,19 @@
 .sphinx h1 {
   background-image: url(img/learn/h1.png); }
 .sphinx h2 {
-  background-image: url(img/learn/h2.png); }
-.sphinx h3, .sphinx h4, .sphinx h5 {
+  background-image: url(img/learn/h2.png);
+  margin-top: 3%; }
+.sphinx h3 {
+  background-image: url(img/learn/h3.png);
+  margin-top: 2%; }
+.sphinx h4, .sphinx h5 {
   font-family: "Exo 2", sans-serif;
-  color: #618000;
-  margin-top: 1%; }
-.sphinx h4 {
   color: #3b4d00; }
 .sphinx h5 {
   color: #141a00; }
 .sphinx p {
+  font-family: "Open Sans", sans-serif; }
+.sphinx li {
   font-family: "Open Sans", sans-serif; }
 .sphinx .figure p.caption {
   color: #818a91;

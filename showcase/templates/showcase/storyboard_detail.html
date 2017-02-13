@@ -59,6 +59,25 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
             <div class="col-xs-12 col-sm-5">
                 {# This is the background. Let the other column take care of things. For now. #}
                 {# Later, add in the OSB level. #}
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 offset-sm-8">
+                        <div class="showcase-rating-box">
+                            <ul class="list-unstyled">
+                                <li>
+                                    OSB Level
+                                </li>
+                                <li>
+                                    {{ storyboard.get_rating }}
+                                </li>
+                                <li class="showcase-rating-icon-box mx-auto">
+                                    <div class="showcase-rating-icon-rotate">
+                                        <img class="img-fluid showcase-rating-icon-pop" src="/static/showcase/hifumi.png" width="50" />
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-xs-12 col-sm-7" style="padding: 0;">
                 <div class="showcase-title">{{ storyboard.song }}</div>
@@ -97,10 +116,10 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
                             </div>
                         </div>
                     </div>
-                    <div class="showcase-subtitle">Tags</div>
                     {% if storyboard.tags.all %}
+                    <div class="showcase-subtitle">Tags</div>
                         {% for t in storyboard.tags.all %}
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="{{ t.verbose_name }}">
+                            <a href="{{ t.get_search_url }}" data-toggle="tooltip" data-placement="top" title="{{ t.verbose_name }}">
                                 <img src="{{ t.get_icon_url }}" alt="{{ t.verbose_name }}" width="48" height="48" />
                             </a>
                         {% endfor %}

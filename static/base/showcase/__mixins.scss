@@ -10,6 +10,24 @@
   color: $showcase-font-color;
 }
 
+@mixin suppress-link-formatting() {
+  a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+  }
+}
+
+@mixin create-circle($length) {
+  width: $length;
+  height: $length;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+// Animation based mixins
+// TODO: Get utility animation mixins to generalize these
+
 @mixin hover-transform($original-width, $color) {
   $animation: border-left 600ms cubic-bezier(0.175,0.885,0.32,1.275);
   -o-transition: $animation;
@@ -21,9 +39,35 @@
   }
 }
 
-@mixin suppress-link-formatting() {
-  a {
-    color: inherit; /* blue colors for links too */
-    text-decoration: inherit; /* no underline */
+@mixin rotate-element($length) {
+  animation: $length cubic-bezier(0.445, 0.05, 0.55, 0.95) 3s infinite keyframe-rotation;
+}
+
+@mixin pop-element-in() {
+  animation: 1.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) keyframe-pop-in;
+}
+
+// Keyframes
+@keyframes keyframe-pop-in {
+  from {
+    width: 0;
   }
+  to {
+    width: 50px;
+  }
+}
+
+@keyframes keyframe-rotation {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-15deg);
+  }
+
+  75% {
+    transform: rotate(15deg);
+  }
+
 }

@@ -1,7 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:700");
-@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
-@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
-@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
+@keyframes keyframe-pop-in {
+  from {
+    width: 0; }
+  to {
+    width: 50px; } }
+@keyframes keyframe-rotation {
+  0%, 100% {
+    transform: rotate(0deg); }
+  25% {
+    transform: rotate(-15deg); }
+  75% {
+    transform: rotate(15deg); } }
 .showcase-title {
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
@@ -65,5 +74,35 @@
   display: none; }
   .showcase-tags:target {
     display: inline; }
+
+.showcase-rating-box {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: white;
+  font-size: 24pt;
+  font-size: 12pt;
+  text-align: center;
+  background: #465d6f;
+  border-top: 5px solid #262d35;
+  border-bottom: 5px solid #262d35;
+  border-radius: 0.25rem;
+  margin-top: 0.25em;
+  margin-bottom: 0.5em; }
+
+.showcase-rating-icon-box {
+  width: 75px;
+  height: 75px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  display: block;
+  background: white;
+  content: ' ';
+  margin: 5px; }
+
+.showcase-rating-icon-rotate {
+  animation: 10s cubic-bezier(0.445, 0.05, 0.55, 0.95) 3s infinite keyframe-rotation; }
+.showcase-rating-icon-pop {
+  animation: 1.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) keyframe-pop-in; }
 
 /*# sourceMappingURL=showcase.css.map */

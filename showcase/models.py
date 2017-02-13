@@ -79,6 +79,23 @@ class Storyboard(models.Model):
         return self.get_video_url(embed=True)
     # endregion
 
+    # region Utilities
+
+    # maybe not useful after all
+    def has_tag(self, internal_id):
+        return any(internal_id == t.internal_id for t in self.tags.all())
+    # endregion
+
+    # region Ratings Related Fun
+
+    def get_rating(self):
+        sum = 0
+        for t in self.tags.all():
+            sum += t.rating
+        return sum
+
+    # endregion
+
 
 class Storyboarder(models.Model):
     # region Constants
@@ -116,9 +133,13 @@ class Tag(models.Model):
     internal_id = models.SlugField(verbose_name="Internal ID")
     verbose_name = models.CharField(max_length=64,verbose_name="Tag Title")
     description = models.TextField(blank=True)
+    rating = models.PositiveSmallIntegerField(blank=True,default=0)
 
     def __str__(self):
         return self.verbose_name
 
     def get_icon_url(self):
         return r"/static/showcase/showcase-icons-exportable.svg#{0}".format(self.internal_id)
+
+    def get_search_url(self):
+        return r"/showcase/search?t={0}".format(self.internal_id)
