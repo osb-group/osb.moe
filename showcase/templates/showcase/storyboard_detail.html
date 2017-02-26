@@ -10,9 +10,9 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
 
 
 {% block head %}
+    <link rel="stylesheet" href="/static/base/sb.css">
+    <link rel="stylesheet" href="/static/base/showcase/showcase.css">
     {% if storyboard.gallery %}
-        <link rel="stylesheet" href="/static/base/sb.css">
-        <link rel="stylesheet" href="/static/base/showcase/showcase.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.css">
     {% endif %}
 {% endblock %}

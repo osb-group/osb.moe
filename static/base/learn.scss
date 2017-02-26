@@ -2,9 +2,11 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400');
 @import '_variables.scss';
+@import 'learn/__variables.scss';
 
 // Learn modules
 @import 'learn/_learn_glossary';
+@import 'learn/_learn_admonitions.scss';
 
 $font-header: 'Exo 2', sans-serif;
 $font-body: 'Open Sans', sans-serif;
@@ -96,68 +98,7 @@ $font-body: 'Open Sans', sans-serif;
     }
   }
 
-  .admonition {
-    background: nth($colors-back, 2);
-    border-left: solid 15px nth($colors-back, 1);
-    border-radius: 0.25em;
-    margin: 0.25em;
-    padding: 0.25em;
 
-    p {
-      padding: 0.2em;
-    }
-
-  }
-
-  .admonition-title {
-    font-family: $font-header;
-    font-size: 18pt;
-    margin-bottom: 0.1em;
-  }
-
-  @mixin add-fa-icon-to-title($content) {
-    .admonition-title {
-      &::before {
-        content: $content;
-        font-family: FontAwesome;
-        margin-right: 10px;
-      }
-    }
-  }
-
-  @mixin add-background-to-admonition($list) {
-    background: nth($list,1);
-    border-left: solid 15px nth($list,2);
-    color: nth($list,4);
-    .admonition-title {
-      color: nth($list,3);
-    }
-  }
-
-  .note {
-    @include add-fa-icon-to-title("\f040");
-    @include add-background-to-admonition($admonition-note);
-  }
-
-  .warning {
-    @include add-fa-icon-to-title("\f071");
-    @include add-background-to-admonition($admonition-warning);
-  }
-
-  .tip {
-    @include add-fa-icon-to-title("\f0a4");
-    @include add-background-to-admonition($admonition-tip);
-  }
-
-  .attention {
-    @include add-fa-icon-to-title("\f06a");
-    @include add-background-to-admonition($admonition-attention);
-  }
-
-  .hint {
-    @include add-fa-icon-to-title("\f06b");
-    @include add-background-to-admonition($admonition-hint);
-  }
 
   // Tables
   table {

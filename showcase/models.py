@@ -54,6 +54,9 @@ class Storyboard(models.Model):
     def get_detail_url(self):
         return self.get_absolute_url() # remove later
 
+    def get_storyboarder_message(self):
+        return ", ".join([sber.username for sber in self.storyboarder.all()])
+
     def get_storyboarder_url(self):
         return ["/showcase/author/{0!s}".format(a.pk) for a in self.storyboarder.all()]
 

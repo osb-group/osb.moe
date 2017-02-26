@@ -18,6 +18,19 @@ class StoryboardListView(ListView):
         context['storyboard_list'] = Storyboard.objects.exclude(approved__exact=False).order_by('-date_created')
         return context
 
+class StoryboardLeaderboardView(ListView):
+    model = Storyboard
+    context_object_name = 'storyboard_leaderboard'
+    template_name = "showcase/storyboard_leaderboard.html"
+
+    # It needs to be dealt with later as not a sorting strain. Perhaps add an actual rating field.
+    def get_context_data(self, **kwargs):
+        storyboards = list(Storyboard.objects.exclude(approved__exact=False))
+        sorted_storyboards = sorted(storyboards, key=lambda sb: sb.get_rating(), reverse=True)
+        context = super(StoryboardLeaderboardView, self).get_context_data(**kwargs)
+        context['storyboard_leaderboard'] = sorted_storyboards
+        return context
+
 
 class StoryboardDetailView(DetailView):
     model = Storyboard

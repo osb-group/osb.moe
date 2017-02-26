@@ -35,7 +35,7 @@ class StoryboarderAdmin(admin.ModelAdmin):
     search_fields = ['username']
 
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('internal_id', 'verbose_name', 'description',)
+    list_display = ('internal_id', 'verbose_name', 'rating', 'description')
 
 
 admin.site.register(Storyboard, StoryboardAdmin)

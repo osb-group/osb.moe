@@ -1,0 +1,40 @@
+{%  extends "base.html" %}
+{% load showcase_extras %}
+
+{% comment %}
+Don't forget about how base.html is composed to work with this.
+For each component of the storyboard_list, we want to generate a Bootstrap card, I think.
+{% endcomment %}
+
+{% block title %}Storyboards{% endblock %}
+
+{% block head %}<link rel="stylesheet" href="/static/base/sb.css">{% endblock %}
+
+{% block content %}
+    <header class="opening-banner-sb"><h1 class="display opening-header">Leaderboard</h1><div class="bae-sb"></div></header>
+    <h1 class="special-banner-2 rounded">Storyboards</h1>
+    {% if storyboard_leaderboard %}
+        <table class="table">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Rank</th>
+                <th>Storyboard</th>
+                <th>Storyboarder</th>
+                <th>OSB Level</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for sb in storyboard_leaderboard %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><a href="{{ sb.get_absolute_url }}">{{ sb }}</a></td>
+                        <td>{{ sb.get_storyboarder_message }}</td>
+                        <td>{{ sb.get_rating }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>:(</p>
+    {% endif %}
+{% endblock %}
