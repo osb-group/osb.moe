@@ -6,7 +6,7 @@ Don't forget about how base.html is composed to work with this.
 For each component of the storyboard_list, we want to generate a Bootstrap card, I think.
 {% endcomment %}
 
-{% block title %}Storyboards{% endblock %}
+{% block title %}Leaderboard{% endblock %}
 
 {% block head %}<link rel="stylesheet" href="/static/base/sb.css">{% endblock %}
 
@@ -14,7 +14,7 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     <header class="opening-banner-sb"><h1 class="display opening-header">Leaderboard</h1><div class="bae-sb"></div></header>
     <h1 class="special-banner-2 rounded">Storyboards</h1>
     {% if storyboard_leaderboard %}
-        <table class="table">
+        <table class="table-responsive">
             <thead class="thead-inverse">
             <tr>
                 <th>Rank</th>

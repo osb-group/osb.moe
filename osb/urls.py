@@ -21,9 +21,9 @@ from main.views import HomePageView
 
 urlpatterns = [
     url(r'^twintails/', admin.site.urls),
+    #url(r'^api/', include('osb_api.urls')),
     url(r'^showcase/', include('showcase.urls')),
     url(r'^user/', include('main.urls_user')),
-    #url(r'^docs/', include('learn.urls')),
     url(r'^learn/', include('sphinxdoc.urls')),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^$', HomePageView.as_view(), name='index'),

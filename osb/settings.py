@@ -50,8 +50,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
 
+    'rest_framework',
+
     'main.apps.MainConfig',
     'showcase.apps.ShowcaseConfig',
+    'osb_api.apps.OsbApiConfig',
 
     'haystack',
     'sortedm2m',
@@ -130,6 +133,19 @@ LOGGING = {
             'handlers': ['debug_error_logfile'],
         },
     },
+}
+
+# DRF
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',
+        'user': '1000/day'
+    }
 }
 
 # Password validation

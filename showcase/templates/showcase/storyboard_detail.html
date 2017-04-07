@@ -16,49 +16,18 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.css">
     {% endif %}
 {% endblock %}
-
 {% block content %}
     <header class="opening-banner" style="background-image: url({{ storyboard.get_mapset_cover_url }});"></header>
     <h1 class="special-banner-2 top-header">{{ storyboard }}</h1>
 
-    <h2 class="special-banner-sub-2 rounded">Overview</h2>
-
-    <div class="container-fluid">
-        <div class="card sb-card col-sm-12 col-md-4">
-                <img class="rounded mx-auto d-block" src="{{ storyboard.get_mapset_thumbnail_url }}" alt="{{ s.song }}"/>
-                <div class="card-block">
-                    <dl class="row">
-                        <dt class="col-sm-6 col-md-3">Storyboarder:</dt>
-                        {% for sber in storyboard.storyboarder.all %}
-                        <dd class="col-sm-6 col-md-12"><a href="/showcase/author/{{ sber.pk }}">{{ sber }}</a></dd>
-                        {% endfor %}
-                        <dt class="col-sm-6 col-md-3">Mapper:</dt>
-                        <dd class="col-sm-6 col-md-12">{{ storyboard.mapper }}</dd>
-                        <dt class="col-sm-6 col-md-9">Developed in {{ storyboard.get_medium_display }}.</dt>
-                    </dl>
-                </div>
-        </div>
-
-        <div class="col-xs-12 col-md-8">
-            <p>{{ storyboard.description }}</p>
-            <p>
-            {% if user.storyboarder in storyboarder.storyboarder.all or user.is_staff %}<a href="edit" class="btn btn-warning">Edit Info</a>{% endif %}
-            {% if storyboard.video %}<a href="{{ storyboard.get_video_url }}" class="btn btn-info" data-toggle="lightbox">Video</a>{% endif %}
-            {% if storyboard.set_id %}<a href="{{ storyboard.get_mapset_url }}" class="btn btn-primary">Go to Beatmap!</a>{% endif %}
-            {% if storyboard.set_id %}<a href="{{ storyboard.get_mapset_download_url }}" class="btn btn-success">Download!</a>{% endif %}
-            <a class = "btn btg-lg btn-secondary" href="/showcase/sb/{% get_random_storyboard as sb %}{{ sb.pk }}">Show Me Another!</a>
-            </p>
-
-        </div>
-    </div>
-
     {# New SB Card #}
-    <h2 class="special-banner-sub-2 rounded">Testing!</h2>
     <div class="container" style="background-image: url({{ storyboard.get_mapset_cover_url }}); background-size: cover; background-position: 50% 50%;">
+        {# Showcase module #}
         <div class="row">
             <div class="col-xs-12 col-sm-5">
                 {# This is the background. Let the other column take care of things. For now. #}
                 {# Later, add in the OSB level. #}
+                {% if storyboard.get_rating != 0 %}
                 <div class="row">
                     <div class="col-xs-12 col-sm-4 offset-sm-8">
                         <div class="showcase-rating-box">
@@ -78,44 +47,45 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
                         </div>
                     </div>
                 </div>
+                {% endif %}
             </div>
             <div class="col-xs-12 col-sm-7" style="padding: 0;">
                 <div class="showcase-title">{{ storyboard.song }}</div>
                 <div class="showcase-body-container">
-                <div class="showcase-subtitle">{{ storyboard.artist }}</div>
-                    <div class="row">
-                        <div class="col-xs-2" style="padding: 0">
-                            <img class="img-fluid" src="{{ storyboard.storyboarder.first.get_avatar_url }}" style="max-height: 100px; padding-left:20px"/>
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="showcase-body-subtitle">Storyboarded by</div>
-                            <div class="showcase-body-text">
-                                <ul class="list-unstyled">
-                                    {% for sber in storyboard.storyboarder.all %}
+                    <div class="showcase-subtitle">{{ storyboard.artist }}</div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2" style="padding: 0">
+                                <img class="img-fluid d-block mx-auto" src="{{ storyboard.storyboarder.first.get_avatar_url }}" style="max-height: 100px; padding-left:20px"/>
+                            </div>
+                            <div class="col-xs-5 col-sm-4">
+                                <div class="showcase-body-subtitle">Storyboarded by</div>
+                                <div class="showcase-body-text">
+                                    <ul class="list-unstyled">
+                                        {% for sber in storyboard.storyboarder.all %}
+                                            <li>
+                                                <a href="/showcase/author/{{ sber.pk }}">{{ sber }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xs-7 col-sm-6">
+                                <div class="showcase-body-subtitle">Metadata</div>
+                                <div class="showcase-body-text">
+                                    <ul class="list-unstyled">
                                         <li>
-                                            <a href="/showcase/author/{{ sber.pk }}">{{ sber }}</a>
+                                            Mapped by {{ storyboard.mapper }}
                                         </li>
-                                    {% endfor %}
-                                </ul>
+                                        <li>
+                                            Developed via {{ storyboard.get_medium_display }}
+                                        </li>
+                                        <li>
+                                            Submitted on {{ storyboard.date_created }}
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="showcase-body-subtitle">Metadata</div>
-                            <div class="showcase-body-text">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        Mapped by {{ storyboard.mapper }}
-                                    </li>
-                                    <li>
-                                        Developed via {{ storyboard.get_medium_display }}
-                                    </li>
-                                    <li>
-                                        Submitted on {{ storyboard.date_created }}
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                         </div>
                     {% if storyboard.tags.all %}
                     <div class="showcase-subtitle">Tags</div>
                         {% for t in storyboard.tags.all %}
@@ -124,16 +94,31 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
                             </a>
                         {% endfor %}
                     {% endif %}
-                    <a href="{{ storyboard.get_mapset_url }}"><div class="showcase-button-set">See Beatmap Set</div></a>
-                    <a href="{{ storyboard.get_mapset_download_url }}"><div class="showcase-button-download">Download This Beatmap</div></a>
+                <a href="{{ storyboard.get_mapset_url }}"><div class="showcase-button-set">See Beatmap Set</div></a>
+                <a href="{{ storyboard.get_mapset_download_url }}"><div class="showcase-button-download">Download This Beatmap</div></a>
                 </div>
             </div>
         </div>
     </div>
+    {# Video and Description module #}
+    <div class="row">
+        {% if storyboard.description %}
+        <div class="col-xs-12">
+            <div class="showcase-title">Description</div>
+            <p>{{ storyboard.description }}</p>
+        </div>
+        {% endif %}
+        {% if storyboard.video %}
+            <div class="col-xs-12">
+                <div class="showcase-title">Video</div>
+                <p><iframe src="{{ storyboard.get_embed_video_url }}" style="min-width: 100%; min-height: 400px;"></iframe>
+            </div>
+        {% endif %}
+    </div>
 
 
     {% if storyboard.gallery %}
-        <h2 class="special-banner-sub-2 rounded">Screenshots</h2>
+        <div class="showcase-title">Screenshots</div>
         <p>
             <div class="row">
                 {% for photo in storyboard.gallery.public %}
@@ -146,9 +131,9 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     {% endif %}
 
     {% if storyboard.comments %}
-    <h2 class="special-banner-sub-2 rounded">
+    <div class="showcase-title">
         {% if storyboard.storyboarder.count > 1 %}Authors'{% else %}{{ storyboard.storyboarder.first }}'s{% endif %} Comments
-    </h2>
+    </div>
     <div class="media">
         {% if storyboard.storyboarder.count == 1 %}
             <img class="media-left float-xs-left" src="{{ storyboard.storyboarder.first.get_avatar_url }}" style="max-height:128px;"/>
