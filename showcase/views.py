@@ -15,7 +15,7 @@ class StoryboardListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(StoryboardListView, self).get_context_data(**kwargs)
-        context['storyboard_list'] = Storyboard.objects.exclude(approved__exact=False).order_by('-date_created')
+        context['storyboard_list'] = Storyboard.objects.exclude(approved__exact=False)
         return context
 
 class StoryboardLeaderboardView(ListView):
@@ -53,7 +53,7 @@ class StoryboarderDetailView(DetailView):
 
 
 def filter_by_author(request):
-    return Storyboard.objects.filter(storyboarder=request).exclude(approved__exact=False).order_by('-date_created')
+    return Storyboard.objects.filter(storyboarder=request).exclude(approved__exact=False)
 
 
 def mediums_by_author(request):
@@ -66,7 +66,7 @@ def mediums_by_author(request):
 # TODO: Separate this into another file for readability.
 
 def search_request(request):
-    storyboard_list = Storyboard.objects.exclude(approved__exact=False).order_by('-date_created')
+    storyboard_list = Storyboard.objects.exclude(approved__exact=False)
     if request.method == 'GET':
         tag_flag = 't' in request.GET
         featured_flag = request.GET['f'] if 'f' in request.GET else False

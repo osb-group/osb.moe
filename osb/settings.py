@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'photologue',
     'sphinxdoc',
     'django_filters',
+    'el_pagination',
 ]
 
 MIDDLEWARE = [

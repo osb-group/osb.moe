@@ -1,5 +1,6 @@
 {%  extends "base.html" %}
 {% load showcase_extras %}
+{% load el_pagination_tags %}
 
 {% comment %}
 Don't forget about how base.html is composed to work with this.
@@ -28,9 +29,11 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     {% if storyboard_list %}
         <div class="card-group">
             <div class="card-deck">
+                {% paginate storyboard_list %}
                 {% for s in storyboard_list %}
                     {% show_sb_card s %}
                 {% endfor %}
+                {% show_pages %}
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.js"></script>

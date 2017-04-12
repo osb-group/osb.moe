@@ -99,6 +99,13 @@ class Storyboard(models.Model):
 
     # endregion
 
+    # region Meta
+
+    class Meta:
+        ordering = ['-date_created']
+
+    # endregion
+
 
 class Storyboarder(models.Model):
     # region Constants
