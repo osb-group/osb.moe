@@ -15,7 +15,7 @@ class StoryboardListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(StoryboardListView, self).get_context_data(**kwargs)
-        context['storyboard_list'] = Storyboard.objects.exclude(approved__exact=False)
+        context['storyboard_list'] = Storyboard.objects.approved()
         return context
 
 class StoryboardLeaderboardView(ListView):
@@ -25,7 +25,7 @@ class StoryboardLeaderboardView(ListView):
 
     # It needs to be dealt with later as not a sorting strain. Perhaps add an actual rating field.
     def get_context_data(self, **kwargs):
-        storyboards = list(Storyboard.objects.exclude(approved__exact=False))
+        storyboards = list(Storyboard.objects.approved())
         sorted_storyboards = sorted(storyboards, key=lambda sb: sb.get_rating(), reverse=True)
         context = super(StoryboardLeaderboardView, self).get_context_data(**kwargs)
         context['storyboard_leaderboard'] = sorted_storyboards
@@ -53,7 +53,7 @@ class StoryboarderDetailView(DetailView):
 
 
 def filter_by_author(request):
-    return Storyboard.objects.filter(storyboarder=request).exclude(approved__exact=False)
+    return Storyboard.objects.approved().filter(storyboarder=request)
 
 
 def mediums_by_author(request):
@@ -66,7 +66,7 @@ def mediums_by_author(request):
 # TODO: Separate this into another file for readability.
 
 def search_request(request):
-    storyboard_list = Storyboard.objects.exclude(approved__exact=False)
+    storyboard_list = Storyboard.objects.approved()
     if request.method == 'GET':
         tag_flag = 't' in request.GET
         featured_flag = request.GET['f'] if 'f' in request.GET else False

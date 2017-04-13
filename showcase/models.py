@@ -4,6 +4,7 @@ from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from photologue.models import Gallery
+from .managers import ApprovedManager
 
 
 class Storyboard(models.Model):
@@ -100,6 +101,8 @@ class Storyboard(models.Model):
     # endregion
 
     # region Meta
+
+    objects = ApprovedManager()
 
     class Meta:
         ordering = ['-date_created']

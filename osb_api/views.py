@@ -10,7 +10,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .filters import StoryboardFilter
 
 class StoryboardViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Storyboard.objects.exclude(approved__exact=False)
+    queryset = Storyboard.objects.approved()
     serializer_class = StoryboardSerializer
     filter_backends = (DjangoFilterBackend,)
     filter_class = StoryboardFilter

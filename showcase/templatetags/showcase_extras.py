@@ -56,7 +56,7 @@ def get_storyboarders():
 
 @register.simple_tag
 def get_most_recent_storyboards():
-    return Storyboard.objects.exclude(approved__exact=False).order_by('-date_added')
+    return Storyboard.objects.approved().order_by('-date_added')
 
 @register.simple_tag
 def get_random_storyboard():
