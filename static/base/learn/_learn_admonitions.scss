@@ -1,12 +1,16 @@
 .admonition {
   // background: nth($colors-back, 2);
   // border-left: solid 15px nth($colors-back, 1);
-  border-radius: 0.25em;
-  margin: 0.25em;
+  //border-radius: 0.25em;
+  //margin: 0.25em;
   padding: 0.25em;
 
   p {
     padding: 0.2em;
+
+    &.last {
+      padding: 0.2em 4em;
+    }
   }
 
 }
@@ -14,6 +18,7 @@
 .admonition-title {
   font-family: $font-header;
   font-size: 18pt;
+  padding: 0 0.5em;
   margin-bottom: 0.1em;
 }
 

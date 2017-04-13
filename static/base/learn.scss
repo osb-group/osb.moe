@@ -1,134 +1,35 @@
 // TODO: Separate this stuff into modules
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400');
 @import '_variables.scss';
 @import 'learn/__variables.scss';
 
 // Learn modules
+@import 'learn/_learn_body.scss';
+@import 'learn/_learn_headers.scss';
+@import 'learn/_learn_table.scss';
 @import 'learn/_learn_glossary';
 @import 'learn/_learn_admonitions.scss';
-
-$font-header: 'Exo 2', sans-serif;
-$font-body: 'Open Sans', sans-serif;
+@import 'learn/_learn_figure.scss';
+@import 'learn/_learn_code.scss';
 
 // Sidebar
 
-.sidebar {
-  h1, h2, h3 {
-    background: nth($colors-spot, 3);
-    padding: 5px;
-    border-radius: .25rem;
-    text-decoration: none;
-    color: $invert-font-color;
-    a {
-        color: inherit;
-      &:hover {
-        color: #0275d8;
-      }
-    }
-  }
-}
-
-// Body
-
 .sphinx {
-  h1, h2, h3 {
-    font-family: $font-header;
-    padding: 0.2em;
-    border-radius: 0.25em;
-    background-color: darken(nth($colors-spot, 3), 10%);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: right center;
-    color: $invert-font-color;
-    text-shadow: 0 1px 3px rgba(0,0,0,.75);
-  }
 
-  h1 {
-    background-image: url(img/learn/h1.png);
-  }
-
-  h2 {
-    background-image: url(img/learn/h2.png);
-    margin-top: 3%;
-  }
-
-  h3 {
-    background-image: url(img/learn/h3.png);
-    margin-top: 2%;
-  }
-
-  h4 {
-    font-family: $font-header;
-    color: darken(nth($colors-spot, 3),20%);
-  }
-
-  h5 {
-    @extend h4;
-    color: darken(nth($colors-spot, 3),30%);
-  }
-
-  p {
-    font-family: $font-body;
-  }
-
-  li {
-    font-family: $font-body;
-  }
-
-  .figure {
-    p {
-      &.caption {
-      color: #818a91;
-      font-size: 0.75rem;
-      }
-    }
-  }
-
-  a {
-    &.headerlink {
-      font-size: 0.8em;
-      padding: 0 4px 0 4px;
+  .sidebar {
+    h1, h2, h3 {
+      background: nth($colors-spot, 3);
+      padding: 5px;
+      border-radius: .25rem;
       text-decoration: none;
-      opacity: 0;
-      transition: opacity 1s;
-      &:hover {
-        opacity: 100;
+      color: $invert-font-color;
+      a {
+          color: inherit;
+        &:hover {
+          color: #0275d8;
+        }
       }
     }
-  }
-
-
-
-  // Tables
-  table {
-    caption {
-      padding-top: 0;
-    }
-  }
-  thead {
-      background-color: nth($colors-spot, 3);
-      border-radius: 0 0 .25rem .25rem;
-      color: white;
-      th {
-        text-align: center;
-      }
-    }
-  tbody {
-    font-family: $font-body;
-  }
-
-
-  // Code block
-  .code-block-caption {
-    background-color: nth($colors-spot, 3);
-    color: white;
-    padding: .25em .25em .25em 1em;
-    border-radius: 0 0 .25rem .25rem;
-  }
-
-  .linenos {
-    padding-right: 4px;
   }
 
 }
@@ -154,13 +55,6 @@ $font-body: 'Open Sans', sans-serif;
 
 .pagination-bottom {
   @extend .pagination-top;
-}
-
-// Misc
-
-.highlight {
-  padding: 0.5em 1em 0.5em 0.5em;
-  border-radius: .25em;
 }
 
 // Prev/Next

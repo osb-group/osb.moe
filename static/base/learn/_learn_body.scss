@@ -1,0 +1,35 @@
+@import '../_variables';
+
+.content {
+  padding: 0;
+}
+
+.sphinx {
+
+  p {
+    font-family: $font-body;
+    padding: 0.5em 4em;
+    margin-bottom: 0.5em;
+  }
+
+  ul {
+    padding: 0 4em;
+  }
+
+  li {
+    font-family: $font-body;
+  }
+
+  a {
+    &.headerlink {
+      font-size: 0.8em;
+      padding: 0 4px 0 4px;
+      text-decoration: none;
+      opacity: 0;
+      transition: opacity 1s;
+      &:hover {
+        opacity: 100;
+      }
+    }
+  }
+}

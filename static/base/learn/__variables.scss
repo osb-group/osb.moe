@@ -1,3 +1,14 @@
+// Variables
+
+// Fonts used
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto+Slab');
+$font-header: 'Roboto Slab', sans-serif;
+$font-body: 'Open Sans', sans-serif;
+$font-code: 'Inconsolata', monospace;
+
+// Heading colors
+$heading-colors: (#4CAF50, #388E3C, #81C784, #00695C);
+
 // Learn docs admonitions
 // BG, Left Border, Header Text, Body Text
 $admonition-note: (#9FA8DA, #5C6BC0, #E8EAF6, #283593);
@@ -10,3 +21,6 @@ $admonition-hint: (#81D4FA, #29B6F6, #E1F5FE, #0277BD);
 $admonition-todo-low: (#B0BEC5, #9CCC65, #ECEFF1, #37474F);
 $admonition-todo-medium: (#B0BEC5, #FFCA28, #ECEFF1, #37474F);
 $admonition-todo-high: (#B0BEC5, #ef5350, #ECEFF1, #37474F);
+
+// Code-block colors
+$code-block-colors: (#B0BEC5, #607D8B, #455A64, #263238);

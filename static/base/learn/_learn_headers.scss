@@ -1,0 +1,36 @@
+@import '../_variables';
+
+.sphinx {
+  .section {
+    h1, h2, h3, h4, h5 {
+      font-family: $font-header;
+      color: $invert-font-color;
+    }
+
+    h1 {
+      background-color: nth($heading-colors, 1);
+      padding: 0.45em 0.2em;
+    }
+
+    h2 {
+      background-color: nth($heading-colors, 2);
+      padding: 0.4em 0.2em;
+      margin-top: 3%;
+    }
+
+    h3 {
+      background-color: nth($heading-colors, 3);
+      padding: 0.3em 0.2em;
+      margin-top: 2%;
+    }
+
+    h4 {
+      background-color: nth($heading-colors, 4);
+      padding: 0.2em;
+    }
+
+    h5 {
+      @extend h4;
+    }
+  }
+}

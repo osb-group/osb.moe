@@ -1,5 +1,62 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto+Slab");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto+Slab");
+.content {
+  padding: 0; }
+
+.sphinx p {
+  font-family: "Open Sans", sans-serif;
+  padding: 0.5em 4em;
+  margin-bottom: 0.5em; }
+.sphinx ul {
+  padding: 0 4em; }
+.sphinx li {
+  font-family: "Open Sans", sans-serif; }
+.sphinx a.headerlink {
+  font-size: 0.8em;
+  padding: 0 4px 0 4px;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 1s; }
+  .sphinx a.headerlink:hover {
+    opacity: 100; }
+
+.sphinx .section h1, .sphinx .section h2, .sphinx .section h3, .sphinx .section h4, .sphinx .section h5, .sphinx .section h5 {
+  font-family: "Roboto Slab", sans-serif;
+  color: #FFF; }
+.sphinx .section h1 {
+  background-color: #4CAF50;
+  padding: 0.45em 0.2em; }
+.sphinx .section h2 {
+  background-color: #388E3C;
+  padding: 0.4em 0.2em;
+  margin-top: 3%; }
+.sphinx .section h3 {
+  background-color: #81C784;
+  padding: 0.3em 0.2em;
+  margin-top: 2%; }
+.sphinx .section h4, .sphinx .section h5 {
+  background-color: #00695C;
+  padding: 0.2em; }
+
+.sphinx table {
+  margin: 0 auto;
+  width: 90%; }
+  .sphinx table caption {
+    padding-top: 0; }
+.sphinx thead {
+  background-color: #388E3C;
+  border-radius: 0 0 .25rem .25rem;
+  color: white; }
+  .sphinx thead th {
+    text-align: center; }
+.sphinx tbody {
+  font-family: "Open Sans", sans-serif; }
+.sphinx caption {
+  color: #818a91;
+  font-size: 0.75rem;
+  text-align: center; }
+
 .glossary dt {
   border-left: solid 8px #344146;
   background: white;
@@ -11,15 +68,16 @@
   margin-bottom: 2.0em; }
 
 .admonition {
-  border-radius: 0.25em;
-  margin: 0.25em;
   padding: 0.25em; }
   .admonition p {
     padding: 0.2em; }
+    .admonition p.last {
+      padding: 0.2em 4em; }
 
 .admonition-title {
-  font-family: "Exo 2", sans-serif;
+  font-family: "Roboto Slab", sans-serif;
   font-size: 18pt;
+  padding: 0 0.5em;
   margin-bottom: 0.1em; }
 
 .note {
@@ -107,72 +165,59 @@
     font-family: FontAwesome;
     margin-right: 10px; }
 
-.sidebar h1, .sidebar h2, .sidebar h3 {
+.sphinx .figure {
+  display: block; }
+  .sphinx .figure img {
+    display: block;
+    margin: 0 auto; }
+  .sphinx .figure p.caption {
+    color: #818a91;
+    font-size: 0.75rem;
+    text-align: center; }
+
+.sphinx pre {
+  font-family: "Inconsolata", monospace;
+  line-height: 1.75; }
+.sphinx div[class*="highlight-"] {
+  overflow-x: auto; }
+  .sphinx div[class*="highlight-"]::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #4d4d4d; }
+  .sphinx div[class*="highlight-"]::-webkit-scrollbar-thumb {
+    background-color: #111; }
+  .sphinx div[class*="highlight-"]::-webkit-scrollbar-track {
+    background-color: #4d4d4d; }
+  .sphinx div[class*="highlight-"] table[class="highlighttable"] {
+    width: 100%; }
+  .sphinx div[class*="highlight-"] .linenos {
+    width: 24px;
+    background: #455A64; }
+    .sphinx div[class*="highlight-"] .linenos pre {
+      color: white;
+      text-align: center; }
+  .sphinx div[class*="highlight-"] .code {
+    padding: 0; }
+  .sphinx div[class*="highlight-"] .highlight {
+    padding: 0.75em 0.5em; }
+.sphinx .code-block-caption {
+  background-color: #263238;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  padding: .25em .25em .25em 1em; }
+.sphinx .container {
+  padding: 0; }
+
+.sphinx .sidebar h1, .sphinx .sidebar h2, .sphinx .sidebar h3 {
   background: #88b300;
   padding: 5px;
   border-radius: .25rem;
   text-decoration: none;
   color: #FFF; }
-  .sidebar h1 a, .sidebar h2 a, .sidebar h3 a {
+  .sphinx .sidebar h1 a, .sphinx .sidebar h2 a, .sphinx .sidebar h3 a {
     color: inherit; }
-    .sidebar h1 a:hover, .sidebar h2 a:hover, .sidebar h3 a:hover {
+    .sphinx .sidebar h1 a:hover, .sphinx .sidebar h2 a:hover, .sphinx .sidebar h3 a:hover {
       color: #0275d8; }
-
-.sphinx h1, .sphinx h2, .sphinx h3 {
-  font-family: "Exo 2", sans-serif;
-  padding: 0.2em;
-  border-radius: 0.25em;
-  background-color: #618000;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right center;
-  color: #FFF;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75); }
-.sphinx h1 {
-  background-image: url(img/learn/h1.png); }
-.sphinx h2 {
-  background-image: url(img/learn/h2.png);
-  margin-top: 3%; }
-.sphinx h3 {
-  background-image: url(img/learn/h3.png);
-  margin-top: 2%; }
-.sphinx h4, .sphinx h5 {
-  font-family: "Exo 2", sans-serif;
-  color: #3b4d00; }
-.sphinx h5 {
-  color: #141a00; }
-.sphinx p {
-  font-family: "Open Sans", sans-serif; }
-.sphinx li {
-  font-family: "Open Sans", sans-serif; }
-.sphinx .figure p.caption {
-  color: #818a91;
-  font-size: 0.75rem; }
-.sphinx a.headerlink {
-  font-size: 0.8em;
-  padding: 0 4px 0 4px;
-  text-decoration: none;
-  opacity: 0;
-  transition: opacity 1s; }
-  .sphinx a.headerlink:hover {
-    opacity: 100; }
-.sphinx table caption {
-  padding-top: 0; }
-.sphinx thead {
-  background-color: #88b300;
-  border-radius: 0 0 .25rem .25rem;
-  color: white; }
-  .sphinx thead th {
-    text-align: center; }
-.sphinx tbody {
-  font-family: "Open Sans", sans-serif; }
-.sphinx .code-block-caption {
-  background-color: #88b300;
-  color: white;
-  padding: .25em .25em .25em 1em;
-  border-radius: 0 0 .25rem .25rem; }
-.sphinx .linenos {
-  padding-right: 4px; }
 
 .pagination-top, .pagination-bottom {
   background: #88b300 url("img/learn/breadcrumbs.png") no-repeat right center;
@@ -187,10 +232,6 @@
     color: inherit; }
     .pagination-top a:hover, .pagination-bottom a:hover {
       color: #0275d8; }
-
-.highlight {
-  padding: 0.5em 1em 0.5em 0.5em;
-  border-radius: .25em; }
 
 .prev-item, .next-item {
   transform: unset;

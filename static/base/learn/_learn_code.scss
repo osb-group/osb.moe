@@ -1,0 +1,61 @@
+@import '../_variables';
+
+.sphinx {
+
+  pre {
+    font-family: $font-code;
+    line-height: 1.75;
+  }
+
+  div[class*="highlight-"] {
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+      background-color: #4d4d4d;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #111;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #4d4d4d;
+    }
+
+    table[class="highlighttable"]
+    {
+      width: 100%;
+    }
+
+    .linenos {
+      width: 24px;
+      background: nth($code-block-colors, 3);
+      pre {
+        color: white;
+        text-align: center;
+      }
+    }
+
+    .code {
+      padding: 0;
+    }
+
+    .highlight {
+      padding: 0.75em 0.5em;
+    }
+  }
+
+  .code-block-caption {
+    background-color: nth($code-block-colors, 4);
+    font-family: $font-body;
+    color: white;
+    padding: .25em .25em .25em 1em;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+}

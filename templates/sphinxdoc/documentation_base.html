@@ -31,18 +31,12 @@ inherited document, which is powered by sphinxdoc.
     </div>
 
     <div class="row">
-        {# Document body #}
-        <div class="col-sm-1 hidden-xs-down">
-            {% block prev %}{% endblock %}
-        </div>
-        <div class="col-xs-12 col-sm-10">
+        <div class="col-xs-12 content">
             {% block document_body %}
             {% endblock %}
         </div>
-        <div class="col-sm-1 hidden-xs-down">
-            {% block next %}{% endblock %}
-        </div>
     </div>
+
     <div class="row">
         <div class="col-xs-12">
             {% block suffix %}
