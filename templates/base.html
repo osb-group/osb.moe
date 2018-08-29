@@ -28,26 +28,26 @@ Anything that a derivative page needs (like the showcase) will be loaded as a pl
 <body>
     {# NAV BAR #}
     <nav class="navbar navbar-dark bg-inverse">
-    <a href="#" class="navbar-brand">osb!</a>
-        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#osb-navbar" aria-controls="#osb-navbar" aria-expanded="false" aria-label="Toggle navigation">
-
+        <a href="#" class="navbar-brand">osb!</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#osb-navbar" aria-controls="#osb-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-    <div class="collapse navbar-toggleable-xs" id="osb-navbar">
-          <ul class="nav navbar-nav navbar-list">
-            <li class="nav-item" id="navbar-special-1">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item" id="navbar-special-2">
-              <a class="nav-link" href="/showcase">Showcase</a>
-            </li>
-            <li class="nav-item" id="navbar-special-3">
-              <a class="nav-link" href="/learn">Learn</a>
-            </li>
-            <li class="nav-item" id="navbar-special-4">
-              <a class="nav-link" href="/community">Community</a>
-            </li>
-          </ul>
-    </div>
+        <div class="collapse navbar-collapse" id="osb-navbar">
+              <ul class="nav navbar-nav">
+                <li class="nav-item" id="navbar-special-1">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item" id="navbar-special-2">
+                  <a class="nav-link" href="/showcase">Showcase</a>
+                </li>
+                <li class="nav-item" id="navbar-special-3">
+                  <a class="nav-link" href="/learn">Learn</a>
+                </li>
+                <li class="nav-item" id="navbar-special-4">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+              </ul>
+        </div>
     </nav>
 
     {% block header %}{% endblock %}
@@ -59,10 +59,8 @@ Anything that a derivative page needs (like the showcase) will be loaded as a pl
 
     {# FOOTER #}
     <footer class="footer">
-        <div class="row">
         <div class="osu-cookie d-block mx-auto"></div>
         <p class="small">Powered with <span title="Hifumi's Love!">❤</span></p>
-        </div>
     </footer>
 
     {# This extra bootstrap stuff looks ugly! Yuck! #}

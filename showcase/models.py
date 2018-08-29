@@ -105,7 +105,7 @@ class Storyboard(models.Model):
     objects = ApprovedManager()
 
     class Meta:
-        ordering = ['-date_created']
+        ordering = [ 'featured', '-date_created']
 
     # endregion
 

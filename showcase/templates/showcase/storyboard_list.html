@@ -28,13 +28,13 @@ For each component of the storyboard_list, we want to generate a Bootstrap card,
     <h1 class="special-banner-2 rounded">Storyboards</h1>
     {% if storyboard_list %}
         <div class="card-group">
-            <div class="card-deck">
-                {% paginate storyboard_list %}
+        {% paginate storyboard_list %}
+            <div class="row">
                 {% for s in storyboard_list %}
                     {% show_sb_card s %}
                 {% endfor %}
-                {% show_pages %}
             </div>
+        {% show_pages %}
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.js"></script>
         <script src="/static/showcase/add-lightbox.js"></script>

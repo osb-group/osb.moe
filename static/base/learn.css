@@ -224,6 +224,7 @@
   background-size: cover;
   border-radius: .25rem;
   text-align: center;
+  width: 100%;
   font-family: "Open Sans", sans-serif;
   color: #FFF;
   padding: .5em;

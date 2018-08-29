@@ -1,7 +1,11 @@
-<div class="card col-xs-6 col-sm-3">
-    <img class="card-img-top img-fluid mx-auto d-block" src="{{ s.get_avatar_url }}" alt="{{ s.username }}'s pretty face!" style="max-height:128px;">
-    <div class="card-block">
-        <p class="card-text" style="text-shadow: 0 1px 3px rgba(0,0,0,.75);"><a href="{{ s.get_absolute_url }}">{{ s.username }}</a></p>
-        <p class="card-text">{{ s.title }}</p>
+<div class="col-xs-6 col-sm-3">
+    <div class="card margin-top margin-bottom" style="height: 300px;">
+        <img class="card-img-top mx-auto" src="{{ s.get_avatar_url }}" alt="{{ s.username }}'s pretty face!" style="width:192px;overflow-y: hidden">
+        <div class="card-body">
+            <div class="card-title" style="text-shadow: 0 1px 3px rgba(0,0,0,.75);">
+                <a href="{{ s.get_absolute_url }}">{{ s.username }}</a>
+            </div>
+            <p class="card-text">{{ s.title }}</p>
+        </div>
     </div>
 </div>
